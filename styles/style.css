@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+}
+
+/* Header and Nav */
+
+.logo {
+  text-decoration: none;
+  color: black;
+  font-family: "yellowtail", "Bebas Neue", cursive;
+  padding: 5px;
+  font-size: 1.4em;
+}
+
+header {
+  background-color: #d7ecd7;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fa-bars {
+  margin: auto;
+  padding: 10px;
+  font-size: 1.7em;
+  text-align: center;
+}
+
+.fa-bars:hover {
+  cursor: pointer;
+}
+
+/* .nav-button div {
+  margin: 5px auto;
+  width: 35px;
+} */
+
+/* .nav-button:before,
+.nav-button:after,
+.nav-button div {
+  position: relative;
+  content: "";
+  display: block;
+  background: black;
+  height: 6px;
+  border-radius: 5px;
+  margin: 5px 20px 5px 10px;
+  transition: 0.5s;
+}
+
+.nav-button:hover:before {
+   transform: translateY(10px) rotate(105deg); 
+  transform: translateY(5px) rotateZ(45deg);
+  top: 6px;
+}
+
+ .nav-button:hover:after {
+
+  transform: translateY(10px) rotateZ(45deg);
+  top: -6px;
+}  
+.nav-button:hover div {
+  transform: scale(0);
+} */
+
+nav a {
+  text-decoration: none;
+  color: black;
+}
+nav li {
+  list-style: none;
+  margin: 10px;
+}
+.nav-menu {
+  position: absolute;
+  top: 31px;
+  right: 0px;
+  z-index: 1;
+  background-color: #d7ecd7;
+  width: 100%;
+}
+
+/* nav ul {
+  display: none;
+} */
+
+.opacity-container {
+  background-color: rgba(0, 0, 0, 0.336);
+}
+
+/* welcome section */
+
+.welcome-message img {
+  width: 100%;
+}
+
+.welcome-message a {
+  position: absolute;
+  text-align: center;
+  margin: 0px;
+  text-decoration: none;
+}
+
+.message-text {
+  position: absolute;
+  font-size: 0.6em;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+}
+
+@media (min-width: 900px) {
+  nav ul {
+    max-width: 1200px;
+    justify-content: center;
+    margin: 0px auto;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+}
