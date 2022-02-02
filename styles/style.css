@@ -119,6 +119,10 @@ nav li {
 
 /* posts container */
 
+h2 {
+  font-family: alegreya, sans-serif, Arial, Helvetica;
+}
+
 .wp-block-image {
   display: none;
 }
@@ -130,12 +134,28 @@ nav li {
   border: 1px solid black;
   background-color: #f9f8f8;
   border-radius: 10px;
+  display: inline-block;
 }
 
 .post-container {
+  margin: auto;
   text-align: center;
-  display: block;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center; */
+
+  gap: 20px;
+
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.post-section {
   background-color: #ececec;
+  text-align: center;
 }
 
 @media (min-width: 900px) {
