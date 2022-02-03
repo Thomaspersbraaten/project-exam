@@ -21,14 +21,16 @@ header {
   align-items: center;
 }
 
-.fa-bars {
+.fa-bars,
+.far {
   margin: auto;
   padding: 10px;
   font-size: 1.7em;
   text-align: center;
 }
 
-.fa-bars:hover {
+.fa-bars:hover,
+.far:hover {
   cursor: pointer;
 }
 
@@ -65,21 +67,45 @@ header {
   transform: scale(0);
 } */
 
-nav a {
-  text-decoration: none;
-  color: black;
+.search-container {
+  display: flex;
+  flex-direction: column;
 }
+
+nav a,
+nav label {
+  text-decoration: none;
+  font-family: "Charm", cursive;
+  font-weight: bold;
+  color: black;
+  font-size: 1.2em;
+}
+
+#search {
+  width: 150px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
 nav li {
   list-style: none;
-  margin: 10px;
+  margin: 10px auto;
+  padding: 5px;
 }
 .nav-menu {
+  display: flex;
+  flex-flow: column wrap;
+  height: 180px;
   position: absolute;
+
   top: 31px;
   right: 0px;
   z-index: 1;
   background-color: #d7ecd7;
   width: 100%;
+}
+.fa-times-circle {
+  display: none;
 }
 
 /* nav ul {
@@ -117,7 +143,15 @@ nav li {
   border-radius: 10px;
 }
 
-/* posts container */
+/* 
+posts container 
+*/
+.post-section {
+  background-color: #ececec;
+  text-align: center;
+  overflow: auto;
+  white-space: nowrap;
+}
 
 h2 {
   font-family: alegreya, sans-serif, Arial, Helvetica;
@@ -128,6 +162,7 @@ h2 {
 }
 
 .post-container > * {
+  color: black;
   width: 200px;
   height: 200px;
   overflow: hidden;
@@ -135,6 +170,15 @@ h2 {
   background-color: #f9f8f8;
   border-radius: 10px;
   display: inline-block;
+  margin: 30px;
+}
+
+.post-intro p {
+  height: 50px;
+  overflow: visible;
+  white-space: normal;
+  text-overflow: ellipsis;
+  margin: 10px auto;
 }
 
 .post-container {
@@ -146,16 +190,15 @@ h2 {
   justify-content: center;
   align-content: center;
   align-items: center; */
-
-  gap: 20px;
-
-  overflow: auto;
-  white-space: nowrap;
+  /* gap: 20px; */
 }
 
-.post-section {
-  background-color: #ececec;
-  text-align: center;
+/*
+Get Involved Section
+*/
+
+.get-involved-img {
+  width: 100%;
 }
 
 @media (min-width: 900px) {

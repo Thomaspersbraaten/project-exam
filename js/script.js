@@ -8,6 +8,7 @@ const postUrl =
 
 const authorUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users";
+// const authorInfo = document.querySelector(".author-info");
 
 // console.log(postUrl);
 // async function getAuthor(url) {
@@ -27,26 +28,57 @@ async function something(url, urlTwo) {
   //  fetch author
   const userResponse = await fetch(urlTwo);
   const userResults = await userResponse.json();
-  //   let userArray = [];
+  console.log(userResults);
 
-  //   for (let i = 0; i < userResults.length; i++) {
-  //        userArray.push(userResults[i]);
-  //   }
+  // For each try
 
-  results.forEach(function (data) {
-    const authorInfo = document.querySelector(".author-info");
+  //   results.forEach(function (data) {
+  //     postContainer.innerHTML += `
+  //     <a href="details.html?id=${data.id}" style="text-decoration:none">
+  //       <div>
+  //       <h2>
+  //       ${data.title.rendered}
+  //       </h2>
+  //       <div class="author-info"></div>
+  //       <div class="post-intro">
+  //       ${data.excerpt.rendered}
+  //       </div>
+  //       </div>
+  //       <p class="link-text">Read More</p>
+  //       </a>
+  //       `;
+  //     const authorInfo = document.querySelector(".author-info");
+  //     console.log(data.athor);
+  //     console.log(data.author);
+  //     if (data.author === 2) {
+  //       authorInfo.innerhtml += `ok`;
+  //     }
+  //   });
+
+  // for loop try
+
+  for (let i = 0; i < results.length; i++) {
     postContainer.innerHTML += `
+    <a href="details.html?id=${results[i].id}" style="text-decoration:none">
       <div>
       <h2>
-      ${data.title.rendered}
+      ${results[i].title.rendered}${results[i].author}
       </h2>
       <div class="author-info"></div>
-      <p>
-      ${data.excerpt.rendered}
-      </p>
+      <div class="post-intro">
+      ${results[i].excerpt.rendered}
       </div>
+      </div>
+      <p class="link-text">Read More</p>
+      </a>
       `;
-  });
+    console.log(userResults);
+
+    const authorInfo = document.querySelector(".author-info");
+    // if (results[i].author) {
+    //   console.log(authorInfo);
+    // }
+  }
 }
 
 something(postUrl, authorUrl);
