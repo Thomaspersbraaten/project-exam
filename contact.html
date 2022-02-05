@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Environmentalist | Home</title>
+
+    <script
+      src="https://kit.fontawesome.com/ba0e3e950c.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya&family=Bebas+Neue&family=Charm&family=Merriweather+Sans&family=Merriweather:ital,wght@0,300;1,300&family=Play&display=swap&family=Yellowtail&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/contact.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/dvp5txa.css" />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" class="logo">The Environmentalist</a>
+      <nav>
+        <ul class="nav-menu" style="display: none">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="posts.html">Posts</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li>
+            <form action="submit" class="search-container">
+              <label for="search">Search for posts</label>
+              <input type="text" name="search" id="search" />
+            </form>
+          </li>
+        </ul>
+        <div class="hamburger">
+          <i class="fas fa-bars"></i>
+          <i class="far fa-times-circle"></i>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="breadcrumbs">
+        <i class="fas fa-home"></i>
+        <a href="index.html" class="breadcrumbs-link"> Home</a>
+        <div class="crumb">&gt;</div>
+        <p class="active-page">Contact</p>
+      </div>
+      <h1>Contact us</h1>
+      <p class="contact-text">
+        We at The Environmentalist do our best to keep the information flow
+        relevant to our cause. If you want to get involved or just want to
+        contact us, Please use the form below.
+      </p>
+
+      <form id="contact-form">
+        <div class="success-message"></div>
+
+        <!-- NAME -->
+        <div>
+          <label for="name">
+            Full Name
+            <p class="required">*</p></label
+          >
+          <p class="name-error error-message">
+            Please input more than 5 characters
+          </p>
+
+          <input type="text" name="name" id="name" placeholder="Full Name" />
+        </div>
+
+        <!-- EMAIL -->
+        <div>
+          <label for="email"
+            >Email
+            <p class="required">*</p>
+          </label>
+          <p class="email-error error-message">Please input a valid email</p>
+          <input type="email" name="email" id="email" placeholder="Email" />
+        </div>
+
+        <!-- SUBJECT -->
+        <div>
+          <label for="subject"
+            >Subject
+            <p class="required">*</p>
+          </label>
+          <p class="subject-error error-message">
+            Please input more than 15 characters
+          </p>
+          <input
+            type="text"
+            name="subject"
+            id="subject"
+            placeholder="Subject"
+          />
+        </div>
+
+        <!-- MESSAGE -->
+        <div>
+          <label for="message"
+            >Message
+            <p class="required">*</p>
+          </label>
+          <p class="message-error error-message">
+            Please input more than 25 characters
+          </p>
+          <textarea type="text" name="message" id="message"></textarea>
+        </div>
+        <div class="submit-area">
+          <button class="submit-button">Submit</button>
+        </div>
+      </form>
+    </main>
+
+    <footer>
+      <h3>The Environmentalist 2022</h3>
+      <div class="social-media-icons">
+        <i class="fab fa-facebook"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fa fa-instagram" id="insta" aria-hidden="true"></i>
+      </div>
+      <p class="footer-disclaimer">
+        The research done for our posts are based public information found on
+        the internett. Please keep comments within reasonable limits.
+      </p>
+      <p class="copyright">Copyright <b>&copy;</b> 2022 The Environmentalist</p>
+    </footer>
+    <script src="js/navfunction.js"></script>
+    <!-- <script src="js/script.js"></script> -->
+    <script src="js/contact.js"></script>
+  </body>
+</html>

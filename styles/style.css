@@ -13,6 +13,9 @@ body {
 }
 
 header {
+  /* position: fixed;
+  z-index: 1;
+  width: 100%; */
   background-color: #d7ecd7;
   margin: auto;
   text-align: center;
@@ -116,10 +119,17 @@ nav li {
   background-color: rgba(0, 0, 0, 0.336);
 }
 
-/* welcome section */
+/*
+ welcome section 
+*/
+
+.welcome-message {
+  height: 250px;
+}
 
 .welcome-message img {
   width: 100%;
+  height: 250px;
 }
 
 .welcome-message a {
@@ -198,8 +208,15 @@ h2 {
 Get Involved Section
 */
 
+.get-involved-section {
+  position: relative;
+  height: 200px;
+  text-align: center;
+}
+
 .get-involved-img {
   width: 100%;
+  height: 200px;
 }
 
 .get-involved-text {
@@ -221,6 +238,8 @@ Footer
 */
 
 footer {
+  /* position: absolute;
+  bottom: 0; */
   background-color: #d7ecd7;
   margin: 0px;
   text-align: center;
@@ -286,6 +305,15 @@ footer h3,
 }
 .footer-disclaimer {
   font-size: 0.7em;
+}
+
+/* 
+Global styles
+*/
+
+p {
+  font-family: Merriweather, sans-serif, Arial, Helvetica;
+  font-style: italic;
 }
 
 @media (min-width: 900px) {

@@ -1,0 +1,115 @@
+.breadcrumbs {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  text-align: left;
+  margin: 10px 0px 0px 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs p {
+  margin: 0px 7px;
+  color: rgb(44, 44, 44);
+}
+.crumb {
+  font-weight: bold;
+}
+
+.breadcrumbs-link {
+  text-decoration: underline;
+}
+
+.active-page {
+  font-weight: bold;
+}
+
+h1,
+.contact-text {
+  text-align: center;
+}
+
+/*
+Contact form
+*/
+
+.error-message {
+  font-weight: normal;
+  font-size: 0.7em;
+  color: red;
+  margin: 0px;
+  text-align: left;
+  display: none;
+}
+
+#contact-form {
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+  justify-content: center;
+}
+
+.label {
+  display: flex;
+}
+
+.submit-area {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#contact-form input {
+  border: 1px #707070 solid;
+  width: 270px;
+  margin: 0px 0px 15px 0px;
+}
+
+#email,
+#name,
+#subject {
+  /* height: 45px; */
+  padding-bottom: 15px;
+}
+
+#message {
+  /* height: 130px; */
+  padding-bottom: 75px;
+  margin-bottom: 5px;
+  width: 270px;
+}
+
+#contact-form label {
+  margin: 5px 5px 5px 0px;
+  font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  display: flex;
+}
+
+.required {
+  margin: 3px 0px 0px 5px;
+  color: red;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea[type="text"] {
+  font-size: 1.1em;
+  font-family: sans-serif, Arial, Helvetica;
+  box-sizing: border-box;
+}
+
+.submit-button {
+  background-color: white;
+  color: black;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 0px auto;
+  border: 2px solid black;
+  padding: 15px 35px;
+  border-radius: 25px;
+}
+
+.submit-button:hover {
+  cursor: pointer;
+  background-color: rgba(51, 255, 0, 0.774);
+}
