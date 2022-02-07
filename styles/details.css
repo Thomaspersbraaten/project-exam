@@ -1,0 +1,147 @@
+section {
+  text-align: center;
+}
+
+img {
+  width: 100%;
+  margin: 0px 20px;
+  max-width: 300px;
+  height: 200px;
+}
+
+.details-header {
+  font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1em;
+  text-align: center;
+}
+
+h2,
+p {
+  font-size: 1em;
+  text-align: left;
+  margin: 5px 20px;
+}
+
+ul {
+  text-align: left;
+}
+
+/* 
+Author info
+*/
+
+.author-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.author-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 10px;
+}
+.author-info p {
+  font-size: 0.7em;
+  margin: auto 0px;
+}
+.author-info div {
+  display: flex;
+}
+
+/*
+next and previous post
+*/
+
+.next-post,
+.previous-post {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  height: 50px;
+  width: 100px;
+  background-color: #a9a9a927;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.next-previous {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.divider {
+  margin: 30px;
+  width: 80%;
+}
+
+.next-previous p {
+  font-size: 0.5em;
+  width: 40px;
+}
+
+.fa-arrow-circle-right,
+.fa-arrow-circle-left {
+  margin: 0px 10px;
+}
+
+/*
+Comment Section 
+*/
+
+.comment-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  padding: 10px;
+  text-align: left;
+  background-color: #a9a9a927;
+  border: 1px solid #707070;
+}
+
+.comment-form form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.comment-form form > * {
+  margin: 5px;
+}
+
+.submit-button {
+  background-color: white;
+  color: black;
+  font-size: 1em;
+  font-weight: normal;
+  margin: 20px auto;
+  border: 1px solid black;
+  padding: 15px 25px;
+  border-radius: 25px;
+}
+.submit-button:hover {
+  cursor: pointer;
+}
+
+.comment-form label {
+  margin: 5px 5px 5px 5px;
+  font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  display: flex;
+}
+
+#comment {
+  height: 35px;
+}
+
+h3 {
+  font-size: 1em;
+  margin: 5px;
+}

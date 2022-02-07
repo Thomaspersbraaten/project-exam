@@ -83,7 +83,7 @@
             <p class="required">*</p>
           </label>
           <p class="email-error error-message">Please input a valid email</p>
-          <input type="email" name="email" id="email" placeholder="Email" />
+          <input type="text" name="email" id="email" placeholder="Email" />
         </div>
 
         <!-- SUBJECT -->
@@ -112,11 +112,17 @@
           <p class="message-error error-message">
             Please input more than 25 characters
           </p>
-          <textarea type="text" name="message" id="message"></textarea>
+          <textarea
+            type="text"
+            name="message"
+            id="message"
+            style="resize: none"
+          ></textarea>
         </div>
-        <div class="submit-area">
-          <button class="submit-button">Submit</button>
-        </div>
+
+        <!-- <div class="submit-area"> -->
+        <button class="submit-button">Submit</button>
+        <!-- </div> -->
       </form>
     </main>
 

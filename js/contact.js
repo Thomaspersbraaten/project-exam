@@ -26,8 +26,10 @@ var messageValid = false;
 function validateForm(event) {
   event.preventDefault();
   if (nameValid && emailValid && subjectValid && messageValid) {
-    // contactForm.reset();
+    contactForm.reset();
+    successMessage.style.display = "flex";
     successMessage.innerHTML = `<p>Thank you for contacting us!</p>`;
+    // submitButton.disabled = true;
   } else {
     validateName();
     validateEmail();
@@ -38,7 +40,9 @@ function validateForm(event) {
 
 contactForm.addEventListener("submit", validateForm);
 
-// Input validation function
+// Input validation function //
+
+// Name validation
 
 function validateName() {
   if (checkLength(fullName.value, 5)) {
@@ -50,7 +54,20 @@ function validateName() {
   }
 }
 
-function validateEmail() {
+function validateNameKeyup() {
+  if (checkLength(fullName.value, 5)) {
+    nameValid = true;
+    nameError.style.display = "none";
+  } else {
+    nameValid = false;
+  }
+}
+
+fullName.addEventListener("keyup", validateNameKeyup);
+
+// Email validation
+
+function validateEmail(event) {
   if (checkEmail(email.value)) {
     emailValid = true;
     emailError.style.display = "none";
@@ -59,6 +76,18 @@ function validateEmail() {
     emailError.style.display = "flex";
   }
 }
+
+function validateEmailKeyup() {
+  if (checkEmail(email.value, 5)) {
+    emailValid = true;
+    emailError.style.display = "none";
+  } else {
+    emailValid = false;
+  }
+}
+email.addEventListener("keyup", validateEmailKeyup);
+
+// Subject validation
 
 function validateSubject() {
   if (checkLength(subject.value, 15)) {
@@ -70,6 +99,18 @@ function validateSubject() {
   }
 }
 
+function validateSubjectKeyup() {
+  if (checkLength(subject.value, 15)) {
+    subjectValid = true;
+    subjectError.style.display = "none";
+  } else {
+    subjectValid = false;
+  }
+}
+subject.addEventListener("keyup", validateSubjectKeyup);
+
+// Message Validation
+
 function validateMessage() {
   if (checkLength(message.value, 25)) {
     messageValid = true;
@@ -80,10 +121,21 @@ function validateMessage() {
   }
 }
 
+function validateMessageKeyup() {
+  if (checkLength(message.value, 25)) {
+    messageValid = true;
+    messageError.style.display = "none";
+  } else {
+    messageValid = false;
+  }
+}
+
+message.addEventListener("keyup", validateMessageKeyup);
+
 // Checks
 
 function checkLength(value, length) {
-  if (value.trim().length >= length) {
+  if (value.trim().length > length) {
     return true;
   } else {
     return false;
@@ -95,5 +147,3 @@ function checkEmail(email) {
   const patterMatches = regEx.test(email);
   return patterMatches;
 }
-
-// Events

@@ -119,6 +119,33 @@ nav li {
   background-color: rgba(0, 0, 0, 0.336);
 }
 
+/* 
+Breadcrumbs
+*/
+.breadcrumbs {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  display: flex;
+  text-align: left;
+  margin: 10px 0px 0px 20px;
+}
+
+.breadcrumbs a,
+.breadcrumbs p {
+  margin: 0px 7px;
+  color: rgb(44, 44, 44);
+}
+.crumb {
+  font-weight: bold;
+}
+
+.breadcrumbs-link {
+  text-decoration: underline;
+}
+
+.active-page {
+  font-weight: bold;
+}
+
 /*
  welcome section 
 */
