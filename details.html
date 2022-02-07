@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Environmentalist | Home</title>
+    <title></title>
 
     <script
       src="https://kit.fontawesome.com/ba0e3e950c.js"
@@ -66,10 +66,13 @@
         </div>
         <hr class="divider" />
         <section class="comment-section">
-          <h2>Comments ()</h2>
-          <div class="comment-form">
+          <h2 class="comment-amount"></h2>
+          <p class="be-the-first-to-comment"></p>
+          <div class="comment-container">
             <h3>Leave a comment</h3>
-            <form>
+
+            <form class="comment-form">
+              <input type="hidden" id="postId" />
               <label for="comment">Comment</label>
               <textarea
                 type="textarea"
@@ -86,9 +89,13 @@
               </div>
             </form>
           </div>
+          <div class="reader-comments"></div>
         </section>
       </section>
-    </main>
+
+      <!-- test -->
+
+
 
     <footer>
       <h3>The Environmentalist 2022</h3>

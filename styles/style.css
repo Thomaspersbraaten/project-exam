@@ -183,12 +183,20 @@ Breadcrumbs
 /* 
 posts container 
 */
-.post-section {
+/* .post-section {
   background-color: #ececec;
   text-align: center;
   overflow: auto;
   white-space: nowrap;
   height: 330px;
+} */
+.post-section {
+  text-align: center;
+}
+
+.post-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 h2 {
@@ -201,8 +209,8 @@ h2 {
 
 .post-container > * {
   color: black;
-  width: 200px;
-  height: 200px;
+  max-width: 160px;
+  height: 100px;
   overflow: hidden;
   border: 1px solid black;
   background-color: #f9f8f8;

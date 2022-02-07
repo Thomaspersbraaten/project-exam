@@ -1,6 +1,7 @@
 h1,
 .contact-text {
   text-align: center;
+  margin: 15px 20px;
 }
 
 /*
@@ -93,8 +94,8 @@ Contact form
 .success-message {
   display: none;
   background-color: rgba(51, 255, 0, 0.774);
-  margin: 5px auto;
+  margin: 10px auto;
   border: 1px solid black;
-  padding: 20px;
+  padding: 5px 25px;
   border-radius: 30px;
 }

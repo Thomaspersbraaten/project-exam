@@ -9,6 +9,10 @@ img {
   height: 200px;
 }
 
+.details-container {
+  text-align: left;
+}
+
 .details-header {
   font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
@@ -21,7 +25,7 @@ h2,
 p {
   font-size: 1em;
   text-align: left;
-  margin: 5px 20px;
+  margin: 10px 20px;
 }
 
 ul {
@@ -32,11 +36,12 @@ ul {
 Author info
 */
 
-.author-info img {
+.author-img {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   border: 1px solid black;
+  margin: 10px;
 }
 
 .author-info {
@@ -129,7 +134,7 @@ Comment Section
   cursor: pointer;
 }
 
-.comment-form label {
+.comment-container label {
   margin: 5px 5px 5px 5px;
   font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 700;
@@ -140,8 +145,20 @@ Comment Section
 #comment {
   height: 35px;
 }
+#name,
+#email {
+  height: 25px;
+}
 
 h3 {
   font-size: 1em;
   margin: 5px;
+}
+
+.user-comment-container {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(185, 191, 189);
+  text-align: left;
 }
