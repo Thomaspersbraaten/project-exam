@@ -1,7 +1,7 @@
 // finne ut hvor mange classes nav button har.
 document.getElementsByClassName("ClassName").length;
 
-const postContainer = document.querySelector(".post-container");
+const postContainer = document.querySelector(".posts-container");
 
 const postUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=12&_embed";
@@ -76,22 +76,42 @@ async function something(url, urlTwo, urlThree) {
     const date = day + "." + month + 1 + "." + year;
 
     console.log(author);
+    // postContainer.innerHTML += `
+    // <a href="details.html?id=${results[i].id}" style="text-decoration:none">
+    //   <div>
+    //   <h2>
+    //   ${results[i].title.rendered}
+    //   </h2>
+    //   <div class="author-info">
+    //   <p>${author.name}</p>
+    //   <p>${date} </p></div>
+    //   <div class="post-intro">
+    //   ${results[i].excerpt.rendered}
+    //   </div>
+    //   </div>
+    //   <p class="link-text">Read More</p>
+    //   </a>
+    //   `;
+
+    const postAuthor = results[i]._embedded.author[0].name;
+
     postContainer.innerHTML += `
-    <a href="details.html?id=${results[i].id}" style="text-decoration:none">
-      <div>
-      <h2>
-      ${results[i].title.rendered}
-      </h2>
-      <div class="author-info">
-      <p>${author.name}</p>
-      <p>${date} </p></div>
-      <div class="post-intro">
-      ${results[i].excerpt.rendered}
-      </div>
-      </div>
-      <p class="link-text">Read More</p>
-      </a>
-      `;
+      <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
+        <div>
+         <h3>
+          ${results[i].title.rendered}
+         </h3>
+         <div class="author-info">
+         <p>Written by ${postAuthor} </p>
+         <p>${date}</p>
+         </div>
+         <div class="post-intro">
+          ${results[i].excerpt.rendered}
+         </div>
+        </div>
+        <p class="link-text">Read More &rightarrow;</p>
+        </a>
+        `;
     // console.log(userResults);
 
     const authorInfo = document.querySelector(".author-info");

@@ -42,9 +42,9 @@ async function getPosts(url, urlTwo) {
     <a href="details.html?id=${results[0].id}" style="text-decoration:none" class="latest-post">
     <div class="ribbon"> </div>
       <div>
-       <h2>
+       <h3>
         ${results[0].title.rendered}
-       </h2>
+       </h3>
        <div class="author-info">
        <p>Written by ${latestPostAuthor} </p>
        <p>${date}</p>
@@ -70,9 +70,9 @@ async function getPosts(url, urlTwo) {
     postsContainer.innerHTML += `
       <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
         <div>
-         <h2>
+         <h3>
           ${results[i].title.rendered}
-         </h2>
+         </h3>
          <div class="author-info">
          <p>Written by ${postAuthor} </p>
          <p>${date}</p>
