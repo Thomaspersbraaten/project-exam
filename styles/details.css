@@ -63,14 +63,19 @@ next and previous post
 
 .next-post,
 .previous-post {
-  display: flex;
-  align-items: center;
+  color: black;
   font-size: 1em;
   height: 50px;
   width: 100px;
   background-color: #a9a9a927;
   border-radius: 20px;
   border: 1px solid black;
+}
+
+.next-container,
+.previous-container {
+  display: flex;
+  align-items: center;
 }
 
 .next-previous {

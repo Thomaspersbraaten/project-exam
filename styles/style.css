@@ -236,7 +236,7 @@ Get Involved Section
 
 .get-involved-section {
   position: relative;
-  height: 200px;
+
   text-align: center;
 }
 
@@ -251,7 +251,7 @@ Get Involved Section
   font-weight: bold;
   text-decoration: none;
   color: white;
-  bottom: -35%;
+  bottom: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 5px 15px;
@@ -376,7 +376,7 @@ test posts
 
 .latest-post:hover,
 .old-post:hover {
-  background-color: #d9d3cb;
+  background-color: #d6d6d5;
 }
 
 .post,
@@ -401,7 +401,7 @@ test posts
 
 h3 {
   font-family: alegreya;
-  font-weight: normal;
+  font-weight: bold;
   margin: 8px auto 5px auto;
   font-size: 1em;
 }
@@ -421,16 +421,18 @@ h3 {
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  height: 24px;
+  height: 36px;
   margin: 0px 15px;
   text-align: left;
   font-size: 0.6em;
 }
 
 .link-text {
+  width: 90%;
   font-weight: bold;
   margin: 5px 20px;
   text-align: right;
+  font-size: 0.8em;
 }

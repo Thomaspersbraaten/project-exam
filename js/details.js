@@ -8,6 +8,8 @@ const detailsContainer = document.querySelector(".details-container");
 const detailsHeader = document.querySelector(".details-header");
 const imageContainer = document.querySelector(".details-image");
 const title = document.querySelector("title");
+const allPostsUrl =
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts/";
 
 const authorUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
@@ -57,7 +59,7 @@ async function fetchApi(url, urlTwo, urlThree, urlFour, urlFive) {
   activePage.innerHTML = `${resultsData.title.rendered}`;
 
   // console.log(results);
-  createHtml(results, authorResults, commentResults);
+  createHtml(results, authorResults, commentResults, postsResults);
   // const detailsData = results[0];
   // detailsContainer.innerHTML = `
   // <div>
@@ -66,10 +68,10 @@ async function fetchApi(url, urlTwo, urlThree, urlFour, urlFive) {
   // </div>`;
 }
 
-function createHtml(post, author, comment) {
+function createHtml(post, author, comment, allPosts) {
   // HUSK Å FIKSE MÅNED // / //  / /  /  / /
   const commentData = comment[0];
-  console.log(commentData);
+  // console.log(commentData);
 
   const data = post[0];
   const d = new Date(data.date);
@@ -99,16 +101,43 @@ function createHtml(post, author, comment) {
 
   // Next and previous posts
 
-  nextPost.innerHTML = `
-  <p> Next post: </p>
-  <div><i class="fas fa-arrow-circle-right"></i> </div>
+  // finds next index of posts array
 
-  `;
+  const index = allPosts.findIndex(function (post) {
+    return post.id == id;
+  });
+  console.log(index);
 
-  previousPost.innerHTML = `
-  <div><i class="fas fa-arrow-circle-left"></i> </div>
-  <p> Previous post: </p>
+  const nextIndex = index + 1;
+
+  try {
+    nextPost.innerHTML = `
+    <a href="details.html?id=${allPosts[nextIndex].id}" style="text-decoration:none" class="next-container">
+    <p> Next post: ${allPosts[nextIndex].title.rendered}</p>
+    <div><i class="fas fa-arrow-circle-right"></i> </div>
+    </a>
+    `;
+  } catch {
+    nextPost.innerHTML = `
+    <p class="no-more-posts"> No more posts</p>
+    `;
+  }
+
+  // Finds previous index in all posts
+  const previousIndex = nextIndex - 2;
+
+  try {
+    previousPost.innerHTML = `
+  <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
+    <p> Next post: ${allPosts[previousIndex].title.rendered}</p>
+    <div><i class="fas fa-arrow-circle-left"></i> </div>
+    </a>
   `;
+  } catch {
+    previousPost.innerHTML = `
+   <p class="no-more-posts"> No more posts</p>
+   `;
+  }
 
   // Comment section
   commentAmount.innerHTML = `
@@ -132,3 +161,16 @@ function createHtml(post, author, comment) {
 }
 
 fetchApi(detailsUrl, authorUrl, imageUrl, commentUrl, postsUrl);
+
+// function findIndex(url) {
+//   const response = await fetch(url);
+//   const results = await response.json();
+//   console.log(results);
+
+//   console.log(next);
+
+// }
+
+// const isLargeNumber = (element) => element > 13;
+
+// findIndex(postsUrl);
