@@ -1,37 +1,30 @@
 const postsContainer = document.querySelector(".posts-container");
 const latestPost = document.querySelector(".latest-post-container");
 const morePostsInfo = document.querySelector(".more-posts-info");
+const loader = document.querySelector(".loader");
 
 const postUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=12&_embed";
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/qqqposts?per_page=12&_embed";
 
-const authorUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
-let getPost = [];
-let getAuthors = [];
+async function getPosts(url) {
+  try {
+    const response = await fetch(url);
+    const results = await response.json();
+    createHtml(results);
+  } catch (error) {
+    console.error(error);
+    postsContainer.innerHTML = showErrorMessage(error);
+  }
+}
 
-async function getPosts(url, urlTwo) {
-  const response = await fetch(url);
-  const results = await response.json();
-  //   console.log(results);
+getPosts(postUrl);
 
-  getPost.push(results);
-  postsArray = getPost[0];
-  console.log(postsArray);
-
-  //   const authorResponse = await fetch(urlTwo );
-  //   const authorResults = await authorResponse.json();
-  //   console.log(authorResults);
-
-  //   getAuthors.push(authorResults);
-  //   authorArray = getAuthors[0];
-
-  // console.log(authorArray);
-  const d = new Date(results[0].date);
-  console.log(d);
-  const year = d.getFullYear();
-  const month = d.getMonth();
-  const day = d.getDate();
+function createHtml(results) {
+  loader.style.display = "none";
+  const dateCreation = new Date(results[0].date);
+  const year = dateCreation.getFullYear();
+  const month = dateCreation.getMonth();
+  const day = dateCreation.getDate();
   const date = day + "." + month + 1 + "." + year;
   console.log(date);
   const latestPostAuthor = results[0]._embedded.author[0].name;
@@ -58,6 +51,7 @@ async function getPosts(url, urlTwo) {
       `;
 
   // creates the rest of the posts up to a total of 10 included latest posts //
+  var postsCounter = 1;
   for (let i = 1; i < 10; i++) {
     const d = new Date(results[i].date);
     const year = d.getFullYear();
@@ -95,8 +89,6 @@ async function getPosts(url, urlTwo) {
     morePostsInfo.innerHTML = `<p> There are no more posts to show</p>`;
   }
 }
-
-getPosts(postUrl, authorUrl);
 
 // const authorResponse = await fetch(urlTwo + results[i].author);
 // const authorResults = await authorResponse.json();

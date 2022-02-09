@@ -15,8 +15,13 @@ const commentSection = document.querySelector(".comment-section");
 const commentAmount = document.querySelector(".comment-amount");
 const firstComment = document.querySelector(".be-the-first-to-comment");
 const commentValue = document.querySelector("#postId");
+const modalContainer = document.querySelector(".modal-container");
+const modal = document.querySelector(".modal");
+
+const modalContent = document.querySelector(".modal-content");
 
 const readerComments = document.querySelector(".reader-comments");
+const loader = document.querySelector(".loader");
 
 // API URLS
 const detailsUrl =
@@ -32,12 +37,12 @@ const postsUrl =
 //
 
 async function fetchApi(
-  UrlForDetails,
+  urlForDetails,
   urlForAthor,
   urlForComments,
   urlForPosts
 ) {
-  const detailsResponse = await fetch(UrlForDetails);
+  const detailsResponse = await fetch(urlForDetails);
   const detailsResults = await detailsResponse.json();
   //   console.log(results[0].author);
   const resultsData = detailsResults[0];
@@ -60,8 +65,10 @@ async function fetchApi(
 
   createHtml(detailsResults, authorResults, commentResults, postsResults);
 }
+fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
 
 function createHtml(post, author, comment, allPosts) {
+  loader.style.display = "none";
   // HUSK Å FIKSE MÅNED // / //  / /  /  / /
   const commentData = comment[0];
   // console.log(commentData);
@@ -69,7 +76,6 @@ function createHtml(post, author, comment, allPosts) {
   const data = post[0];
   console.log(data);
   const postImage = data._embedded["wp:featuredmedia"][0].source_url;
-  console.log(postImage);
   const d = new Date(data.date);
   // console.log(d);
   const year = d.getFullYear();
@@ -81,21 +87,37 @@ function createHtml(post, author, comment, allPosts) {
   // console.log(data);
   title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
   detailsHeader.innerHTML = `${data.title.rendered}`;
-  detailsContainer.innerHTML = `
-  <img src="${postImage}">
-  <div>
-  ${data.content.rendered}
-  </div>
-`;
+  imageContainer.innerHTML = `<img src="${postImage}" class="post-img">`;
+  detailsContainer.innerHTML = `<div>${data.content.rendered}</div>`;
+  // const imageContainer = document.querySelector(".post-img");
+  // console.log(imageContainer);
+
+  // MODAL MODAL MODAL
+
+  imageContainer.addEventListener("click", function () {
+    modalContainer.classList.add("visible");
+    modalContent.innerHTML = `<img src="${postImage}" class="modal-img">`;
+  });
+  modalContainer.addEventListener("click", function () {
+    modalContainer.classList.remove("visible");
+  });
+  modalContent.addEventListener("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    return false;
+  });
+
+  //
 
   // Author information
 
   authorContainer.innerHTML = `
   <div>
-  <img src="${author.simple_local_avatar[64]}" class="author-img">
-  <p> Written by ${author.name}</p>
+    <img src="${author.simple_local_avatar[64]}" class="author-img">
+    <p> Written by ${author.name}</p>
   </div>
-  <p> ${date}</p>
+  <p>${date}</p>
   `;
 
   // Next and previous posts
@@ -108,15 +130,17 @@ function createHtml(post, author, comment, allPosts) {
   console.log(index);
 
   const nextIndex = index + 1;
-  // find featured media image
+  // TRY NEW NEW NEW NEW NEW
+
+  // TRY NEW NEW NEW NEW NEW
 
   try {
     nextPost.innerHTML = `
     <a href="details.html?id=${allPosts[nextIndex].id}" style="text-decoration:none" class="next-container">
-      <p class="next-header"> Next post:</p>   
+      <p class="next-header"> Next post:</p>
       <div class="title-and-arrow">
         <p class="next-title">${allPosts[nextIndex].title.rendered}</p>
-        <i class="fas fa-arrow-circle-right"></i> 
+        <i class="fas fa-arrow-circle-right"></i>
       </div>
     </a>
     `;
@@ -126,13 +150,12 @@ function createHtml(post, author, comment, allPosts) {
     `;
   }
 
-  // Finds previous index in all posts
   const previousIndex = nextIndex - 2;
 
   try {
     previousPost.innerHTML = `
     <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
-      <p class="next-header"> Previous post:</p>   
+      <p class="next-header"> Previous post:</p>
       <div class="title-and-arrow">
         <i class="fas fa-arrow-circle-left"></i>
         <p class="next-title">  ${allPosts[previousIndex].title.rendered}</p>
@@ -166,4 +189,10 @@ function createHtml(post, author, comment, allPosts) {
   });
 }
 
-fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
+// function modalFunction() {
+//   modalContainer.style.display = "block";
+// }
+
+// modalContainer.addEventListener("click", function () {
+//   modalContainer.style.display = "none";
+// });

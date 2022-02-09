@@ -2,11 +2,19 @@ section {
   text-align: center;
 }
 
-img {
+.post-img {
   width: 100%;
   margin: 0px 20px;
   max-width: 300px;
   height: 200px;
+  transition: 0.3s;
+}
+.post-img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.details-image {
+  text-align: left;
 }
 
 .details-container {
@@ -47,17 +55,17 @@ Author info
   height: 30px;
   border-radius: 50%;
   border: 1px solid black;
-  margin: 10px;
+  /* margin: 10px; */
 }
 
 .author-info {
   display: flex;
   justify-content: space-between;
-  margin: 20px 10px;
+  margin: 20px 20px;
 }
 .author-info p {
   font-size: 0.7em;
-  margin: auto 0px;
+  margin: auto 10px;
 }
 .author-info div {
   display: flex;
@@ -66,6 +74,12 @@ Author info
 /*
 next and previous post
 */
+
+.next-previous {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+}
 
 .next-post,
 .previous-post {
@@ -83,6 +97,7 @@ next and previous post
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 3px;
 
   gap: 1px;
   color: black;
@@ -102,12 +117,6 @@ next and previous post
   width: 55px;
   text-overflow: ellipsis;
   overflow: hidden;
-}
-
-.next-previous {
-  margin: 20px;
-  display: flex;
-  justify-content: space-between;
 }
 
 .title-and-arrow {
@@ -201,4 +210,30 @@ h3 {
   flex-direction: column;
   border: 1px solid rgb(185, 191, 189);
   text-align: left;
+}
+
+/* Modal */
+
+.modal-container {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9);
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  transition: 0.5s ease-out;
+}
+
+.visible {
+  display: flex;
+}
+
+.modal-img {
+  position: absolute;
+  left: 10%;
+  top: 25%;
+  width: 80%;
+  height: 250px;
+  margin: 0px auto;
 }

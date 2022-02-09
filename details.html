@@ -58,6 +58,7 @@
       </nav>
     </header>
     <main>
+    
 
       <div class="breadcrumbs">
         <i class="fas fa-home"></i>
@@ -67,42 +68,58 @@
         <div class="crumb">&gt;</div>
         <p class="active-page"></p>
       </div>
+      <div class="loader"></div>
+
       <section>
         <h1 class="details-header"></h1>
         <div class="details-image"></div>
+
+     
+        <div class="modal-container">
+          <div class="modal"> 
+            <div class="modal-content"></div>
+          </div>
+        </div>
         <div class="details-container"></div>
         <div class="author-info"></div>
+
+        <!-- next and previous-->
         <div class="next-previous">
           <div class="previous-post"></div>
           <div class="next-post"></div>
         </div>
-        <hr class="divider" />
-        <section class="comment-section">
-          <h2 class="comment-amount"></h2>
-          <p class="be-the-first-to-comment"></p>
-          <div class="comment-container">
-            <h3>Leave a comment</h3>
-            <form class="comment-form">
-              <input type="hidden" id="postId" />
-              <label for="comment">Comment</label>
-              <textarea
-                type="textarea"
-                name="comment"
-                id="comment"
-                style="resize: none"
-              ></textarea>
-              <label for="name">Name</label>
-              <input type="text" name="name" id="name" />
-              <label for="email">Email</label>
-              <input type="text" name="email" id="email" />
-              <div>
-                <button class="submit-button">Post comment</button>
-              </div>
-            </form>
-          </div>
-          <div class="reader-comments"></div>
-        </section>
+
+
       </section>
+
+        <hr class="divider" />
+
+      <section class="comment-section">
+        <h2 class="comment-amount"></h2>
+        <p class="be-the-first-to-comment"></p>
+        <div class="comment-container">
+          <h3>Leave a comment</h3>
+          <form class="comment-form">
+            <input type="hidden" id="postId" />
+            <label for="comment">Comment</label>
+            <textarea
+              type="textarea"
+              name="comment"
+              id="comment"
+              style="resize: none"
+            ></textarea>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" />
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" />
+            <div>
+              <button class="submit-button">Post comment</button>
+            </div>
+          </form>
+        </div>
+        <div class="reader-comments"></div>
+      </section>
+
 
     <footer>
       <h3>The Environmentalist 2022</h3>
@@ -117,7 +134,7 @@
       </p>
       <p class="copyright">Copyright <b>&copy;</b> 2022 The Environmentalist</p>
     </footer>
-    <script src="js/navfunction.js"></script>
+    <script src="js/functions.js"></script>
     <!-- <script src="js/script.js"></script> -->
     <script src="js/details.js"></script>
   </body>

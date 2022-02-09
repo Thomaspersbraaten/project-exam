@@ -31,3 +31,14 @@ hamburgerMenu.addEventListener("click", function () {
 //     navMenu.style.display = "block";
 //   }
 // });
+
+function showErrorMessage(error) {
+  const errorHtml = `<div class="error"> 
+  <p>There was an error while loading this page.</p>
+  <p>
+  Error type: ${error}.
+  </p>
+  </div>
+  `;
+  return errorHtml;
+}
