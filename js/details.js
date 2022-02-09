@@ -1,25 +1,11 @@
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
-const detailsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?include[]=" +
-  id;
+
 const detailsContainer = document.querySelector(".details-container");
 const detailsHeader = document.querySelector(".details-header");
 const imageContainer = document.querySelector(".details-image");
 const title = document.querySelector("title");
-const allPostsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts/";
-
-const authorUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
-const imageUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/media?parent=" + id;
-const commentUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
-const postsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=100";
-
 const activePage = document.querySelector(".active-page");
 const authorContainer = document.querySelector(".author-info");
 const postNavigation = document.querySelector(".next-previous");
@@ -32,40 +18,47 @@ const commentValue = document.querySelector("#postId");
 
 const readerComments = document.querySelector(".reader-comments");
 
-async function fetchApi(url, urlTwo, urlThree, urlFour, urlFive) {
-  const response = await fetch(url);
-  const results = await response.json();
-  //   console.log(results[0].author);
-  const resultsData = results[0];
-  const authorId = results[0].author;
+// API URLS
+const detailsUrl =
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?_embed&include[]=" +
+  id;
+const authorUrl =
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
+const commentUrl =
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
+const postsUrl =
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=100&_embed";
 
-  const authorResponse = await fetch(urlTwo + authorId);
+//
+
+async function fetchApi(
+  UrlForDetails,
+  urlForAthor,
+  urlForComments,
+  urlForPosts
+) {
+  const detailsResponse = await fetch(UrlForDetails);
+  const detailsResults = await detailsResponse.json();
+  //   console.log(results[0].author);
+  const resultsData = detailsResults[0];
+  const authorId = detailsResults[0].author;
+
+  const authorResponse = await fetch(urlForAthor + authorId);
   const authorResults = await authorResponse.json();
   console.log(authorResults);
 
-  // const imageResponse = await fetch(urlThree);
-  // const imageResults = await imageResponse.json();
-  // console.log(imageResults);
-
-  const commentResponse = await fetch(urlFour);
+  const commentResponse = await fetch(urlForComments);
   const commentResults = await commentResponse.json();
   console.log(commentResults);
 
   //
-  const postsResponse = await fetch(urlFive);
+  const postsResponse = await fetch(urlForPosts);
   const postsResults = await postsResponse.json();
   console.log(postsResults);
 
   activePage.innerHTML = `${resultsData.title.rendered}`;
 
-  // console.log(results);
-  createHtml(results, authorResults, commentResults, postsResults);
-  // const detailsData = results[0];
-  // detailsContainer.innerHTML = `
-  // <div>
-  // ${detailsData.id}
-  // ${authorResults.name}
-  // </div>`;
+  createHtml(detailsResults, authorResults, commentResults, postsResults);
 }
 
 function createHtml(post, author, comment, allPosts) {
@@ -74,6 +67,9 @@ function createHtml(post, author, comment, allPosts) {
   // console.log(commentData);
 
   const data = post[0];
+  console.log(data);
+  const postImage = data._embedded["wp:featuredmedia"][0].source_url;
+  console.log(postImage);
   const d = new Date(data.date);
   // console.log(d);
   const year = d.getFullYear();
@@ -85,9 +81,12 @@ function createHtml(post, author, comment, allPosts) {
   // console.log(data);
   title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
   detailsHeader.innerHTML = `${data.title.rendered}`;
-  detailsContainer.innerHTML = `<img src="${data.content.rendered}`;
-
-  detailsContainer.firstElementChild.style.display = "none";
+  detailsContainer.innerHTML = `
+  <img src="${postImage}">
+  <div>
+  ${data.content.rendered}
+  </div>
+`;
 
   // Author information
 
@@ -109,12 +108,16 @@ function createHtml(post, author, comment, allPosts) {
   console.log(index);
 
   const nextIndex = index + 1;
+  // find featured media image
 
   try {
     nextPost.innerHTML = `
     <a href="details.html?id=${allPosts[nextIndex].id}" style="text-decoration:none" class="next-container">
-    <p> Next post: ${allPosts[nextIndex].title.rendered}</p>
-    <div><i class="fas fa-arrow-circle-right"></i> </div>
+      <p class="next-header"> Next post:</p>   
+      <div class="title-and-arrow">
+        <p class="next-title">${allPosts[nextIndex].title.rendered}</p>
+        <i class="fas fa-arrow-circle-right"></i> 
+      </div>
     </a>
     `;
   } catch {
@@ -128,9 +131,12 @@ function createHtml(post, author, comment, allPosts) {
 
   try {
     previousPost.innerHTML = `
-  <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
-    <p> Next post: ${allPosts[previousIndex].title.rendered}</p>
-    <div><i class="fas fa-arrow-circle-left"></i> </div>
+    <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
+      <p class="next-header"> Previous post:</p>   
+      <div class="title-and-arrow">
+        <i class="fas fa-arrow-circle-left"></i>
+        <p class="next-title">  ${allPosts[previousIndex].title.rendered}</p>
+      </div>
     </a>
   `;
   } catch {
@@ -160,17 +166,4 @@ function createHtml(post, author, comment, allPosts) {
   });
 }
 
-fetchApi(detailsUrl, authorUrl, imageUrl, commentUrl, postsUrl);
-
-// function findIndex(url) {
-//   const response = await fetch(url);
-//   const results = await response.json();
-//   console.log(results);
-
-//   console.log(next);
-
-// }
-
-// const isLargeNumber = (element) => element > 13;
-
-// findIndex(postsUrl);
+fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);

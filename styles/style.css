@@ -37,39 +37,6 @@ header {
   cursor: pointer;
 }
 
-/* .nav-button div {
-  margin: 5px auto;
-  width: 35px;
-} */
-
-/* .nav-button:before,
-.nav-button:after,
-.nav-button div {
-  position: relative;
-  content: "";
-  display: block;
-  background: black;
-  height: 6px;
-  border-radius: 5px;
-  margin: 5px 20px 5px 10px;
-  transition: 0.5s;
-}
-
-.nav-button:hover:before {
-   transform: translateY(10px) rotate(105deg); 
-  transform: translateY(5px) rotateZ(45deg);
-  top: 6px;
-}
-
- .nav-button:hover:after {
-
-  transform: translateY(10px) rotateZ(45deg);
-  top: -6px;
-}  
-.nav-button:hover div {
-  transform: scale(0);
-} */
-
 .search-container {
   display: flex;
   flex-direction: column;
@@ -111,9 +78,9 @@ nav li {
   display: none;
 }
 
-/* nav ul {
-  display: none;
-} */
+.nav-active {
+  text-decoration: underline;
+}
 
 .opacity-container {
   background-color: rgba(0, 0, 0, 0.336);
@@ -136,14 +103,17 @@ Breadcrumbs
 }
 .crumb {
   font-weight: bold;
+  font-size: 0.8em;
 }
 
 .breadcrumbs-link {
   text-decoration: underline;
+  font-size: 0.8em;
 }
 
 .active-page {
   font-weight: bold;
+  font-size: 0.8em;
 }
 
 /*
