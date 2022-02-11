@@ -38,6 +38,32 @@ h1 {
   transition: 0.4s;
 }
 
+.show {
+  animation: showPost 1s;
+}
+
+@keyframes showPost {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.show-yes {
+  animation: showPost-yes 1s;
+}
+
+@keyframes showPost-yes {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /* .posts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -45,6 +71,18 @@ h1 {
 .latest-post:hover,
 .old-post:hover {
   background-color: #d9d3cb;
+}
+
+.active-button:hover {
+  cursor: pointer;
+  background-color: rgba(51, 255, 0, 0.774);
+}
+
+.inactive-button {
+  background-color: grey;
+  color: #0006;
+  border: none;
+  display: none;
 }
 
 /* .old-post {
@@ -93,7 +131,7 @@ h2 {
 
 .more-posts-info p {
   font-size: 0.9em;
-  margin: auto 5px;
+  margin: 20px 5px;
 }
 
 /* .ribbon {

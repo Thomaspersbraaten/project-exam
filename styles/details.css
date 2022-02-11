@@ -231,9 +231,9 @@ h3 {
 
 .modal-img {
   position: absolute;
-  left: 10%;
+  left: 0%;
   top: 25%;
-  width: 80%;
+  width: 90%;
   height: 250px;
-  margin: 0px auto;
+  margin: 0px 5%;
 }

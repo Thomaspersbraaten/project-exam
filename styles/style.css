@@ -165,6 +165,7 @@ posts container
 } */
 .post-section {
   text-align: center;
+  height: 450px;
 }
 
 .posts-container {
@@ -231,6 +232,10 @@ Get Involved Section
   font-weight: bold;
   padding: 5px;
   margin: 5px;
+}
+.next-page:hover,
+.previous-page:hover {
+  cursor: pointer;
 }
 
 .get-involved-section {
@@ -439,7 +444,7 @@ h3 {
 /* loader  */
 
 .loader {
-  margin: 30px auto;
+  margin: 30px auto 30px auto;
   border: 10px solid #d6d3d3;
   border-top: 10px solid rgb(0, 0, 0);
   border-bottom: 10px solid rgb(0, 0, 0);
