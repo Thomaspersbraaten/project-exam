@@ -1,4 +1,6 @@
 const postContainer = document.querySelector(".posts-container");
+const navigationPages = document.querySelector(".navigation-pages");
+const totalPages = document.querySelector(".total-pages");
 
 const postUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=12&_embed";
@@ -24,8 +26,16 @@ function createHtml(results) {
     const month = dateCreation.getMonth();
     const day = dateCreation.getDate();
     const date = day + "." + month + 1 + "." + year;
+    const posts = results.length;
+    const pageNumbers = posts / 4;
+    const calculatedPageNumbers = Math.ceil(pageNumbers);
+    totalPages.innerHTML = `${calculatedPageNumbers}`;
 
-    postContainer.innerHTML += `
+    console.log(Math.ceil(pageNumbers));
+    if (i === 4) {
+      return;
+    } else {
+      postContainer.innerHTML += `
       <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
         <div>
          <h3>
@@ -42,6 +52,7 @@ function createHtml(results) {
         <p class="link-text">Read More &rightarrow;</p>
         </a>
         `;
+    }
   }
 }
 

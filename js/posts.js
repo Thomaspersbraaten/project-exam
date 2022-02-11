@@ -2,9 +2,10 @@ const postsContainer = document.querySelector(".posts-container");
 const latestPost = document.querySelector(".latest-post-container");
 const morePostsInfo = document.querySelector(".more-posts-info");
 const loader = document.querySelector(".loader");
+const showMore = document.querySelector(".show-more-btn");
 
 const postUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/qqqposts?per_page=12&_embed";
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=12&_embed";
 
 async function getPosts(url) {
   try {
@@ -51,8 +52,8 @@ function createHtml(results) {
       `;
 
   // creates the rest of the posts up to a total of 10 included latest posts //
-  var postsCounter = 1;
-  for (let i = 1; i < 10; i++) {
+
+  for (let i = 1; i < results.length; i++) {
     const d = new Date(results[i].date);
     const year = d.getFullYear();
     const month = d.getMonth();

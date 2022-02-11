@@ -200,9 +200,38 @@ h2 {
   margin: 10px auto;
 } */
 
+/* 
+Posts Navigation
+*/
+
 /*
 Get Involved Section
 */
+.post-navigation {
+  display: flex;
+  margin: 5px auto;
+  text-align: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.navigation-pages {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.navigation-pages p {
+  margin: 0px 5px;
+}
+.previous-page,
+.next-page,
+.navigation-pages {
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 5px;
+  margin: 5px;
+}
 
 .get-involved-section {
   position: relative;
