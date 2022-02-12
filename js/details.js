@@ -23,6 +23,17 @@ const modalContent = document.querySelector(".modal-content");
 const readerComments = document.querySelector(".reader-comments");
 const loader = document.querySelector(".loader");
 
+const commentForm = document.querySelector(".comment-form");
+const submitButton = document.querySelector(".submit-button");
+
+// comment form consts
+const postIdInForm = document.querySelector("#postId");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const commentInput = document.querySelector("#comment");
+
+//
+
 // API URLS
 const detailsUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?_embed&include[]=" +
@@ -150,7 +161,7 @@ function createHtml(post, author, comment, allPosts) {
     `;
   }
 
-  const previousIndex = nextIndex - 2;
+  const previousIndex = index - 1;
 
   try {
     previousPost.innerHTML = `
@@ -167,7 +178,13 @@ function createHtml(post, author, comment, allPosts) {
    <p class="no-more-posts"> No more posts</p>
    `;
   }
+  // Comment form : POSTID value inserted into the form
+  // commentForm.innerHTML += `
+  //  <input type="hidden" id="postId" value=${data.id} />`;
 
+  // console.log(data.id);
+  postIdInForm.value = Number(data.id);
+  console.log(postIdInForm.value);
   // Comment section
   commentAmount.innerHTML = `
   Comments(${comment.length})`;
@@ -196,3 +213,26 @@ function createHtml(post, author, comment, allPosts) {
 // modalContainer.addEventListener("click", function () {
 //   modalContainer.style.display = "none";
 // });
+
+function postComment(event) {
+  event.preventDefault();
+  // const [postIdInForm, nameInput, emailInput, commentInput] =
+  //   event.target.elements;
+  const [postId, name, email, comment] = event.target.elements;
+  const postData = json.stringify({
+    post: postIdInForm.value,
+    author_name: nameInput.value,
+    author_email: emailInput.value,
+    content: commentInput.value,
+  });
+  fetch("https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments"),
+    {
+      method: "post",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: postData,
+    };
+}
+
+submitButton.addEventListener("click", postComment);
