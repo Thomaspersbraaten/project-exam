@@ -218,8 +218,8 @@ function postComment(event) {
   event.preventDefault();
   // const [postIdInForm, nameInput, emailInput, commentInput] =
   //   event.target.elements;
-  const [postId, name, email, comment] = event.target.elements;
-  const postData = json.stringify({
+  // const [postId, name, email, comment] = event.target.elements;
+  const postData = JSON.stringify({
     post: postIdInForm.value,
     author_name: nameInput.value,
     author_email: emailInput.value,
