@@ -7,6 +7,7 @@ const currentPageIndex = document.querySelector(".current-page-indicator");
 const loader = document.querySelector(".loader");
 const postNavigation = document.querySelector(".post-navigation");
 const postHeader = document.querySelector(".post-header");
+const carouselContainer = document.querySelector(".carousel-container");
 
 const postUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=12&_embed";
@@ -95,12 +96,6 @@ async function getPosts(url) {
       // currentPage.classList.remove("active-post-page");
       // nextPage.classList.add("active-post-page");
     });
-    // nextPageButton.addEventListener("click", function () {
-    //   nextPage(results, calculatedPageNumbers);
-    // });
-    // previousPageButton.addEventListener("click", function () {
-    //   previousPage(results, calculatedPageNumbers);
-    // });
   } catch (error) {
     postContainer.innerHTML = showErrorMessage(error);
   }
@@ -181,7 +176,6 @@ function createHtml(results, pageNumbers, pageArray, pageContainerArray) {
 
     testValue++;
   }
-
   for (let i = 0; i < results.length; i++) {
     const postAuthor = results[i]._embedded.author[0].name;
     const data = results[i];
@@ -193,37 +187,14 @@ function createHtml(results, pageNumbers, pageArray, pageContainerArray) {
     const day = dateCreation.getDate();
     const date = day + "." + month + 1 + "." + year;
 
-    // const posts = results.length;
-    // const pageNumbers = posts / 4;
-    // const calculatedPageNumbers = Math.ceil(pageNumbers);
     totalPages.innerHTML = `${pageNumbers}`;
-
-    // console.log(Math.ceil(pageNumbers));
-    // Creates the container for each page. this is calculated by the number of posts
-
-    // if (i === 4) {
-    //   return;
-    // } else {
-    //   postContainer.innerHTML += `
-    // <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
-    //   <div>
-    //    <h3>
-    //     ${results[i].title.rendered}
-    //    </h3>
-    //    <div class="author-info">
-    //    <p>Written by ${postAuthor} </p>
-    //    <p>${date}</p>
-    //    </div>
-    //    <div class="post-intro">
-    //     ${results[i].excerpt.rendered}
-    //    </div>
-    //   </div>
-    //   <p class="link-text">Read More &rightarrow;</p>
-    //   </a>
-    //   `;
-    // }
   }
 }
+
+searchForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+  searchFunction(searchUrl, searchField.value, carouselContainer);
+});
 
 // function nextPage(results, pageNumbers) {
 //   // const posts = results.length;

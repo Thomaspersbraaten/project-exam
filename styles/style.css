@@ -143,12 +143,13 @@ Breadcrumbs
   font-weight: bold;
   text-decoration: none;
   color: white;
-  top: 15%;
+  top: 17%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 5px 15px;
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
+  min-width: 120px;
   max-width: 150px;
 }
 
@@ -157,6 +158,7 @@ posts container
 */
 h2 {
   font-family: alegreya, sans-serif, Arial, Helvetica;
+  font-weight: 500;
 }
 
 /* .post-section {
@@ -184,22 +186,6 @@ h2 {
   justify-content: center;
   position: relative;
   transition: transform 0.3s ease-in;
-}
-
-/* 
-.wp-block-image {
-  display: none;
-} */
-
-.posts-container > * {
-  /* color: black;
-  max-width: 180px; */
-  /* height: 100px; */
-  /* overflow: hidden; */
-  /* border: 1px solid black;
-  background-color: #f9f8f8; */
-  /* border-radius: 5px; */
-  /* display: inline-block; */
 }
 
 .post-container__page-container {
@@ -239,9 +225,11 @@ h2 {
 
 h3 {
   font-family: alegreya;
-  font-weight: bold;
+  font-weight: 500;
   margin: 8px auto 5px auto;
-  font-size: 1em;
+  /* font-size: 1em; */
+  height: 36px;
+  line-height: 90%;
 }
 
 .author-info {
@@ -322,13 +310,13 @@ Get Involved Section
 */
 .get-involved-section {
   position: relative;
-
+  height: 240px;
   text-align: center;
 }
 
 .get-involved-img {
   width: 100%;
-  height: 230px;
+  height: 100%;
 }
 
 .get-involved-text {
@@ -337,7 +325,7 @@ Get Involved Section
   font-weight: bold;
   text-decoration: none;
   color: white;
-  bottom: 0%;
+  bottom: -5%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 5px 15px;
@@ -345,7 +333,7 @@ Get Involved Section
   border-radius: 10px;
   min-width: 150px;
   max-width: 246px;
-  height: 132px;
+  /* height: 132px; */
 }
 
 /*
@@ -365,6 +353,7 @@ footer {
 footer h3,
 .copyright {
   margin: 0px;
+  padding: 10px 0px;
 }
 .copyright {
   opacity: 0.9;

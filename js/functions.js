@@ -32,11 +32,11 @@ function showErrorMessage(error) {
   return errorHtml;
 }
 
-async function searchFunction(url, value) {
-  const response = await fetch(url + searchField.value);
+async function searchFunction(url, value, container) {
+  const response = await fetch(url + value);
   const results = await response.json();
-  console.log(results);
-  console.log(searchField.value);
+  // console.log(results);
+  // console.log(searchField.value);
 
   for (let i = 0; i < results.length; i++) {
     const postAuthor = results[i]._embedded.author[0].name;
@@ -58,7 +58,7 @@ async function searchFunction(url, value) {
     // if (i === 4) {
     //   return;
     // } else {
-    postContainer.innerHTML += `
+    container.innerHTML += `
     <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
       <div>
        <h3>
@@ -78,7 +78,7 @@ async function searchFunction(url, value) {
   }
 }
 
-searchForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  searchFunction(searchUrl, searchField.value);
-});
+// searchForm.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   searchFunction(searchUrl, searchField.value);
+// });
