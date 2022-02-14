@@ -64,10 +64,10 @@ h1 {
   }
 }
 
-/* .posts-container {
+.post__posts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-} */
+}
 .latest-post:hover,
 .old-post:hover {
   background-color: #d9d3cb;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Environmentalist | Posts</title>
+    <title>The Environmentalist | Home</title>
 
     <script
       src="https://kit.fontawesome.com/ba0e3e950c.js"
@@ -17,12 +17,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/posts.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="https://use.typekit.net/dvp5txa.css" />
     <!-- Hotjar Tracking Code for https://optimistic-mestorf-829d84.netlify.app/ -->
     <script>
       (function (h, o, t, j, a, r) {
@@ -46,13 +44,16 @@
       <nav>
         <ul class="nav-menu" style="display: none">
           <li><a href="index.html">Home</a></li>
-          <li><a href="posts.html" class="nav-active">Posts</a></li>
+          <li><a href="posts.html">Posts</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li>
+            <a href="involved.html" class="nav-active">Environmental tips</a>
+          </li>
+          <li>
             <form action="submit" class="search-container">
               <label for="search">Search for posts</label>
-              <input type="text" name="search" id="search" />
+              <input type="search" name="search" id="search" />
             </form>
           </li>
         </ul>
@@ -63,22 +64,17 @@
       </nav>
     </header>
     <main>
+      <div class="opacity-container"></div>
       <div class="breadcrumbs">
         <i class="fas fa-home"></i>
         <a href="index.html" class="breadcrumbs-link"> Home</a>
         <div class="crumb">&gt;</div>
-        <p class="active-page">Posts</p>
+        <p class="active-page">Environmental tips</p>
       </div>
-      <section class="posts-section">
-        <h1>Posts</h1>
-        <div class="loader"></div>
-        <div class="latest-post-container"></div>
-        <div class="post__posts-container"></div>
-        <div class="more-posts-info"></div>
-        <button class="show-more-btn active-button">Show more posts</button>
-      </section>
-    </main>
+      <section class="tips-intro"><h1>Environmental tips</h1></section>
 
+      <section class="tips-section"></section>
+    </main>
     <footer>
       <h3>The Environmentalist 2022</h3>
       <div class="social-media-icons">
@@ -93,7 +89,7 @@
       <p class="copyright">Copyright <b>&copy;</b> 2022 The Environmentalist</p>
     </footer>
     <script src="js/functions.js"></script>
-    <!-- <script src="js/script.js"></script> -->
-    <script src="js/posts.js"></script>
+
+    <script src="js/tips.js"></script>
   </body>
 </html>

@@ -1,11 +1,11 @@
-const postsContainer = document.querySelector(".posts-container");
+const postsContainer = document.querySelector(".post__posts-container");
 const latestPost = document.querySelector(".latest-post-container");
 const morePostsInfo = document.querySelector(".more-posts-info");
 const loader = document.querySelector(".loader");
 const showMore = document.querySelector(".show-more-btn");
 
 const postUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=100&_embed";
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
 var currentPostCount = 0;
 var morePostsCount = 9;
