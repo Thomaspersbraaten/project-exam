@@ -60,6 +60,25 @@ async function getPosts(url) {
     };
     pageContainerArray.forEach(setPagePositioning);
 
+    const moveToPage = (postContainer, currentPage, targetPage) => {
+      postContainer.style.transform =
+        "translateX(-" + targetPage.style.left + ")";
+      currentPage.classList.remove("active-post-page");
+      targetPage.classList.add("active-post-page");
+    };
+    // Previous button moves to the previous page
+    previousPageButton.addEventListener("click", (e) => {
+      if (pageIndex === 1) {
+        return;
+      } else {
+        const currentPage = postContainer.querySelector(".active-post-page");
+        const nextPage = currentPage.previousElementSibling;
+        pageIndex--;
+        currentPageIndex.innerHTML = pageIndex;
+        moveToPage(postContainer, currentPage, nextPage);
+      }
+    });
+
     // Next button moves to the next page
     nextPageButton.addEventListener("click", (e) => {
       const currentPage = postContainer.querySelector(".active-post-page");
@@ -71,9 +90,10 @@ async function getPosts(url) {
       // move to the next page
       pageIndex++;
       currentPageIndex.innerHTML = pageIndex;
-      postContainer.style.transform = "translateX(-" + amountToMove + ")";
-      currentPage.classList.remove("active-post-page");
-      nextPage.classList.add("active-post-page");
+      moveToPage(postContainer, currentPage, nextPage);
+      // postContainer.style.transform = "translateX(-" + amountToMove + ")";
+      // currentPage.classList.remove("active-post-page");
+      // nextPage.classList.add("active-post-page");
     });
     // nextPageButton.addEventListener("click", function () {
     //   nextPage(results, calculatedPageNumbers);
@@ -81,8 +101,6 @@ async function getPosts(url) {
     // previousPageButton.addEventListener("click", function () {
     //   previousPage(results, calculatedPageNumbers);
     // });
-
-    // Previous button moves to the previous page
   } catch (error) {
     postContainer.innerHTML = showErrorMessage(error);
   }
