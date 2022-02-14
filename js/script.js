@@ -72,10 +72,10 @@ async function getPosts(url) {
         return;
       } else {
         const currentPage = postContainer.querySelector(".active-post-page");
-        const nextPage = currentPage.previousElementSibling;
+        const previousPage = currentPage.previousElementSibling;
         pageIndex--;
         currentPageIndex.innerHTML = pageIndex;
-        moveToPage(postContainer, currentPage, nextPage);
+        moveToPage(postContainer, currentPage, previousPage);
       }
     });
 
@@ -225,212 +225,212 @@ function createHtml(results, pageNumbers, pageArray, pageContainerArray) {
   }
 }
 
-function nextPage(results, pageNumbers) {
-  // const posts = results.length;
-  // const pageNumbers = posts / 4;
-  // const calculatedPageNumbers = Math.ceil(pageNumbers);
+// function nextPage(results, pageNumbers) {
+//   // const posts = results.length;
+//   // const pageNumbers = posts / 4;
+//   // const calculatedPageNumbers = Math.ceil(pageNumbers);
 
-  if (pageIndex === pageNumbers || testValue === results.length) {
-    return;
-  } else {
-    pageIndex = pageIndex + 1;
-    currentPage.innerHTML = pageIndex;
-    postContainer.innerHTML = "";
-    pageValue = pageValue + 1;
+//   if (pageIndex === pageNumbers || testValue === results.length) {
+//     return;
+//   } else {
+//     pageIndex = pageIndex + 1;
+//     currentPage.innerHTML = pageIndex;
+//     postContainer.innerHTML = "";
+//     pageValue = pageValue + 1;
 
-    for (let i = pageValue; i < results.length; i++) {
-      const data = results[i];
-      const postAuthor = results[i]._embedded.author[0].name;
+//     for (let i = pageValue; i < results.length; i++) {
+//       const data = results[i];
+//       const postAuthor = results[i]._embedded.author[0].name;
 
-      // Creates the date of the post
-      const dateCreation = new Date(data.date);
-      const year = dateCreation.getFullYear();
-      const month = dateCreation.getMonth();
-      const day = dateCreation.getDate();
-      const date = day + "." + month + 1 + "." + year;
-      //
+//       // Creates the date of the post
+//       const dateCreation = new Date(data.date);
+//       const year = dateCreation.getFullYear();
+//       const month = dateCreation.getMonth();
+//       const day = dateCreation.getDate();
+//       const date = day + "." + month + 1 + "." + year;
+//       //
 
-      if (i === pageValue + 4) {
-        break;
-      } else {
-        testValue++;
-        console.log(testValue);
-        postContainer.innerHTML += `
-        <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post show">
-          <div>
-           <h3>
-            ${results[i].title.rendered}
-           </h3>
-           <div class="author-info">
-           <p>Written by ${postAuthor} </p>
-           <p>${date}</p>
-           </div>
-           <div class="post-intro">
-            ${results[i].excerpt.rendered}
-           </div>
-          </div>
-          <p class="link-text">Read More &rightarrow;</p>
-          </a> 
-          `;
-      }
-    }
+//       if (i === pageValue + 4) {
+//         break;
+//       } else {
+//         testValue++;
+//         console.log(testValue);
+//         postContainer.innerHTML += `
+//         <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post show">
+//           <div>
+//            <h3>
+//             ${results[i].title.rendered}
+//            </h3>
+//            <div class="author-info">
+//            <p>Written by ${postAuthor} </p>
+//            <p>${date}</p>
+//            </div>
+//            <div class="post-intro">
+//             ${results[i].excerpt.rendered}
+//            </div>
+//           </div>
+//           <p class="link-text">Read More &rightarrow;</p>
+//           </a>
+//           `;
+//       }
+//     }
 
-    pageValue = pageValue + 3;
-    console.log(pageValue);
-    // console.log(pageIndex);
-  }
-}
+//     pageValue = pageValue + 3;
+//     console.log(pageValue);
+//     // console.log(pageIndex);
+//   }
+// }
 
-function previousPage(results, pageNumbers) {
-  if (pageIndex === 1) {
-    return;
-  } else {
-    pageValue = pageValue - 8;
-    postContainer.innerHTML = "";
-    console.log(pageValue);
-    pageIndex = pageIndex - 1;
-    // console.log(pageIndex);
-    currentPage.innerHTML = pageIndex;
-    for (let i = pageValue; i < results.length; i++) {
-      const data = results[i];
-      const postAuthor = results[i]._embedded.author[0].name;
+// function previousPage(results, pageNumbers) {
+//   if (pageIndex === 1) {
+//     return;
+//   } else {
+//     pageValue = pageValue - 8;
+//     postContainer.innerHTML = "";
+//     console.log(pageValue);
+//     pageIndex = pageIndex - 1;
+//     // console.log(pageIndex);
+//     currentPage.innerHTML = pageIndex;
+//     for (let i = pageValue; i < results.length; i++) {
+//       const data = results[i];
+//       const postAuthor = results[i]._embedded.author[0].name;
 
-      // Creates the date of the post
-      const dateCreation = new Date(data.date);
-      const year = dateCreation.getFullYear();
-      const month = dateCreation.getMonth();
-      const day = dateCreation.getDate();
-      const date = day + "." + month + 1 + "." + year;
-      //
+//       // Creates the date of the post
+//       const dateCreation = new Date(data.date);
+//       const year = dateCreation.getFullYear();
+//       const month = dateCreation.getMonth();
+//       const day = dateCreation.getDate();
+//       const date = day + "." + month + 1 + "." + year;
+//       //
 
-      if (i === pageValue + 4) {
-        break;
-      } else {
-        postContainer.innerHTML += `
-        <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post show">
-          <div>
-           <h3>
-            ${results[i].title.rendered}
-           </h3>
-           <div class="author-info">
-           <p>Written by ${postAuthor} </p>
-           <p>${date}</p>
-           </div>
-           <div class="post-intro">
-            ${results[i].excerpt.rendered}
-           </div>
-          </div>
-          <p class="link-text">Read More &rightarrow;</p>
-          </a>
-          `;
-      }
-    }
-  }
+//       if (i === pageValue + 4) {
+//         break;
+//       } else {
+//         postContainer.innerHTML += `
+//         <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post show">
+//           <div>
+//            <h3>
+//             ${results[i].title.rendered}
+//            </h3>
+//            <div class="author-info">
+//            <p>Written by ${postAuthor} </p>
+//            <p>${date}</p>
+//            </div>
+//            <div class="post-intro">
+//             ${results[i].excerpt.rendered}
+//            </div>
+//           </div>
+//           <p class="link-text">Read More &rightarrow;</p>
+//           </a>
+//           `;
+//       }
+//     }
+//   }
 
-  // const postContainer = document.querySelector(".posts-container");
+// const postContainer = document.querySelector(".posts-container");
 
-  // async function searchFunction(url) {
-  //   const response = await fetch(url + searchField.value);
-  //   const results = await response.json();
-  //   console.log(results);
-  //   console.log(searchField.value);
-  //   postContainer.innerHTML = "";
-  //   postNavigation.innerHTML = "";
-  //   postHeader.innerHTML = `
-  //   Showing search results for ${searchField.value}...`;
+// async function searchFunction(url) {
+//   const response = await fetch(url + searchField.value);
+//   const results = await response.json();
+//   console.log(results);
+//   console.log(searchField.value);
+//   postContainer.innerHTML = "";
+//   postNavigation.innerHTML = "";
+//   postHeader.innerHTML = `
+//   Showing search results for ${searchField.value}...`;
 
-  //   // for (let i = 0; i < results.length; i++) {
-  //   //   const postAuthor = results[i]._embedded.author[0].name;
-  //   //   const data = results[i];
+//   // for (let i = 0; i < results.length; i++) {
+//   //   const postAuthor = results[i]._embedded.author[0].name;
+//   //   const data = results[i];
 
-  //   //   // Creates the date of the post
-  //   //   const dateCreation = new Date(data.date);
-  //   //   const year = dateCreation.getFullYear();
-  //   //   const month = dateCreation.getMonth();
-  //   //   const day = dateCreation.getDate();
-  //   //   const date = day + "." + month + 1 + "." + year;
+//   //   // Creates the date of the post
+//   //   const dateCreation = new Date(data.date);
+//   //   const year = dateCreation.getFullYear();
+//   //   const month = dateCreation.getMonth();
+//   //   const day = dateCreation.getDate();
+//   //   const date = day + "." + month + 1 + "." + year;
 
-  //   //   // const posts = results.length;
-  //   //   // const pageNumbers = posts / 4;
-  //   //   // const calculatedPageNumbers = Math.ceil(pageNumbers);
+//   //   // const posts = results.length;
+//   //   // const pageNumbers = posts / 4;
+//   //   // const calculatedPageNumbers = Math.ceil(pageNumbers);
 
-  //   //   // console.log(Math.ceil(pageNumbers));
+//   //   // console.log(Math.ceil(pageNumbers));
 
-  //   //   // if (i === 4) {
-  //   //   //   return;
-  //   //   // } else {
-  //   //   postContainer.innerHTML += `
-  //   //   <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
-  //   //     <div>
-  //   //      <h3>
-  //   //       ${results[i].title.rendered}
-  //   //      </h3>
-  //   //      <div class="author-info">
-  //   //      <p>Written by ${postAuthor} </p>
-  //   //      <p>${date}</p>
-  //   //      </div>
-  //   //      <div class="post-intro">
-  //   //       ${results[i].excerpt.rendered}
-  //   //      </div>
-  //   //     </div>
-  //   //     <p class="link-text">Read More &rightarrow;</p>
-  //   //     </a>
-  //   //     `;
-  //   // }
-  // }
+//   //   // if (i === 4) {
+//   //   //   return;
+//   //   // } else {
+//   //   postContainer.innerHTML += `
+//   //   <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
+//   //     <div>
+//   //      <h3>
+//   //       ${results[i].title.rendered}
+//   //      </h3>
+//   //      <div class="author-info">
+//   //      <p>Written by ${postAuthor} </p>
+//   //      <p>${date}</p>
+//   //      </div>
+//   //      <div class="post-intro">
+//   //       ${results[i].excerpt.rendered}
+//   //      </div>
+//   //     </div>
+//   //     <p class="link-text">Read More &rightarrow;</p>
+//   //     </a>
+//   //     `;
+//   // }
+// }
 
-  // searchForm.addEventListener("submit", function (e) {
-  //   e.preventDefault();
-  //   searchFunction(searchUrl, searchField.value);
-  // });
+// searchForm.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   searchFunction(searchUrl, searchField.value);
+// });
 
-  // if (pageIndex <= pageNumbers) {
-  //   return;
-  // } else {
-  //   pageIndex = pageIndex - 1;
-  //   currentPage.innerHTML = pageIndex;
-  //   postContainer.innerHTML = "";
-  //   pageValue = pageValue - 1;
+// if (pageIndex <= pageNumbers) {
+//   return;
+// } else {
+//   pageIndex = pageIndex - 1;
+//   currentPage.innerHTML = pageIndex;
+//   postContainer.innerHTML = "";
+//   pageValue = pageValue - 1;
 
-  //   for (let i = pageValue; i < results.length; i++) {
-  //     const data = results[i];
-  //     const postAuthor = results[i]._embedded.author[0].name;
+//   for (let i = pageValue; i < results.length; i++) {
+//     const data = results[i];
+//     const postAuthor = results[i]._embedded.author[0].name;
 
-  //     // Creates the date of the post
-  //     const dateCreation = new Date(data.date);
-  //     const year = dateCreation.getFullYear();
-  //     const month = dateCreation.getMonth();
-  //     const day = dateCreation.getDate();
-  //     const date = day + "." + month + 1 + "." + year;
-  //     //
+//     // Creates the date of the post
+//     const dateCreation = new Date(data.date);
+//     const year = dateCreation.getFullYear();
+//     const month = dateCreation.getMonth();
+//     const day = dateCreation.getDate();
+//     const date = day + "." + month + 1 + "." + year;
+//     //
 
-  //     if (i === pageValue + 4) {
-  //       break;
-  //     } else {
-  //       postContainer.innerHTML += `
-  //       <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post show">
-  //         <div>
-  //          <h3>
-  //           ${results[i].title.rendered}
-  //          </h3>
-  //          <div class="author-info">
-  //          <p>Written by ${postAuthor} </p>
-  //          <p>${date}</p>
-  //          </div>
-  //          <div class="post-intro">
-  //           ${results[i].excerpt.rendered}
-  //          </div>
-  //         </div>
-  //         <p class="link-text">Read More &rightarrow;</p>
-  //         </a>
-  //         `;
-  //     }
-  //   }
+//     if (i === pageValue + 4) {
+//       break;
+//     } else {
+//       postContainer.innerHTML += `
+//       <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post show">
+//         <div>
+//          <h3>
+//           ${results[i].title.rendered}
+//          </h3>
+//          <div class="author-info">
+//          <p>Written by ${postAuthor} </p>
+//          <p>${date}</p>
+//          </div>
+//          <div class="post-intro">
+//           ${results[i].excerpt.rendered}
+//          </div>
+//         </div>
+//         <p class="link-text">Read More &rightarrow;</p>
+//         </a>
+//         `;
+//     }
+//   }
 
-  // }
-}
-const yosha = Array.from(postContainer.children);
-console.log(postContainer.children);
+// }
+// }
+// const yosha = Array.from(postContainer.children);
+// console.log(postContainer.children);
 
 // const nextPageButton = document.querySelector(".next-page");
 // const previousPageButton = document.querySelector(".previous-page");
