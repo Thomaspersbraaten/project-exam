@@ -155,6 +155,9 @@ Breadcrumbs
 /* 
 posts container 
 */
+h2 {
+  font-family: alegreya, sans-serif, Arial, Helvetica;
+}
 
 /* .post-section {
   background-color: #ececec;
@@ -165,32 +168,111 @@ posts container
 } */
 .post-section {
   text-align: center;
-  height: 450px;
+  height: 600px;
 }
-
+.carousel-container {
+  background-color: lightgreen;
+  overflow: hidden;
+  height: 380px;
+  width: 100%;
+}
 .posts-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+
+  height: 100%;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease-in;
 }
 
-h2 {
-  font-family: alegreya, sans-serif, Arial, Helvetica;
-}
 /* 
 .wp-block-image {
   display: none;
 } */
 
 .posts-container > * {
-  color: black;
-  max-width: 180px;
+  /* color: black;
+  max-width: 180px; */
   /* height: 100px; */
-  overflow: hidden;
-  border: 1px solid black;
+  /* overflow: hidden; */
+  /* border: 1px solid black;
+  background-color: #f9f8f8; */
+  /* border-radius: 5px; */
+  /* display: inline-block; */
+}
+
+.post-container__page-container {
+  padding: 10px;
+  color: black;
+  border-radius: 5px;
+  width: 100%;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.latest-post:hover,
+.old-post:hover {
+  background-color: #d6d6d5;
+}
+
+.post,
+.latest-post {
+  border: 2px solid black;
+  border-radius: 20px;
+  height: 145px;
+  width: 145px;
+  margin: 10px 5px;
+  color: black;
   background-color: #f9f8f8;
-  border-radius: 10px;
-  display: inline-block;
-  margin: 30px;
+  transition: 0.4s;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.latest-post {
+  max-width: 355px;
+}
+
+h3 {
+  font-family: alegreya;
+  font-weight: bold;
+  margin: 8px auto 5px auto;
+  font-size: 1em;
+}
+
+.author-info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.author-info p {
+  font-size: 0.6em;
+  /* margin: 10px; */
+}
+
+.post-intro p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 36px;
+  margin: 0px 15px;
+  text-align: left;
+  font-size: 0.6em;
+}
+
+.link-text {
+  width: 90%;
+  font-weight: bold;
+  margin: 5px 20px;
+  text-align: right;
+  font-size: 0.8em;
 }
 
 /* .post-intro p {
@@ -205,9 +287,6 @@ h2 {
 Posts Navigation
 */
 
-/*
-Get Involved Section
-*/
 .post-navigation {
   display: flex;
   margin: 5px auto;
@@ -238,6 +317,9 @@ Get Involved Section
   cursor: pointer;
 }
 
+/*
+Get Involved Section
+*/
 .get-involved-section {
   position: relative;
 
@@ -361,7 +443,7 @@ p {
   }
 }
 
-@media (min-width: 392px) {
+/* @media (min-width: 392px) {
   .posts-container {
     margin: auto;
     text-align: center;
@@ -372,74 +454,11 @@ p {
     align-content: center;
     align-items: center;
   }
-}
+} */
 
 /*
 test posts
 */
-
-.latest-post:hover,
-.old-post:hover {
-  background-color: #d6d6d5;
-}
-
-.post,
-.latest-post {
-  border: 2px solid black;
-  border-radius: 20px;
-  height: 145px;
-  margin: 10px 5px;
-  color: black;
-  background-color: #f9f8f8;
-  transition: 0.4s;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.latest-post {
-  max-width: 355px;
-}
-
-h3 {
-  font-family: alegreya;
-  font-weight: bold;
-  margin: 8px auto 5px auto;
-  font-size: 1em;
-}
-
-.author-info {
-  display: flex;
-  justify-content: space-around;
-}
-
-.author-info p {
-  font-size: 0.6em;
-  /* margin: 10px; */
-}
-
-.post-intro p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  height: 36px;
-  margin: 0px 15px;
-  text-align: left;
-  font-size: 0.6em;
-}
-
-.link-text {
-  width: 90%;
-  font-weight: bold;
-  margin: 5px 20px;
-  text-align: right;
-  font-size: 0.8em;
-}
 
 /* loader  */
 
@@ -460,5 +479,18 @@ h3 {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.show {
+  animation: showPost 1s;
+}
+
+@keyframes showPost {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

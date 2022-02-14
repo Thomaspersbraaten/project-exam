@@ -227,7 +227,7 @@ function postComment(event) {
   });
   fetch("https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments"),
     {
-      method: "post",
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },

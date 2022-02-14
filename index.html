@@ -50,7 +50,7 @@
           <li>
             <form action="submit" class="search-container">
               <label for="search">Search for posts</label>
-              <input type="text" name="search" id="search" />
+              <input type="search" name="search" id="search" />
             </form>
           </li>
         </ul>
@@ -78,14 +78,17 @@
       </section>
 
       <section class="post-section">
-        <h2>Latest Posts</h2>
+        <h2 class="post-header">Latest Posts</h2>
         <div class="loader"></div>
-        <div class="posts-container"></div>
+        <div class="carousel-container">
+          <div class="posts-container"></div>
+        </div>
+
         <div class="post-navigation">
           <!-- <div class="previous-page">&Lt;</div> -->
           <i class="fas fa-arrow-circle-left previous-page"></i>
           <div class="navigation-pages">
-            <div class="current-page"></div>
+            <div class="current-page-indicator"></div>
             <p>of</p>
             <div class="total-pages"></div>
           </div>
