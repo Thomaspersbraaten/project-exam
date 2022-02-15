@@ -1,0 +1,34 @@
+main {
+  text-align: center;
+}
+
+.tips__content {
+  display: flex;
+  margin: 10px;
+}
+
+.tips__bullet {
+  font-size: 5em;
+  margin: 5px;
+}
+
+.divider {
+  border: 1px solid black;
+  width: 80%;
+  color: black;
+  margin: 25px auto;
+}
+
+.tips__author-info {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tips__author-info > * {
+  margin: 5px 20px;
+}
+
+.tips__ending {
+  margin: 30px auto 40px auto;
+}

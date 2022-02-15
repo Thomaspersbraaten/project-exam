@@ -16,21 +16,42 @@ async function fetchApi(url) {
     const monthIndex = dateCreation.getMonth();
     const day = dateCreation.getDate();
     const date = day + "." + month[monthIndex] + "." + year;
-    console.log(date);
+    // console.log(date);
     const getAuthor = data._embedded.author;
-    console.log(getAuthor);
+    // console.log(getAuthor);
     const getImage = getAuthor.simple_local_avatar;
-
-    tipsSection.innerHTML += `
-    <div class="tips">
-    <h2> ${data.title.rendered}</h2>
-     <div class="tips__content">
-        <div>&bull;</div> <p> ${data.content.rendered}</p>
-     </div>
-    <div class="tips__author-info">
-     <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
+    if (i === results.length - 1) {
+      tipsSection.innerHTML += `
+        <div class="tips">
+        <h2> ${data.title.rendered}</h2>
+         <div class="tips__content">
+            <div class="tips__bullet">&bull;</div> <p> ${data.content.rendered}</p>
+         </div>
+        <div class="tips__author-info">
+         <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
+         </div>
+         <p class="tips__ending"> No more tips to show</p>
     
-    `;
+         
+    
+        
+        `;
+    } else {
+      tipsSection.innerHTML += `
+        <div class="tips">
+        <h2> ${data.title.rendered}</h2>
+         <div class="tips__content">
+            <div class="tips__bullet">&bull;</div> <p> ${data.content.rendered}</p>
+         </div>
+        <div class="tips__author-info">
+         <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
+         </div>
+         <hr class="divider" />
+         
+    
+        
+        `;
+    }
   }
 }
 fetchApi(tipsUrl);

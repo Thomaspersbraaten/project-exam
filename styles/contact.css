@@ -1,7 +1,9 @@
-h1,
 .contact-text {
   text-align: center;
   margin: 15px 20px;
+}
+body {
+  text-align: center;
 }
 
 /*

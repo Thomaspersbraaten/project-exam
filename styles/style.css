@@ -86,6 +86,10 @@ nav li {
   background-color: rgba(0, 0, 0, 0.336);
 }
 
+h1 {
+  font-family: source sans pro, sans-serif, Arial, Helvetica;
+  margin: 35px auto;
+}
 /* 
 Breadcrumbs
 */
@@ -249,7 +253,7 @@ h2 {
 }
 
 h3 {
-  font-family: alegreya;
+  font-family: source sans pro, sans-serif, Arial, Helvetica;
   font-weight: 500;
   margin: 8px auto 5px auto;
   /* font-size: 1em; */
@@ -366,8 +370,8 @@ Footer
 */
 
 footer {
-  /* position: absolute;
-  bottom: 0; */
+  position: relative;
+  bottom: 0;
   background-color: #d7ecd7;
   margin: 0px;
   text-align: center;
