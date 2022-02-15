@@ -35,6 +35,4 @@ async function fetchApi(url) {
 }
 fetchApi(tipsUrl);
 
-{
-  /* <img src="${data._embedded.author.simple_local_avatar[32]}">  */
-}
+/* <img src="${data._embedded.author.simple_local_avatar[32]}">  */

@@ -120,6 +120,31 @@ Breadcrumbs
  welcome section 
 */
 
+.welcome {
+  display: flex;
+  font-weight: normal;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+
+  background: url("../pictures/welcome-img.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.welcome__text {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 0.75em;
+
+  padding: 5px 15px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  min-width: 120px;
+  max-width: 150px;
+}
+
 .welcome-message {
   height: 250px;
 }
@@ -157,8 +182,8 @@ Breadcrumbs
 posts container 
 */
 h2 {
-  font-family: alegreya, sans-serif, Arial, Helvetica;
-  font-weight: 500;
+  font-family: source sans pro, sans-serif, Arial, Helvetica;
+  font-weight: 400;
 }
 
 /* .post-section {
