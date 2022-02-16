@@ -19,18 +19,20 @@ async function fetchApi(url) {
     // console.log(date);
     const getAuthor = data._embedded.author;
     // console.log(getAuthor);
+
     const getImage = getAuthor.simple_local_avatar;
     if (i === results.length - 1) {
       tipsSection.innerHTML += `
-        <div class="tips">
-        <h2> ${data.title.rendered}</h2>
-         <div class="tips__content">
-            <div class="tips__bullet">&bull;</div> <p> ${data.content.rendered}</p>
-         </div>
-        <div class="tips__author-info">
-         <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
-         </div>
-         <p class="tips__ending"> No more tips to show</p>
+      <div class="tips">
+      <h2>${data.title.rendered}</h2>
+      <div class="tips__content">
+          <div class="tips__bullet">&bull;</div> 
+          <p>${data.content.rendered}</p>
+      </div>
+  </div>
+  <div class="tips__author-info">
+   <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
+   </div>
     
          
     
@@ -39,10 +41,12 @@ async function fetchApi(url) {
     } else {
       tipsSection.innerHTML += `
         <div class="tips">
-        <h2> ${data.title.rendered}</h2>
-         <div class="tips__content">
-            <div class="tips__bullet">&bull;</div> <p> ${data.content.rendered}</p>
-         </div>
+            <h2>${data.title.rendered}</h2>
+            <div class="tips__content">
+                <div class="tips__bullet">&bull;</div> 
+                <p>${data.content.rendered}</p>
+            </div>
+        </div>
         <div class="tips__author-info">
          <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
          </div>

@@ -8,25 +8,24 @@ const loader = document.querySelector(".loader");
 const postNavigation = document.querySelector(".post-navigation");
 const postHeader = document.querySelector(".post-header");
 const carouselContainer = document.querySelector(".carousel-container");
+const welcomeContainer = document.querySelector(".welcome");
+const getInvolvedContainer = document.querySelector(".get-involved-section");
 
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
-console.log(month);
+// console.log(month);
 
 const postUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
+const searchUrl =
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&search=";
 var pageIndex = 1;
-var pageValue = 3;
-
-var minimumPostValue = 0;
-var maximumPostValue = 3;
-
-var testValue = 0;
+var arrayIndex = 0;
 
 async function getPosts(url) {
   try {
     const response = await fetch(url);
     const results = await response.json();
-    console.log(results);
+    // console.log(results);
     const posts = results.length;
     const pageNumbers = posts / 4;
     const calculatedPageNumbers = Math.ceil(pageNumbers);
@@ -52,13 +51,13 @@ async function getPosts(url) {
     const pageContainerArray = Array.from(containerForPage);
     pageContainerArray[0].classList.add("active-post-page");
 
-    console.log(pageArray);
-    console.log(calculatedPageNumbers);
-    console.log(pageContainerArray);
+    // console.log(pageArray);
+    // console.log(calculatedPageNumbers);
+    // console.log(pageContainerArray);
 
     createHtml(results, calculatedPageNumbers, pageArray, pageContainerArray);
     const containerWidth = pageContainerArray[0].getBoundingClientRect().width;
-    console.log(containerWidth);
+    // console.log(containerWidth);
     // arrange pages
     // for (let i = 0; i < pageContainerArray.length; i++) {
     //   pageContainerArray[i].style.left = containerWidth * i + "px";
@@ -155,28 +154,28 @@ function createHtml(results, pageNumbers, pageArray, pageContainerArray) {
   for (let i = 0; i < pageContainerArray.length; i++) {
     // console.log(testValue);
     for (let j = 0; j < pageArray[i].length; j++) {
-      const data = pageArray[testValue][j];
+      const data = pageArray[arrayIndex][j];
       const dateCreation = new Date(data.date);
       const year = dateCreation.getFullYear();
       const monthIndex = dateCreation.getMonth();
 
-      console.log(monthIndex);
+      // console.log(monthIndex);
       const day = dateCreation.getDate();
 
       const date = day + "." + month[monthIndex] + "." + year;
       // console.log(pageArray[testValue][j].id);
-      pageContainerArray[testValue].innerHTML += `
-       <a href="details.html?id=${pageArray[testValue][j].id}" style="text-decoration:none" class="post old-post">
+      pageContainerArray[arrayIndex].innerHTML += `
+       <a href="details.html?id=${pageArray[arrayIndex][j].id}" style="text-decoration:none" class="post old-post">
          <div>
           <h3>
-           ${pageArray[testValue][j].title.rendered}
+           ${pageArray[arrayIndex][j].title.rendered}
          </h3>
           <div class="author-info">
-          <p>Written by ${pageArray[testValue][j]._embedded.author[0].name} </p>
+          <p>Written by ${pageArray[arrayIndex][j]._embedded.author[0].name} </p>
          <p>${date}</p>
           </div>
           <div class="post-intro">
-           ${pageArray[testValue][j].excerpt.rendered}
+           ${pageArray[arrayIndex][j].excerpt.rendered}
           </div>
          </div>
          <p class="link-text">Read More &rightarrow;</p>
@@ -184,24 +183,29 @@ function createHtml(results, pageNumbers, pageArray, pageContainerArray) {
          `;
     }
 
-    testValue++;
+    arrayIndex++;
   }
-  // for (let i = 0; i < results.length; i++) {
-  //   const postAuthor = results[i]._embedded.author[0].name;
-  //   const data = results[i];
-
-  //   // Creates the date of the post
-  //   const dateCreation = new Date(data.date);
-  //   const year = dateCreation.getFullYear();
-  //   const month = dateCreation.getMonth();
-  //   const day = dateCreation.getDate();
-  //   const date = day + "." + month + 1 + "." + year;
-
   totalPages.innerHTML = `${pageNumbers}`;
-  // }
 }
 
 searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  searchFunction(searchUrl, searchField.value, carouselContainer);
+  // searchFunction(
+  //   searchUrl,
+  //   searchField.value,
+  //   carouselContainer,
+  //   welcomeContainer,
+  //   getInvolvedContainer
+  // );
+  console.log("Ttt");
+  window.location.href = "index.html";
+  // logit("yes");
 });
+
+function logit(value) {
+  console.log(value);
+}
+
+if (window.location.hash === "#logit") {
+  logit("yes");
+}

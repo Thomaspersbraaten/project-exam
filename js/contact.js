@@ -40,6 +40,16 @@ function validateForm(event) {
 
 contactForm.addEventListener("submit", validateForm);
 
+// function sendContactForm() {
+//   const postData = JSON.stringify({
+//     post: postIdInForm.value,
+//     author_name: nameInput.value,
+//     author_email: emailInput.value,
+//     content: commentInput.value,
+//   });
+
+// }
+
 // Input validation function //
 
 // Name validation

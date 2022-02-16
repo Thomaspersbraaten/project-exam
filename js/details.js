@@ -36,14 +36,16 @@ const commentInput = document.querySelector("#comment");
 
 // API URLS
 const detailsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?_embed&include[]=" +
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&_embed&include[]=" +
   id;
 const authorUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
+// const commentUrl =
+//   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
 const commentUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments";
 const postsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?per_page=100&_embed";
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
 //
 
@@ -225,7 +227,12 @@ function postComment(event) {
     author_email: emailInput.value,
     content: commentInput.value,
   });
-  fetch("https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments"),
+  console.log(postData);
+
+  fetch(
+    "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" +
+      id
+  ),
     {
       method: "POST",
       headers: {

@@ -1,6 +1,9 @@
 main {
   text-align: center;
 }
+.tips-intro {
+  margin: 20px auto;
+}
 
 .tips__content {
   display: flex;
@@ -16,7 +19,7 @@ main {
   border: 1px solid black;
   width: 80%;
   color: black;
-  margin: 25px auto;
+  margin: 25px auto 60px auto;
 }
 
 .tips__author-info {
