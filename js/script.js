@@ -9,15 +9,10 @@ const postNavigation = document.querySelector(".post-navigation");
 const postHeader = document.querySelector(".post-header");
 const carouselContainer = document.querySelector(".carousel-container");
 const welcomeContainer = document.querySelector(".welcome");
-const getInvolvedContainer = document.querySelector(".get-involved-section");
-
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
-// console.log(month);
-
 const postUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
-const searchUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&search=";
+
 var pageIndex = 1;
 var arrayIndex = 0;
 
@@ -26,9 +21,12 @@ async function getPosts(url) {
     const response = await fetch(url);
     const results = await response.json();
     // console.log(results);
+    // creates the variable that calculates the number of pages to create and how many times the results splits into a new array.
     const posts = results.length;
     const pageNumbers = posts / 4;
     const calculatedPageNumbers = Math.ceil(pageNumbers);
+
+    // Splits the results(posts) into chunks of 4 into an array.
     function splitResultsArray(results, splitSize) {
       const splittedArray = [];
       for (let i = 0; i < results.length; i += splitSize) {
@@ -39,6 +37,8 @@ async function getPosts(url) {
     }
 
     const pageArray = splitResultsArray(results, 4);
+
+    // creates the container for each chunk
     for (let i = 0; i < pageNumbers; i++) {
       postContainer.innerHTML += `
   <div class="post-container__page-container"></div>`;
@@ -48,20 +48,15 @@ async function getPosts(url) {
       ".post-container__page-container"
     );
 
+    // creates an array for the page containers
     const pageContainerArray = Array.from(containerForPage);
     pageContainerArray[0].classList.add("active-post-page");
 
-    // console.log(pageArray);
-    // console.log(calculatedPageNumbers);
-    // console.log(pageContainerArray);
+    createHtml(calculatedPageNumbers, pageArray, pageContainerArray);
 
-    createHtml(results, calculatedPageNumbers, pageArray, pageContainerArray);
+    // Gets the width of the page container
     const containerWidth = pageContainerArray[0].getBoundingClientRect().width;
-    // console.log(containerWidth);
-    // arrange pages
-    // for (let i = 0; i < pageContainerArray.length; i++) {
-    //   pageContainerArray[i].style.left = containerWidth * i + "px";
-    // }
+
     const setPagePositioning = (page, index) => {
       page.style.left = containerWidth * index + "px";
     };
@@ -73,6 +68,7 @@ async function getPosts(url) {
       currentPage.classList.remove("active-post-page");
       targetPage.classList.add("active-post-page");
     };
+
     // Previous button moves to the previous page
     previousPageButton.addEventListener("click", (e) => {
       if (pageIndex === 1) {
@@ -89,123 +85,82 @@ async function getPosts(url) {
     // Next button moves to the next page
     nextPageButton.addEventListener("click", (e) => {
       const currentPage = postContainer.querySelector(".active-post-page");
-      console.log(currentPage);
       const nextPage = currentPage.nextElementSibling;
-      console.log(nextPage);
-      const amountToMove = nextPage.style.left;
-      console.log(amountToMove);
-      // move to the next page
       pageIndex++;
       currentPageIndex.innerHTML = pageIndex;
       moveToPage(postContainer, currentPage, nextPage);
-      // postContainer.style.transform = "translateX(-" + amountToMove + ")";
-      // currentPage.classList.remove("active-post-page");
-      // nextPage.classList.add("active-post-page");
     });
   } catch (error) {
+    loader.style.display = "none";
     postContainer.innerHTML = showErrorMessage(error);
   }
 }
 
 getPosts(postUrl);
 
-function createHtml(results, pageNumbers, pageArray, pageContainerArray) {
+function createHtml(pageNumbers, pageArray, pageContainerArray) {
   loader.style.display = "none";
   currentPageIndex.innerHTML = pageIndex;
-
-  //   for (let i = 0; i < pageNumbers; i++) {
-  //     postContainer.innerHTML += `
-  // <div class="post-container__page-container"></div>`;
-  //   }
-
-  //   const containerForPage = document.querySelectorAll(
-  //     ".post-container__page-container"
-  //   );
-
-  //   const pageContainerArray = Array.from(containerForPage);
-  //   // console.log(pageContainerArray);
-
-  //   // Creates a new array from the results and places four posts in each index
-  //   function splitResultsArray(results, splitSize) {
-  //     const splittedArray = [];
-  //     for (let i = 0; i < results.length; i += splitSize) {
-  //       const split = results.slice(i, i + splitSize);
-  //       splittedArray.push(split);
-  //     }
-  //     return splittedArray;
-  //   }
-
-  //   const pageArray = splitResultsArray(results, 4);
-  // console.log(pageArray);
-
-  // containerForPage.forEach((element) => {
-  //   console.log(testValue);
-  //   for (let i = 0; i < pageArray.length; i++) {
-  //     console.log(pageArray[testValue][i].id);
-
-  //     containerForPage.innerHTML += `
-  //     ${pageArray[testValue][i].id}`;
-  //   }
-  //   testValue++;
-  //   console.log(testValue);
-  // });
-  // Creates the date of the post
-
+  // creates the posts inside the page(post) containers
   for (let i = 0; i < pageContainerArray.length; i++) {
-    // console.log(testValue);
     for (let j = 0; j < pageArray[i].length; j++) {
-      const data = pageArray[arrayIndex][j];
+      const data = pageArray[i][j];
       const dateCreation = new Date(data.date);
       const year = dateCreation.getFullYear();
       const monthIndex = dateCreation.getMonth();
-
-      // console.log(monthIndex);
       const day = dateCreation.getDate();
-
       const date = day + "." + month[monthIndex] + "." + year;
-      // console.log(pageArray[testValue][j].id);
-      pageContainerArray[arrayIndex].innerHTML += `
-       <a href="details.html?id=${pageArray[arrayIndex][j].id}" style="text-decoration:none" class="post old-post">
+
+      pageContainerArray[i].innerHTML += `
+       <a href="details.html?id=${pageArray[i][j].id}" style="text-decoration:none" class="post old-post">
          <div>
           <h3>
-           ${pageArray[arrayIndex][j].title.rendered}
+           ${pageArray[i][j].title.rendered}
          </h3>
           <div class="author-info">
-          <p>Written by ${pageArray[arrayIndex][j]._embedded.author[0].name} </p>
+          <p>Written by ${pageArray[i][j]._embedded.author[0].name} </p>
          <p>${date}</p>
           </div>
           <div class="post-intro">
-           ${pageArray[arrayIndex][j].excerpt.rendered}
+           ${pageArray[i][j].excerpt.rendered}
           </div>
          </div>
          <p class="link-text">Read More &rightarrow;</p>
          </a>
          `;
     }
-
-    arrayIndex++;
   }
   totalPages.innerHTML = `${pageNumbers}`;
 }
 
-searchForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  // searchFunction(
-  //   searchUrl,
-  //   searchField.value,
-  //   carouselContainer,
-  //   welcomeContainer,
-  //   getInvolvedContainer
-  // );
-  console.log("Ttt");
-  window.location.href = "index.html";
-  // logit("yes");
-});
+// for (let j = 0; j < pageArray[i].length; j++) {
+//   const data = pageArray[arrayIndex][j];
+//   const dateCreation = new Date(data.date);
+//   const year = dateCreation.getFullYear();
+//   const monthIndex = dateCreation.getMonth();
 
-function logit(value) {
-  console.log(value);
-}
+//   // console.log(monthIndex);
+//   const day = dateCreation.getDate();
 
-if (window.location.hash === "#logit") {
-  logit("yes");
-}
+//   const date = day + "." + month[monthIndex] + "." + year;
+//   // console.log(pageArray[testValue][j].id);
+//   pageContainerArray[arrayIndex].innerHTML += `
+//    <a href="details.html?id=${pageArray[arrayIndex][j].id}" style="text-decoration:none" class="post old-post">
+//      <div>
+//       <h3>
+//        ${pageArray[arrayIndex][j].title.rendered}
+//      </h3>
+//       <div class="author-info">
+//       <p>Written by ${pageArray[arrayIndex][j]._embedded.author[0].name} </p>
+//      <p>${date}</p>
+//       </div>
+//       <div class="post-intro">
+//        ${pageArray[arrayIndex][j].excerpt.rendered}
+//       </div>
+//      </div>
+//      <p class="link-text">Read More &rightarrow;</p>
+//      </a>
+//      `;
+// }
+
+// arrayIndex++;

@@ -48,7 +48,7 @@ header {
 
 nav a {
   text-decoration: none;
-  font-family: "Charm", cursive;
+  font-family: "Charm", cursive, Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: black;
   padding: 5px;
@@ -95,6 +95,7 @@ nav li {
 h1 {
   font-family: source sans pro, sans-serif, Arial, Helvetica;
   margin: 35px auto;
+  text-align: center;
 }
 /* 
 Breadcrumbs
