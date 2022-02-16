@@ -31,24 +31,6 @@ function showErrorMessage(error) {
   return errorHtml;
 }
 
-// async function searchFunction(
-//   url,
-//   value,
-//   containerOne,
-//   containerTwo,
-//   containerThree
-// ) {
-//   const response = await fetch(url + value);
-//   const results = await response.json();
-//   // console.log(results);
-//   // console.log(results);
-//   // console.log(searchField.value);
-//   containerOne.innerHTML = "";
-//   // containerTwo.innerHTML = "";
-//   // containerThree.innerHTML = "";
-//   createSearchHtml(results, containerOne);
-// }
-
 function createSearchHtml(searchResult, containerOne) {
   console.log(searchResult);
   // for (let i = 0; i < results.length; i++) {

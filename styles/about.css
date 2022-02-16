@@ -29,16 +29,21 @@ h1 {
 
 .profile-picture {
   border-radius: 50%;
-  border: 2px solid black;
   height: 60px;
   width: 60px;
+}
+
+.about-info {
+  width: 90px;
 }
 
 .profile {
   display: flex;
   gap: 20px;
-  margin: 10px auto;
+  margin: auto 10px;
+
   justify-content: center;
+  align-items: center;
 }
 
 .profile p {

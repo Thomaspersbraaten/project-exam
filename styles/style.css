@@ -2,6 +2,9 @@ body {
   margin: 0;
   min-height: 100vh;
 }
+:focus {
+  outline: 4px solid white;
+}
 
 /* Header and Nav */
 
@@ -43,12 +46,12 @@ header {
   flex-direction: column;
 }
 
-nav a,
-nav label {
+nav a {
   text-decoration: none;
   font-family: "Charm", cursive;
   font-weight: bold;
   color: black;
+  padding: 5px;
   font-size: 1.2em;
 }
 
@@ -80,7 +83,9 @@ nav li {
 }
 
 .nav-active {
-  text-decoration: underline;
+  /* text-decoration: underline; */
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
 .opacity-container {
