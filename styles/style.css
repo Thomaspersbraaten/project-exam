@@ -14,6 +14,8 @@ body {
   font-family: "yellowtail", "Bebas Neue", cursive;
   padding: 5px;
   font-size: 1.4em;
+  text-decoration: underline;
+  text-decoration-style: wavy;
 }
 
 header {
@@ -30,7 +32,7 @@ header {
 
 .fa-bars,
 .far {
-  margin: auto;
+  margin: auto 15px;
   padding: 10px;
   font-size: 1.7em;
   text-align: center;
@@ -235,13 +237,8 @@ h2 {
   grid-template-columns: 1fr 1fr;
   justify-items: center;
 }
-.latest-post:hover,
-.old-post:hover {
-  background-color: #d6d6d5;
-}
 
-.post,
-.latest-post {
+.post {
   border: 2px solid black;
   border-radius: 20px;
   height: 145px;
@@ -255,10 +252,6 @@ h2 {
   align-content: center;
   align-items: center;
   justify-content: space-around;
-}
-
-.latest-post {
-  max-width: 355px;
 }
 
 h3 {
@@ -520,5 +513,95 @@ test posts
   }
   100% {
     opacity: 1;
+  }
+}
+
+@media (min-width: 700px) {
+  .logo {
+    font-size: 2.4em;
+    padding: 10px;
+    margin-left: 10px;
+  }
+  nav a {
+    font-size: 2em;
+    padding: 10px;
+  }
+  .nav-menu {
+    top: 57px;
+    height: 200px;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .fa-bars,
+  .far {
+    font-size: 2.7em;
+  }
+  h2 {
+    font-size: 2.6em;
+  }
+  .welcome {
+    height: 400px;
+  }
+  .welcome__text {
+    padding: 5px 50px;
+    min-width: 250px;
+    max-width: 300px;
+  }
+
+  .welcome__text p {
+    font-size: 1.5em;
+  }
+
+  .post-container__page-container {
+    width: 92%;
+    margin: 0px 4%;
+  }
+  .post {
+    height: 200px;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+  .author-info p {
+    font-size: 1em;
+  }
+  .author-info {
+    justify-content: space-between;
+    margin: 0px 15px;
+  }
+  .post-intro p {
+    font-size: 1em;
+    height: 60px;
+  }
+
+  .carousel-container {
+    height: 450px;
+  }
+  .link-text {
+    font-size: 1.2em;
+  }
+  .previous-page,
+  .navigation-pages,
+  .next-page {
+    font-size: 1.9em;
+  }
+  .post-navigation {
+    margin: 20px auto;
+  }
+  .get-involved-section {
+    height: 400px;
+  }
+  .get-involved-text {
+    padding: 5px 50px;
+    min-width: 250px;
+    max-width: 300px;
+    height: 250px;
+  }
+  .get-involved-text p {
+    font-size: 1.5em;
+  }
+  h1 {
+    font-size: 2.6em;
   }
 }

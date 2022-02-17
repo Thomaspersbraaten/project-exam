@@ -112,7 +112,7 @@ function createHtml(pageNumbers, pageArray, pageContainerArray) {
       const date = day + "." + month[monthIndex] + "." + year;
 
       pageContainerArray[i].innerHTML += `
-       <a href="details.html?id=${pageArray[i][j].id}" style="text-decoration:none" class="post old-post">
+       <a href="details.html?id=${pageArray[i][j].id}" style="text-decoration:none" class="post">
          <div>
           <h3>
            ${pageArray[i][j].title.rendered}

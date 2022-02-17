@@ -150,16 +150,17 @@ function createHtml(post, author, comment, allPosts) {
   try {
     nextPost.innerHTML = `
     <a href="details.html?id=${allPosts[nextIndex].id}" style="text-decoration:none" class="next-container">
-      <p class="next-header"> Next post:</p>
+      <h3 class="next-header"> Next post:</h3>
       <div class="title-and-arrow">
         <p class="next-title">${allPosts[nextIndex].title.rendered}</p>
         <i class="fas fa-arrow-circle-right"></i>
       </div>
     </a>
     `;
+    nextPost.classList.add("hover-style");
   } catch {
     nextPost.innerHTML = `
-    <p class="no-more-posts"> No more posts</p>
+    <h3 class="no-more-posts"> No more posts</h3>
     `;
   }
 
@@ -168,16 +169,17 @@ function createHtml(post, author, comment, allPosts) {
   try {
     previousPost.innerHTML = `
     <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
-      <p class="next-header"> Previous post:</p>
+      <h3 class="next-header"> Previous post:</h3>
       <div class="title-and-arrow">
         <i class="fas fa-arrow-circle-left"></i>
         <p class="next-title">  ${allPosts[previousIndex].title.rendered}</p>
       </div>
     </a>
   `;
+    previousPost.classList.add("hover-style");
   } catch {
     previousPost.innerHTML = `
-   <p class="no-more-posts"> No more posts</p>
+   <h3 class="no-more-posts"> No more posts</h3>
    `;
   }
   // Comment form : POSTID value inserted into the form

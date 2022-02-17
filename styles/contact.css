@@ -73,7 +73,7 @@ Contact form
 #contact-form input[type="email"],
 #contact-form textarea[type="text"] {
   font-size: 1.1em;
-  font-family: sans-serif, Arial, Helvetica;
+  font-family: "Times New Roman", Times, serif;
   box-sizing: border-box;
 }
 
@@ -100,4 +100,36 @@ Contact form
   border: 1px solid black;
   padding: 5px 25px;
   border-radius: 30px;
+}
+
+@media (min-width: 700px) {
+  .breadcrumbs {
+    font-size: 1.7em;
+    gap: 7px;
+  }
+  .contact-text {
+    font-size: 1.4em;
+  }
+  #contact-form {
+    width: 450px;
+  }
+  #contact-form input[type="text"],
+  #contact-form input[type="email"],
+  #contact-form textarea[type="text"] {
+    font-size: 1.2em;
+  }
+  .error-message {
+    font-size: 1.1em;
+  }
+  #contact-form label {
+    font-size: 1.3em;
+  }
+  #contact-form input,
+  #message {
+    margin: 5px auto;
+    width: 450px;
+  }
+  .submit-button {
+    margin: 45px auto;
+  }
 }

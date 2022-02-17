@@ -3,10 +3,10 @@ section {
 }
 
 .post-img {
-  width: 100%;
-  margin: 0px 20px;
-  max-width: 300px;
-  height: 200px;
+  width: 94%;
+  margin: 0px 3% 10px 3%;
+  /* max-width: 300px; */
+  /* height: 200px; */
   transition: 0.3s;
 }
 .post-img:hover {
@@ -14,20 +14,20 @@ section {
   opacity: 0.7;
 }
 .details-image {
-  text-align: left;
+  text-align: center;
 }
 
 .details-container {
   text-align: left;
 }
-
+/* 
 .details-header {
   font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   font-style: italic;
   font-size: 1.7em;
   text-align: center;
-}
+} */
 
 h2,
 p {
@@ -54,7 +54,7 @@ Author info
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid black;
+
   /* margin: 10px; */
 }
 
@@ -74,6 +74,10 @@ Author info
 /*
 next and previous post
 */
+
+.hover-style:hover {
+  background-color: #d9d3cb;
+}
 
 .next-previous {
   margin: 20px;
@@ -101,6 +105,8 @@ next and previous post
 
   gap: 1px;
   color: black;
+  height: 100%;
+  width: 100%;
 }
 
 /* .next-post:hover,
@@ -126,8 +132,8 @@ next and previous post
 }
 
 .divider {
-  margin: 30px;
-  width: 80%;
+  margin: 30px 5%;
+  width: 90%;
 }
 
 .next-previous p {
@@ -236,4 +242,86 @@ h3 {
   width: 90%;
   /* height: 250px; */
   margin: 0px 5%;
+}
+
+@media (min-width: 700px) {
+  .breadcrumbs {
+    font-size: 1.7em;
+    gap: 7px;
+  }
+  h2 {
+    font-size: 2em;
+    margin: 30px 3%;
+  }
+  .details-container p {
+    font-size: 1.6em;
+    margin: 30px 3%;
+  }
+  .author-info {
+    margin: 40px 3%;
+  }
+  .author-img {
+    height: 110px;
+    width: 110px;
+  }
+  .author-info p {
+    font-size: 1.6em;
+  }
+  .details-container ul {
+    font-size: 1.6em;
+    margin: 5px 3%;
+  }
+  .next-post,
+  .previous-post {
+    border: 2px solid black;
+    height: 130px;
+    width: 200px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .next-container p,
+  .previous-container p {
+    font-size: 1.2em;
+  }
+  .fa-arrow-circle-left,
+  .fa-arrow-circle-right {
+    font-size: 2.2em;
+  }
+  .next-title {
+    font-size: 1em;
+  }
+
+  .comment-container h3 {
+    font-size: 1.5em;
+  }
+
+  /* 
+  Comments
+  */
+  .user-comment-container h3 {
+    font-size: 1.3em;
+    margin: 20px;
+  }
+  .user-comment-container p {
+    font-size: 1.4em;
+  }
+  .next-header {
+    font-size: 1.3em;
+    margin: 10px auto;
+  }
+  .next-title {
+    width: 100%;
+    text-align: center;
+  }
+  .title-and-arrow {
+    margin: 0px 5px;
+    gap: 15px;
+  }
+
+  .fa-arrow-circle-left,
+  .fa-arrow-circle-right {
+    margin: auto;
+  }
 }

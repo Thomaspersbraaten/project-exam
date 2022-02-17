@@ -56,7 +56,7 @@ async function searchFunction(searchUrl) {
     const postAuthor = results[i]._embedded.author[0].name;
 
     postsContainer.innerHTML += `
-      <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
+      <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post">
         <div>
          <h3>
           ${results[i].title.rendered}
@@ -97,7 +97,7 @@ function createHtml(results) {
     const postAuthor = results[i]._embedded.author[0].name;
 
     postsContainer.innerHTML += `
-      <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
+      <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post">
         <div>
          <h3>
           ${results[i].title.rendered}
@@ -148,7 +148,7 @@ function showMorePosts(results) {
         break;
       } else {
         postsContainer.innerHTML += `
-        <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post old-post">
+        <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post">
           <div>
            <h3>
             ${results[i].title.rendered}
@@ -167,9 +167,6 @@ function showMorePosts(results) {
       }
     }
   }
-  console.log(postsContainer.childElementCount);
-  console.log(results.length);
-  console.log(latestPost.childElementCount);
   if (postsContainer.childElementCount === results.length) {
     morePostsInfo.innerHTML = `<p>There are no more posts to show...</p>`;
     showMore.classList.add("inactive-button");

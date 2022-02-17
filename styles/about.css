@@ -2,9 +2,9 @@ body {
   text-align: center;
 }
 
-h1 {
+/* h1 {
   margin: 35px auto;
-}
+} */
 
 .breadcrumbs {
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -31,6 +31,8 @@ h1 {
   border-radius: 50%;
   height: 60px;
   width: 60px;
+  /* height: 18%;
+  width: 18%; */
 }
 
 .about-info {
@@ -65,4 +67,33 @@ h1 {
   font-family: Merriweather, sans-serif, Arial, Helvetica;
   font-style: italic;
   margin: 10px 10px 20px 10px;
+}
+
+@media (min-width: 700px) {
+  .profile-picture {
+    height: 110px;
+    width: 110px;
+  }
+  .profile p {
+    font-size: 1.4em;
+  }
+  .profile {
+    gap: 50px;
+  }
+  .about-info {
+    width: 150px;
+  }
+  .divider {
+    margin: 30px auto;
+  }
+  .rachel {
+    margin-bottom: 75px;
+  }
+  .what-do-we-do p {
+    font-size: 1.4em;
+  }
+  .breadcrumbs {
+    font-size: 1.7em;
+    gap: 7px;
+  }
 }
