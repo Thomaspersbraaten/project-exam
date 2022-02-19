@@ -31,3 +31,8 @@ function showErrorMessage(error) {
   `;
   return errorHtml;
 }
+
+// console.log(window.innerHeight);
+// if (window.innerWidth === 1000) {
+//   navMenu.style.display = "flex";
+// }

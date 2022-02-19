@@ -14,19 +14,17 @@ const previousPost = document.querySelector(".previous-post");
 const commentSection = document.querySelector(".comment-section");
 const commentAmount = document.querySelector(".comment-amount");
 const firstComment = document.querySelector(".be-the-first-to-comment");
-const commentValue = document.querySelector("#postId");
 const modalContainer = document.querySelector(".modal-container");
 const modal = document.querySelector(".modal");
 
 const modalContent = document.querySelector(".modal-content");
 
-const readerComments = document.querySelector(".reader-comments");
 const loader = document.querySelector(".loader");
+const readerComments = document.querySelector(".reader-comments");
+// comment form consts
 
 const commentForm = document.querySelector(".comment-form");
 const submitButton = document.querySelector(".submit-button");
-
-// comment form consts
 const postIdInForm = document.querySelector("#postId");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
@@ -188,7 +186,9 @@ function createHtml(post, author, comment, allPosts) {
 
   // console.log(data.id);
   postIdInForm.value = Number(data.id);
-  console.log(postIdInForm.value);
+
+  const postId = postIdInForm.value;
+  console.log(postId);
   // Comment section
   commentAmount.innerHTML = `
   Comments(${comment.length})`;
@@ -204,9 +204,6 @@ function createHtml(post, author, comment, allPosts) {
     <h3>Comment by: ${data.author_name}</h3>
     <p>${data.content.rendered}</p>
     </div>`;
-
-    // commentValue = `${data.id}`;
-    // console.log(commentValue);
   });
 }
 
@@ -218,11 +215,120 @@ function createHtml(post, author, comment, allPosts) {
 //   modalContainer.style.display = "none";
 // });
 
-function postComment(event) {
+// Comment validation
+const nameError = document.querySelector(".name-error");
+const emailError = document.querySelector(".email-error");
+const commentError = document.querySelector(".comment-error");
+const successMessage = document.querySelector(".success-message");
+
+var nameValid = false;
+var emailValid = false;
+var commentValid = false;
+
+// Name Validation
+function validateName() {
+  if (checkLength(nameInput.value, 5)) {
+    nameValid = true;
+    nameError.style.display = "none";
+  } else {
+    nameValid = false;
+    nameError.style.display = "flex";
+  }
+}
+
+function validateNameKeyup() {
+  if (checkLength(nameInput.value, 5)) {
+    nameValid = true;
+    nameError.style.display = "none";
+  } else {
+    nameValid = false;
+  }
+}
+
+nameInput.addEventListener("input", validateNameKeyup);
+
+// Email Validation
+
+function validateEmail(event) {
+  if (checkEmail(email.value)) {
+    emailValid = true;
+    emailError.style.display = "none";
+  } else {
+    emailValid = false;
+    emailError.style.display = "flex";
+  }
+}
+
+function validateEmailKeyup() {
+  if (checkEmail(email.value, 5)) {
+    emailValid = true;
+    emailError.style.display = "none";
+  } else {
+    emailValid = false;
+  }
+}
+email.addEventListener("input", validateEmailKeyup);
+
+// Comment Validation
+
+function validateComment() {
+  if (checkLength(commentInput.value, 2)) {
+    commentValid = true;
+    commentError.style.display = "none";
+  } else {
+    commentValid = false;
+    commentError.style.display = "flex";
+  }
+}
+
+function validateCommentKeyup() {
+  console.log(commentValid);
+  if (checkLength(commentInput.value, 2)) {
+    commentValid = true;
+    commentError.style.display = "none";
+  } else {
+    commentValid = false;
+  }
+}
+
+commentInput.addEventListener("input", validateCommentKeyup);
+
+// Checks
+
+function checkLength(value, length) {
+  if (value.trim().length > length) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkEmail(email) {
+  const regEx = /\S+@\S+\.\S+/;
+  const patterMatches = regEx.test(email);
+  return patterMatches;
+}
+
+function validateForm(event) {
   event.preventDefault();
+  if (nameValid && emailValid && commentValid) {
+    successMessage.style.display = "flex";
+    successMessage.innerHTML = `<p>Thank you for commenting!</p>`;
+    // submitButton.disabled = true;
+    postComment();
+    commentForm.reset();
+  } else {
+    validateName();
+    validateEmail();
+    validateComment();
+  }
+}
+
+commentForm.addEventListener("submit", validateForm);
+
+function postComment() {
   // const [postIdInForm, nameInput, emailInput, commentInput] =
   //   event.target.elements;
-  // const [postId, name, email, comment] = event.target.elements;
   const postData = JSON.stringify({
     post: postIdInForm.value,
     author_name: nameInput.value,
@@ -231,10 +337,7 @@ function postComment(event) {
   });
   console.log(postData);
 
-  fetch(
-    "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" +
-      id
-  ),
+  fetch("https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments"),
     {
       method: "POST",
       headers: {
@@ -243,5 +346,3 @@ function postComment(event) {
       body: postData,
     };
 }
-
-submitButton.addEventListener("click", postComment);

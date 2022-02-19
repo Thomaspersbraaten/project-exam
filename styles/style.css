@@ -10,12 +10,19 @@ body {
 
 .logo {
   text-decoration: none;
+  margin: auto 10px;
   color: black;
   font-family: "yellowtail", "Bebas Neue", cursive;
-  padding: 5px;
+  /* padding: 10px; */
   font-size: 1.4em;
   text-decoration: underline;
   text-decoration-style: wavy;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 header {
@@ -32,8 +39,8 @@ header {
 
 .fa-bars,
 .far {
-  margin: auto 15px;
-  padding: 10px;
+  margin: 15px;
+  /* padding: 10px; */
   font-size: 1.7em;
   text-align: center;
 }
@@ -43,24 +50,13 @@ header {
   cursor: pointer;
 }
 
-.search-container {
-  display: flex;
-  flex-direction: column;
-}
-
-nav a {
+.nav-menu a {
   text-decoration: none;
   font-family: "Charm", cursive, Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: black;
   padding: 5px;
   font-size: 1.2em;
-}
-
-#search {
-  width: 150px;
-  border: 1px solid black;
-  border-radius: 3px;
 }
 
 nav li {
@@ -102,6 +98,9 @@ h1 {
 /* 
 Breadcrumbs
 */
+.fa-home {
+  margin-right: 6px;
+}
 .breadcrumbs {
   font-family: Georgia, "Times New Roman", Times, serif;
   display: flex;
@@ -238,12 +237,16 @@ h2 {
   justify-items: center;
 }
 
+.post:hover {
+  background-color: #d9d3cb;
+}
+
 .post {
   border: 2px solid black;
   border-radius: 20px;
   height: 145px;
   /* width: 145px; */
-  margin: 10px 5px;
+  margin: 10px 7px;
   color: black;
   background-color: #f9f8f8;
   transition: 0.4s;
@@ -370,10 +373,10 @@ Footer
 
 footer {
   border-top: 1px solid black;
-  padding: 15px;
+  /* padding: 15px; */
   width: 100%;
-  /* position: absolute; */
-  bottom: 0;
+  position: absolute;
+  /* bottom: 0; */
   background-color: #d7ecd7;
   margin: 0px;
   text-align: center;
@@ -453,7 +456,7 @@ p {
   font-style: italic;
 }
 
-@media (min-width: 900px) {
+/* @media (min-width: 900px) {
   nav ul {
     max-width: 1200px;
     justify-content: center;
@@ -462,7 +465,7 @@ p {
     display: flex;
     flex-direction: row;
   }
-}
+} */
 
 /* @media (min-width: 392px) {
   .posts-container {
@@ -517,20 +520,26 @@ test posts
 }
 
 @media (min-width: 700px) {
+  .breadcrumbs {
+    font-size: 1.7em;
+    gap: 7px;
+  }
   .logo {
     font-size: 2.4em;
     padding: 10px;
     margin-left: 10px;
   }
-  nav a {
-    font-size: 2em;
+  .nav-menu a {
+    font-size: 1.6em;
     padding: 10px;
+    margin: auto 0px;
   }
   .nav-menu {
-    top: 57px;
+    top: 73px;
     height: 200px;
     justify-content: center;
     gap: 10px;
+    margin: 0px;
   }
 
   .fa-bars,
@@ -549,8 +558,9 @@ test posts
     max-width: 300px;
   }
 
-  .welcome__text p {
-    font-size: 1.5em;
+  .welcome__text p,
+  .get-involved-text p {
+    font-size: 1.3em;
   }
 
   .post-container__page-container {
@@ -598,10 +608,89 @@ test posts
     max-width: 300px;
     height: 250px;
   }
-  .get-involved-text p {
-    font-size: 1.5em;
-  }
+
   h1 {
     font-size: 2.6em;
+  }
+}
+@media (min-width: 1000px) {
+  .breadcrumbs {
+    max-width: 1150px;
+    margin: 20px auto;
+    font-size: 1.6em;
+    gap: 5px;
+    padding: 5px 20px;
+  }
+
+  header {
+    height: 90px;
+  }
+  .logo {
+    width: 500px;
+    margin-left: 0px;
+    padding: 0px;
+    text-align: left;
+  }
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    z-index: auto;
+    height: auto;
+    align-items: center;
+  }
+  .hamburger {
+    display: none;
+  }
+  nav {
+    height: 100%;
+    width: 1150px;
+    margin: auto;
+  }
+  .welcome {
+    max-width: 1150px;
+    margin: auto;
+    height: 500px;
+  }
+  .post-section {
+    max-width: 1150px;
+    margin: auto;
+  }
+
+  .post-container__page-container {
+    width: 100%;
+    margin: auto;
+    gap: 20px;
+  }
+  .post {
+    height: 320px;
+  }
+  .carousel-container {
+    height: 700px;
+  }
+  h3 {
+    font-size: 1.8em;
+    text-decoration: underline;
+  }
+  .post-intro p {
+    font-size: 1.6em;
+    height: 40%;
+    -webkit-line-clamp: 4;
+  }
+  .author-info p {
+    font-size: 1.5em;
+  }
+  .link-text {
+    font-size: 1.9em;
+  }
+  .previous-page,
+  .navigation-pages,
+  .next-page {
+    font-size: 3em;
+  }
+  .get-involved-section {
+    height: 450px;
+    max-width: 1150px;
+    margin: auto;
   }
 }

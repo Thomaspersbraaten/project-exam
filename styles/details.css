@@ -133,7 +133,6 @@ next and previous post
 
 .divider {
   margin: 30px 5%;
-  width: 90%;
 }
 
 .next-previous p {
@@ -218,6 +217,20 @@ h3 {
   text-align: left;
 }
 
+.error-message {
+  color: red;
+  display: none;
+  margin: 10px 2px;
+}
+
+.success-message {
+  display: none;
+  background-color: rgba(51, 255, 0, 0.774);
+  margin: 10px auto;
+  border: 1px solid black;
+  padding: 5px 25px;
+  border-radius: 30px;
+}
 /* Modal */
 
 .modal-container {
@@ -261,8 +274,8 @@ h3 {
     margin: 40px 3%;
   }
   .author-img {
-    height: 110px;
-    width: 110px;
+    height: 80px;
+    width: 80px;
   }
   .author-info p {
     font-size: 1.6em;
@@ -296,10 +309,26 @@ h3 {
   .comment-container h3 {
     font-size: 1.5em;
   }
+  .divider {
+    margin: 45px 5%;
+  }
 
   /* 
   Comments
   */
+  .comment-container label {
+    font-size: 1.3em;
+  }
+  #comment,
+  #name,
+  #email {
+    padding: 7px;
+  }
+  .submit-button {
+    padding: 25px 45px;
+    font-size: 1.5em;
+  }
+
   .user-comment-container h3 {
     font-size: 1.3em;
     margin: 20px;
@@ -323,5 +352,8 @@ h3 {
   .fa-arrow-circle-left,
   .fa-arrow-circle-right {
     margin: auto;
+  }
+  .user-comment-container {
+    margin: 45px 20px;
   }
 }

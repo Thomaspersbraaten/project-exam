@@ -37,14 +37,14 @@
   </head>
   <body>
     <header>
-      <a href="index.html" class="logo">The Environmentalist</a>
       <nav>
+        <a href="index.html" class="logo">The Environmentalist</a>
         <ul class="nav-menu" style="display: none">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" >Home</a></li>
           <li><a href="posts.html" class="nav-active">Posts</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="involved.html">Environmental tips</a></li>
+          <li><a href="tips.html">Environmental tips</a></li>
         </ul>
         <div class="hamburger">
           <i class="fas fa-bars"></i>
@@ -56,8 +56,8 @@
     
 
       <div class="breadcrumbs">
-        <i class="fas fa-home"></i>
-        <a href="index.html" class="breadcrumbs-link"> Home</a>
+  
+        <a href="index.html" class="breadcrumbs-link">      <i class="fas fa-home"></i> Home</a>
         <div class="crumb">&gt;</div>
         <a href="posts.html" class="breadcrumbs-link"> Posts</a>
         <div class="crumb">&gt;</div>
@@ -94,23 +94,43 @@
         <p class="be-the-first-to-comment"></p>
         <div class="comment-container">
           <h3>Leave a comment</h3>
-          <form class="comment-form">
+          <!-- <form class="comment-form" onSubmit={this.handleSubmit.bind(this)}> -->
+            <form class="comment-form" >
          
-            <input type="hidden" id="postId" />
+            <input type="hidden" id="postId"/>
+            <!-- comment -->
+            
             <label for="comment">Comment</label>
+            <p class="comment-error error-message">
+              Please input more atleast one character
+            </p>
             <textarea
               type="textarea"
               name="comment"
               id="comment"
               style="resize: none"
             ></textarea>
+
+            <!-- Name -->
+           
             <label for="name">Name</label>
+            <p class="name-error error-message">
+              Please input more than 5 characters
+            </p>
+
             <input type="text" name="name" id="name" />
+
+
+            <!-- email -->
+
             <label for="email">Email</label>
+            <p class="email-error error-message">Please input a valid email</p>
             <input type="text" name="email" id="email" />
-            <div>
+
+            <div class="success-message"></div>
+           
               <button class="submit-button">Post comment</button>
-            </div>
+   
           </form>
         </div>
         <div class="reader-comments"></div>

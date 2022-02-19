@@ -103,10 +103,6 @@ Contact form
 }
 
 @media (min-width: 700px) {
-  .breadcrumbs {
-    font-size: 1.7em;
-    gap: 7px;
-  }
   .contact-text {
     font-size: 1.4em;
   }
@@ -131,5 +127,18 @@ Contact form
   }
   .submit-button {
     margin: 45px auto;
+  }
+}
+@media (min-width: 1000px) {
+  .contact-text {
+    max-width: 750px;
+    margin: 15px auto;
+  }
+  .submit-button {
+    padding: 25px 75px;
+    font-size: 2em;
+  }
+  #contact-form label {
+    font-size: 1.7em;
   }
 }

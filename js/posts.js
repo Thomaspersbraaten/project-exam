@@ -39,6 +39,7 @@ async function searchFunction(searchUrl) {
   postsContainer.innerHTML = "";
   morePostsContainer.innerHTML = "";
   loader.style.display = "block";
+  showMore.style.display = "none";
   const response = await fetch(searchUrl + searchField.value);
   const results = await response.json();
   loader.style.display = "none";
@@ -161,7 +162,7 @@ function showMorePosts(results) {
             ${results[i].excerpt.rendered}
            </div>
           </div>
-          <p class="link-text">Read More &rightarrow;</p>
+          <p class="link-text">Click to read more</p>
           </a>
           `;
       }
