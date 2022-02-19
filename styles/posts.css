@@ -29,6 +29,9 @@ label {
   font-style: italic;
   display: flex;
 }
+input:focus {
+  border: 2px solid white;
+}
 /* h1 {
   margin: 10px auto;
   text-align: center;
@@ -180,5 +183,17 @@ h2 {
   }
   .search-container {
     width: 250px;
+  }
+}
+@media (min-width: 1000px) {
+  .post__posts-container {
+    max-width: 1150px;
+  }
+  label {
+    font-size: 1.8em;
+  }
+  #search {
+    width: 300px;
+    margin-bottom: 30px;
   }
 }

@@ -111,7 +111,7 @@ function createHtml(results) {
           ${results[i].excerpt.rendered}
          </div>
         </div>
-        <p class="link-text">Read More &rightarrow;</p>
+        <p class="link-text">Click to read more</p>
         </a>
         `;
     const post = document.querySelector(".post");

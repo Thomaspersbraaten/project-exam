@@ -357,3 +357,35 @@ h3 {
     margin: 45px 20px;
   }
 }
+
+@media (min-width: 1000px) {
+  .post-img {
+    max-width: 950px;
+  }
+  .details-container {
+    max-width: 950px;
+    margin: auto;
+  }
+  .details-container > * {
+    margin: 0px auto;
+  }
+  .author-info {
+    max-width: 900px;
+    margin: auto;
+  }
+  .next-previous {
+    max-width: 950px;
+    margin: 70px auto;
+  }
+  .divider {
+    max-width: 950px;
+    margin: 45px auto;
+  }
+  .comment-section {
+    max-width: 950px;
+    margin: auto;
+  }
+  .modal-img {
+    top: 15%;
+  }
+}

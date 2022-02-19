@@ -610,10 +610,14 @@ test posts
   }
 
   h1 {
-    font-size: 2.6em;
+    font-size: 2.4em;
   }
 }
 @media (min-width: 1000px) {
+  /* .nav-active {
+    border: none;
+    text-decoration: underline;
+  } */
   .breadcrumbs {
     max-width: 1150px;
     margin: 20px auto;
@@ -686,7 +690,7 @@ test posts
   .previous-page,
   .navigation-pages,
   .next-page {
-    font-size: 3em;
+    font-size: 2.1em;
   }
   .get-involved-section {
     height: 450px;

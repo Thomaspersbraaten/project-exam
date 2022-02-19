@@ -237,7 +237,7 @@ async function getPosts(url) {
     };
 
     // Previous button moves to the previous page
-    previousPageButton.addEventListener("click", (e) => {
+    function previousPageFunction() {
       if (pageIndex === 1) {
         return;
       } else {
@@ -247,10 +247,13 @@ async function getPosts(url) {
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, previousPage);
       }
-    });
+    }
+
+    previousPageButton.addEventListener("click", previousPageFunction);
 
     // Next button moves to the next page
-    nextPageButton.addEventListener("click", (e) => {
+    nextPageButton.addEventListener("click", nextPageFunction);
+    function nextPageFunction() {
       if (pageIndex === pageContainerArray.length) {
         return;
       } else {
@@ -261,7 +264,19 @@ async function getPosts(url) {
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, nextPage);
       }
-    });
+    }
+    // nextPageButton.addEventListener("click", (e) => {
+    //   if (pageIndex === pageContainerArray.length) {
+    //     return;
+    //   } else {
+    //     const currentPage = postContainer.querySelector(".active-post-page");
+    //     const nextPage = currentPage.nextElementSibling;
+    //     pageIndex++;
+    //     console.log(pageIndex);
+    //     currentPageIndex.innerHTML = pageIndex;
+    //     moveToPage(postContainer, currentPage, nextPage);
+    //   }
+    // });
   } catch (error) {
     loader.style.display = "none";
     postContainer.innerHTML = showErrorMessage(error);
