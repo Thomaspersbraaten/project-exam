@@ -4,8 +4,8 @@ const tipsUrl =
 
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 
-async function fetchApi(url) {
-  const response = await fetch(url);
+async function fetchApi(tipsUrl) {
+  const response = await fetch(tipsUrl);
   const results = await response.json();
   console.log(results);
 
@@ -19,21 +19,21 @@ async function fetchApi(url) {
     // console.log(date);
     const getAuthor = data._embedded.author;
     // console.log(getAuthor);
-
-    const getImage = getAuthor.simple_local_avatar;
+    // <div class="tips__bullet">&bull;</div>
     if (i === results.length - 1) {
       tipsSection.innerHTML += `
       <div class="tips">
-      <h2>${data.title.rendered}</h2>
+      <h2 class="tips__heading">${data.title.rendered}</h2>
       <div class="tips__content">
           <div class="tips__bullet">&bull;</div> 
-          <p>${data.content.rendered}</p>
+          <div class="tips__main-content">${data.excerpt.rendered}</div>
       </div>
   </div>
-  <div class="tips__author-info">
+  <div class="tips__author-info ">
    <p> Tip by ${data._embedded.author[0].name}</p><p> ${date}</p>
    </div>
-    
+   <p class="last-container">No more tips</p>
+
          
     
         
@@ -41,10 +41,10 @@ async function fetchApi(url) {
     } else {
       tipsSection.innerHTML += `
         <div class="tips">
-            <h2>${data.title.rendered}</h2>
+            <h2 class="tips__heading">${data.title.rendered}</h2>
             <div class="tips__content">
                 <div class="tips__bullet">&bull;</div> 
-                <p>${data.content.rendered}</p>
+                <div class="tips__main-content">${data.excerpt.rendered}</div>
             </div>
         </div>
         <div class="tips__author-info">

@@ -36,3 +36,4 @@ function showErrorMessage(error) {
 // if (window.innerWidth === 1000) {
 //   navMenu.style.display = "flex";
 // }
+// const postContainer = document.querySelector(".post");

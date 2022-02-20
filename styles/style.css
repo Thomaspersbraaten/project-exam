@@ -668,13 +668,13 @@ test posts
   .post-container__page-container {
     width: 100%;
     margin: auto;
-    gap: 20px;
+    gap: 45px;
   }
   .post {
     height: 320px;
   }
   .carousel-container {
-    height: 700px;
+    height: 730px;
   }
   h3 {
     font-size: 1.8em;

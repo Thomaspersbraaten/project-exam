@@ -39,10 +39,10 @@ const detailsUrl =
   id;
 const authorUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
-// const commentUrl =
-//   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
 const commentUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments";
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
+// const commentUrl =
+//   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments";
 const postsUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
@@ -143,9 +143,6 @@ function createHtml(post, author, comment, allPosts) {
   console.log(index);
 
   const nextIndex = index + 1;
-  // TRY NEW NEW NEW NEW NEW
-
-  // TRY NEW NEW NEW NEW NEW
 
   try {
     nextPost.innerHTML = `

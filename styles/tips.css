@@ -2,17 +2,32 @@ main {
   text-align: center;
 }
 .tips-intro {
-  margin: 20px auto;
+  margin: 20px 20px 60px 20px;
+}
+.tips-section {
+  margin: 10px auto;
 }
 
 .tips__content {
   display: flex;
-  margin: 10px;
+  gap: 15px;
+  margin: 10px 15px;
+}
+.tips__heading {
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-style: italic;
 }
 
 .tips__bullet {
-  font-size: 5em;
+  display: flex;
+  align-items: center;
+  font-size: 3em;
   margin: 5px;
+}
+.tips__main-content {
+  display: flex;
+  align-items: center;
 }
 
 .divider {
@@ -34,4 +49,37 @@ main {
 
 .tips__ending {
   margin: 30px auto 40px auto;
+}
+
+.last-container {
+  margin: 50px auto;
+}
+
+@media (min-width: 700px) {
+  .tips__heading {
+    font-size: 2em;
+  }
+  .tips__bullet {
+    font-size: 5em;
+  }
+  .tips__content {
+    margin: 15px 25px;
+  }
+  .tips__author-info {
+    margin: 10px 25px;
+  }
+}
+@media (min-width: 1000px) {
+  .tips-section {
+    max-width: 1050px;
+  }
+  .tips {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+  }
+  .tips__author-info {
+    max-width: 800px;
+    margin: 20px auto;
+  }
 }
