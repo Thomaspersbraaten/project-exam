@@ -70,7 +70,7 @@ body {
 @media (min-width: 1000px) {
   .about-img {
     max-width: 950px;
-    margin: 20px auto;
+    margin: 0px auto;
   }
   .what-do-we-do p {
     max-width: 1150px;

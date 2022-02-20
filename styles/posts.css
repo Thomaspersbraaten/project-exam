@@ -57,7 +57,7 @@ input:focus {
   transition: 0.4s;
 }
 
-.show {
+/* .show {
   animation: showPost 1s;
 }
 
@@ -81,7 +81,7 @@ input:focus {
   100% {
     opacity: 1;
   }
-}
+} */
 
 .post__posts-container {
   display: grid;

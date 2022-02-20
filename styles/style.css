@@ -1,6 +1,8 @@
 body {
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 :focus {
   outline: 4px solid white;
@@ -30,7 +32,7 @@ header {
   z-index: 1;
   width: 100%; */
   background-color: #d7ecd7;
-  margin: auto;
+  margin: 0;
   text-align: center;
   display: flex;
   justify-content: space-between;
@@ -375,10 +377,10 @@ footer {
   border-top: 1px solid black;
   /* padding: 15px; */
   width: 100%;
-  position: absolute;
-  /* bottom: 0; */
+  position: relative;
+  bottom: 0;
   background-color: #d7ecd7;
-  margin: 0px;
+  margin-top: auto;
   text-align: center;
   font-family: alegreya, sans-serif, Arial, Helvetica;
   color: black;
@@ -485,7 +487,9 @@ test posts
 */
 
 /* loader  */
-
+.loader-container {
+  height: 100vh;
+}
 .loader {
   margin: 30px auto 30px auto;
   border: 10px solid #d6d3d3;

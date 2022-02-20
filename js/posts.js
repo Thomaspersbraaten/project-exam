@@ -1,6 +1,8 @@
 const postsContainer = document.querySelector(".post__posts-container");
 const searchInfo = document.querySelector(".search-info");
 const morePostsInfo = document.querySelector(".more-posts-info");
+const loaderContainer = document.querySelector(".loader-container");
+
 const loader = document.querySelector(".loader");
 const morePostsContainer = document.querySelector(".more-posts-info");
 
@@ -43,6 +45,7 @@ async function searchFunction(searchUrl) {
   const response = await fetch(searchUrl + searchField.value);
   const results = await response.json();
   loader.style.display = "none";
+  loaderContainer.style.display = "none";
   searchInfo.innerHTML = `
   <h2> Showing search results for "${searchField.value}"...</h2>`;
 
@@ -81,6 +84,7 @@ getPosts(postUrl);
 
 function createHtml(results) {
   loader.style.display = "none";
+  loaderContainer.style.display = "none";
   // const dateCreation = new Date(results[0].date);
   // const year = dateCreation.getFullYear();
   // const month = dateCreation.getMonth();

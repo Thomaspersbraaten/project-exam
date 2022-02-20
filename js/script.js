@@ -171,6 +171,8 @@ const totalPages = document.querySelector(".total-pages");
 const nextPageButton = document.querySelector(".next-page");
 const previousPageButton = document.querySelector(".previous-page");
 const currentPageIndex = document.querySelector(".current-page-indicator");
+const loaderContainer = document.querySelector(".loader-container");
+
 const loader = document.querySelector(".loader");
 const postNavigation = document.querySelector(".post-navigation");
 const postHeader = document.querySelector(".post-header");
@@ -278,6 +280,7 @@ async function getPosts(url) {
     //   }
     // });
   } catch (error) {
+    loaderContainer.style.display = "none";
     loader.style.display = "none";
     postContainer.innerHTML = showErrorMessage(error);
   }
@@ -287,6 +290,7 @@ getPosts(postUrl);
 
 function createHtml(pageNumbers, pageArray, pageContainerArray) {
   loader.style.display = "none";
+  loaderContainer.style.display = "none";
   currentPageIndex.innerHTML = pageIndex;
   // creates the posts inside the page(post) containers
   for (let i = 0; i < pageContainerArray.length; i++) {

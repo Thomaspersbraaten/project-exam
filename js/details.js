@@ -18,6 +18,7 @@ const modalContainer = document.querySelector(".modal-container");
 const modal = document.querySelector(".modal");
 
 const modalContent = document.querySelector(".modal-content");
+const loaderContainer = document.querySelector(".loader-container");
 
 const loader = document.querySelector(".loader");
 const readerComments = document.querySelector(".reader-comments");
@@ -80,6 +81,7 @@ fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
 
 function createHtml(post, author, comment, allPosts) {
   loader.style.display = "none";
+  loaderContainer.style.display = "none";
   // HUSK Å FIKSE MÅNED // / //  / /  /  / /
   const commentData = comment[0];
   // console.log(commentData);
