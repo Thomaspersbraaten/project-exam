@@ -40,43 +40,50 @@ async function getPosts(url) {
 async function searchFunction(searchUrl) {
   postsContainer.innerHTML = "";
   morePostsContainer.innerHTML = "";
+  searchInfo.innerHTML = "";
   loader.style.display = "block";
   showMore.style.display = "none";
   const response = await fetch(searchUrl + searchField.value);
   const results = await response.json();
   loader.style.display = "none";
   loaderContainer.style.display = "none";
-  searchInfo.innerHTML = `
-  <h2> Showing search results for "${searchField.value}"...</h2>`;
 
   console.log(results);
-  for (let i = 0; i < results.length; i++) {
-    const d = new Date(results[i].date);
-    const year = d.getFullYear();
-    const month = d.getMonth();
-    const day = d.getDate();
-    const date = day + "." + month + 1 + "." + year;
-
-    const postAuthor = results[i]._embedded.author[0].name;
-
-    postsContainer.innerHTML += `
-      <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post">
-        <div>
-         <h3>
-          ${results[i].title.rendered}
-         </h3>
-         <div class="author-info">
-         <p>Written by ${postAuthor} </p>
-         <p>${date}</p>
-         </div>
-         <div class="post-intro">
-          ${results[i].excerpt.rendered}
-         </div>
-        </div>
-        <p class="link-text">Read More &rightarrow;</p>
-        </a>
-        `;
+  if (results.length === 0) {
     // createHtml(results);
+    postsContainer.innerHTML = `<div class="search__nothing">No search results found for "${searchField.value}" </div> `;
+    postsContainer.style.display = "flex";
+  } else {
+    postsContainer.style.display = "grid";
+    searchInfo.innerHTML = `
+    <h2> Showing search results for "${searchField.value}"...</h2>`;
+    for (let i = 0; i < results.length; i++) {
+      const d = new Date(results[i].date);
+      const year = d.getFullYear();
+      const month = d.getMonth();
+      const day = d.getDate();
+      const date = day + "." + month + 1 + "." + year;
+
+      const postAuthor = results[i]._embedded.author[0].name;
+
+      postsContainer.innerHTML += `
+        <a href="details.html?id=${results[i].id}" style="text-decoration:none" class="post">
+          <div>
+           <h3>
+            ${results[i].title.rendered}
+           </h3>
+           <div class="author-info">
+           <p>Written by ${postAuthor} </p>
+           <p>${date}</p>
+           </div>
+           <div class="post-intro">
+            ${results[i].excerpt.rendered}
+           </div>
+          </div>
+          <p class="link-text">Read More &rightarrow;</p>
+          </a>
+          `;
+    }
   }
 }
 

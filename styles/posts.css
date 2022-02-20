@@ -51,7 +51,6 @@ input:focus {
 .post {
   border: 2px solid black;
   border-radius: 20px;
-
   color: black;
   background-color: #f9f8f8;
   transition: 0.4s;
@@ -101,6 +100,15 @@ input:focus {
   color: #0006;
   border: none;
   display: none;
+}
+.search__nothing {
+  margin: 30px auto;
+  text-align: center;
+  font-size: 2em;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #f9f8f8;
+  padding: 20px;
 }
 
 /* .old-post {
