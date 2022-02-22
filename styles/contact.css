@@ -58,7 +58,8 @@ Contact form
 
 #contact-form label {
   margin: 5px 5px 5px 0px;
-  font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif; */
+  font-family: Merriweather, sans-serif, Arial, Helvetica;
   font-weight: 700;
   font-style: italic;
   display: flex;
@@ -73,7 +74,8 @@ Contact form
 #contact-form input[type="email"],
 #contact-form textarea[type="text"] {
   font-size: 1.1em;
-  font-family: "Times New Roman", Times, serif;
+  /* font-family: "Times New Roman", Times, serif; */
+  font-family: Merriweather, sans-serif, Arial, Helvetica;
   box-sizing: border-box;
 }
 
@@ -105,6 +107,8 @@ Contact form
 @media (min-width: 700px) {
   .contact-text {
     font-size: 1.4em;
+    max-width: 750px;
+    margin: 15px auto;
   }
   #contact-form {
     width: 450px;
@@ -131,7 +135,6 @@ Contact form
 }
 @media (min-width: 1000px) {
   .contact-text {
-    max-width: 750px;
     margin: 15px auto;
   }
   .submit-button {

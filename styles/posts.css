@@ -32,10 +32,6 @@ label {
 input:focus {
   border: 2px solid white;
 }
-/* h1 {
-  margin: 10px auto;
-  text-align: center;
-} */
 
 .show-more-btn {
   background-color: white;
@@ -56,32 +52,6 @@ input:focus {
   transition: 0.4s;
 }
 
-/* .show {
-  animation: showPost 1s;
-}
-
-@keyframes showPost {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.show-yes {
-  animation: showPost-yes 1s;
-}
-
-@keyframes showPost-yes {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-} */
-
 .post__posts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -92,7 +62,7 @@ input:focus {
 
 .active-button:hover {
   cursor: pointer;
-  background-color: rgba(51, 255, 0, 0.774);
+  background-color: #d7ecd7;
 }
 
 .inactive-button {
@@ -111,70 +81,11 @@ input:focus {
   padding: 20px;
 }
 
-/* .old-post {
-  max-width: 180px;
-   margin: 10px; 
-} */
-
-/* .post-intro p {
-   white-space: nowrap; 
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-
-  height: 24px;
-  margin: 5px 15px;
-  text-align: left;
-  font-size: 0.6em;
-}  */
-
-/* .link-text {
-  font-weight: bold;
-  margin: 5px 20px;
-  text-align: right;
-} */
-/* 
-h2 {
-  font-family: alegreya;
-  font-weight: normal;
-  margin: 8px auto 5px auto;
-  font-size: 0.85em;
-} */
-
-/* .author-info {
-  display: flex;
-  justify-content: space-around;
-} */
-
-/* .author-info p {
-  font-size: 0.6em;
-   margin: 10px; 
-} */
-
 .more-posts-info p {
   font-size: 0.9em;
   margin: 20px 5px;
+  font-family: source sans pro, sans-serif, Arial, Helvetica;
 }
-
-/* .ribbon {
-  width: 90px;
-
-  padding: 5px;
-  margin: 10px;
-
-  background-color: #f0fbf0;
-  border: 1px solid black; */
-/* transform: rotateZ(-45deg);
-  overflow: hidden;
-  position: absolute;
-  left: -1px;
-  top: 150px;
-  font-size: 0.7em; */
-/* } */
 
 @media (min-width: 700px) {
   .more-posts-info {
@@ -196,6 +107,7 @@ h2 {
 @media (min-width: 1000px) {
   .post__posts-container {
     max-width: 1150px;
+    gap: 45px;
   }
   label {
     font-size: 1.8em;

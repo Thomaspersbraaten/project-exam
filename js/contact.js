@@ -49,6 +49,26 @@ contactForm.addEventListener("submit", validateForm);
 //   });
 
 // }
+function sendContactForm() {
+  const postData = JSON.stringify({
+    fullName: fullName.value,
+    email: email.value,
+    subject: subject.value,
+    message: message.value,
+  });
+  console.log(postData);
+
+  fetch(
+    "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback"
+  ),
+    {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: postData,
+    };
+}
 
 // Input validation function //
 

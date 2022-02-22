@@ -5,7 +5,8 @@ body {
   flex-direction: column;
 }
 :focus {
-  outline: 4px solid white;
+  outline: 5px solid black;
+  outline-style: solid;
 }
 
 /* Header and Nav */
@@ -17,8 +18,8 @@ body {
   font-family: "yellowtail", "Bebas Neue", cursive;
   /* padding: 10px; */
   font-size: 1.4em;
-  text-decoration: underline;
-  text-decoration-style: dotted;
+  /* text-decoration: underline;
+  text-decoration-style: dotted; */
 }
 
 nav {
@@ -28,9 +29,6 @@ nav {
 }
 
 header {
-  /* position: fixed;
-  z-index: 1;
-  width: 100%; */
   background-color: #d7ecd7;
   margin: 0;
   text-align: center;
@@ -54,7 +52,8 @@ header {
 
 .nav-menu a {
   text-decoration: none;
-  font-family: "Charm", cursive, Arial, Helvetica, sans-serif;
+  /* font-family: "Charm", cursive, Arial, Helvetica, sans-serif; */
+  font-family: source sans pro, sans-serif, Arial, Helvetica;
   font-weight: bold;
   color: black;
   padding: 5px;
@@ -65,18 +64,21 @@ nav li {
   list-style: none;
   margin: 8px auto;
   padding: 2px;
+  position: relative;
 }
 .nav-menu {
   display: flex;
   flex-flow: column wrap;
   height: 180px;
   position: absolute;
+  padding: 0px;
 
-  top: 31px;
-  right: 0px;
+  top: 41px;
+
   z-index: 1;
   background-color: #d7ecd7;
   width: 100%;
+  transition: transform 0.3s ease-in;
 }
 .fa-times-circle {
   display: none;
@@ -93,8 +95,10 @@ nav li {
 }
 
 h1 {
-  font-family: source sans pro, sans-serif, Arial, Helvetica;
-  margin: 35px auto;
+  /* font-family: source sans pro, sans-serif, Arial, Helvetica; */
+  font-size: 1.5em;
+  font-family: "charm", sans-serif, Arial, Helvetica;
+  margin: 15px auto;
   text-align: center;
 }
 /* 
@@ -156,7 +160,7 @@ Breadcrumbs
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 10px;
   min-width: 120px;
-  max-width: 150px;
+  max-width: 170px;
 }
 
 .welcome-message {
@@ -212,7 +216,6 @@ h2 {
   /* height: 600px; */
 }
 .carousel-container {
-  /* background-color: lightgreen; */
   overflow: hidden;
   height: 350px;
   width: 100%;
@@ -224,7 +227,7 @@ h2 {
   height: 100%;
   justify-content: center;
   position: relative;
-  transition: transform 0.3s ease-in;
+  transition: transform 0.4s ease-in;
 }
 
 .post-container__page-container {
@@ -240,7 +243,7 @@ h2 {
 }
 
 .post:hover {
-  background-color: #d9d3cb;
+  background-color: #cecece;
 }
 
 .post {
@@ -251,14 +254,16 @@ h2 {
   margin: 10px 7px;
   color: black;
   background-color: #f9f8f8;
-  transition: 0.4s;
+  transition: 0.5s;
   display: flex;
   flex-direction: column;
   align-content: center;
   align-items: center;
   justify-content: space-around;
 }
-
+.posts__page-of {
+  font-style: normal;
+}
 h3 {
   font-family: source sans pro, sans-serif, Arial, Helvetica;
   font-weight: 500;
@@ -292,11 +297,17 @@ h3 {
 }
 
 .link-text {
-  width: 90%;
+  /* width: 90%; */
   font-weight: bold;
-  margin: 5px 20px;
+  margin: 5px;
   text-align: right;
   font-size: 0.8em;
+  margin: 0px 5px 0px auto;
+  text-decoration: underline;
+}
+.fa-arrow-right {
+  margin: auto 10px;
+  font-size: 1em;
 }
 
 /* .post-intro p {
@@ -323,6 +334,7 @@ Posts Navigation
   display: flex;
   justify-content: center;
   align-content: center;
+  gap: 10px;
 }
 
 .navigation-pages p {
@@ -551,7 +563,7 @@ test posts
     font-size: 2.7em;
   }
   h2 {
-    font-size: 2.6em;
+    font-size: 2.1em;
   }
   .welcome {
     height: 400px;
@@ -594,6 +606,7 @@ test posts
   }
   .link-text {
     font-size: 1.2em;
+    margin-right: 20px;
   }
   .previous-page,
   .navigation-pages,
@@ -614,7 +627,8 @@ test posts
   }
 
   h1 {
-    font-size: 2.4em;
+    font-size: 3em;
+    margin: 40px auto;
   }
 }
 @media (min-width: 1000px) {
@@ -690,6 +704,7 @@ test posts
   }
   .link-text {
     font-size: 1.9em;
+    margin-right: 40px;
   }
   .previous-page,
   .navigation-pages,

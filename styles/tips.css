@@ -5,7 +5,11 @@ main {
   margin: 20px 20px 60px 20px;
 }
 .tips-section {
-  margin: 10px auto;
+  margin: 40px 10px;
+  background-color: #80808036;
+
+  border: 1px solid black;
+  border-radius: 20px;
 }
 
 .tips__content {
@@ -56,9 +60,6 @@ main {
 }
 
 @media (min-width: 700px) {
-  .tips__heading {
-    font-size: 2em;
-  }
   .tips__bullet {
     font-size: 5em;
   }
@@ -72,6 +73,7 @@ main {
 @media (min-width: 1000px) {
   .tips-section {
     max-width: 1050px;
+    margin: 40px auto;
   }
   .tips {
     max-width: 800px;
@@ -81,5 +83,9 @@ main {
   .tips__author-info {
     max-width: 800px;
     margin: 20px auto;
+  }
+  .tips-intro {
+    max-width: 750px;
+    margin: 30px auto 90px auto;
   }
 }

@@ -80,7 +80,7 @@ async function searchFunction(searchUrl) {
             ${results[i].excerpt.rendered}
            </div>
           </div>
-          <p class="link-text">Read More &rightarrow;</p>
+          <p class="link-text">Read more  <i class="fas fa-arrow-right"></i></p>
           </a>
           `;
     }
@@ -122,7 +122,7 @@ function createHtml(results) {
           ${results[i].excerpt.rendered}
          </div>
         </div>
-        <p class="link-text">Click to read more</p>
+        <p class="link-text">Read more  <i class="fas fa-arrow-right"></i></p>
         </a>
         `;
     const post = document.querySelector(".post");
@@ -173,7 +173,7 @@ function showMorePosts(results) {
             ${results[i].excerpt.rendered}
            </div>
           </div>
-          <p class="link-text">Click to read more</p>
+          <p class="link-text">Read more  <i class="fas fa-arrow-right"></i></p>
           </a>
           `;
       }
