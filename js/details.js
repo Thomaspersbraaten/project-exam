@@ -30,7 +30,7 @@ const postIdInForm = document.querySelector("#postId");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const commentInput = document.querySelector("#comment");
-
+const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 //
 
 // API URLS
@@ -89,19 +89,27 @@ function createHtml(post, author, comment, allPosts) {
   const data = post[0];
   console.log(data);
   const postImage = data._embedded["wp:featuredmedia"][0].source_url;
-  const d = new Date(data.date);
-  // console.log(d);
-  const year = d.getFullYear();
-  const month = d.getMonth();
-  const day = d.getDate();
-  const date = day + "." + month + 1 + "." + year;
+  // const d = new Date(data.date);
+  // // console.log(d);
+  // const year = d.getFullYear();
+  // const month = d.getMonth();
+  // const day = d.getDate();
+  // const date = day + "." + month + 1 + "." + year;
+  //
+
+  const dateCreation = new Date(data.date);
+  const year = dateCreation.getFullYear();
+  const monthIndex = dateCreation.getMonth();
+  const day = dateCreation.getDate();
+  const date = day + "." + month[monthIndex] + "." + year;
+  //
   // console.log(date);
   // console.log(data.content.rendered);
   // console.log(data);
   title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
   detailsHeader.innerHTML = `${data.title.rendered}`;
   imageContainer.innerHTML = `<img src="${postImage}" class="post-img">`;
-  detailsContainer.innerHTML = `<div>${data.content.rendered}</div>`;
+  detailsContainer.innerHTML = `${data.content.rendered}`;
   // const imageContainer = document.querySelector(".post-img");
   // console.log(imageContainer);
 
@@ -198,11 +206,20 @@ function createHtml(post, author, comment, allPosts) {
     firstComment.innerHTML = "";
   }
   comment.forEach(function (data) {
+    //
+
+    const dateCreation = new Date(data.date);
+    const year = dateCreation.getFullYear();
+    const monthIndex = dateCreation.getMonth();
+    const day = dateCreation.getDate();
+    const date = day + "." + month[monthIndex] + "." + year;
     readerComments.innerHTML += `
     <div class="user-comment-container">
-    <h3>Comment by: ${data.author_name}</h3>
-    <p>${data.content.rendered}</p>
-    </div>`;
+      <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
+      </div>  
+      <div class="comment-content"> ${data.content.rendered}</div>
+    </div>
+    `;
   });
 }
 
@@ -316,6 +333,14 @@ function validateForm(event) {
     // submitButton.disabled = true;
     postComment();
     commentForm.reset();
+    nameValid = false;
+    emailValid = false;
+    commentValid = false;
+    const pageUrl = window.location.href;
+    // Reloads page after comment submission and keeps the user in the comment area
+    const delayedRedirect = setTimeout(() => {
+      location.reload();
+    }, 500);
   } else {
     validateName();
     validateEmail();
@@ -326,22 +351,21 @@ function validateForm(event) {
 commentForm.addEventListener("submit", validateForm);
 
 function postComment() {
-  // const [postIdInForm, nameInput, emailInput, commentInput] =
-  //   event.target.elements;
   const postData = JSON.stringify({
-    post: postIdInForm.value,
     author_name: nameInput.value,
     author_email: emailInput.value,
     content: commentInput.value,
+    post: postIdInForm.value,
   });
-  console.log(postData);
+  fetch(
+    "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments",
 
-  fetch("https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments"),
     {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: postData,
-    };
+    }
+  );
 }

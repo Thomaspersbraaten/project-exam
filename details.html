@@ -89,7 +89,7 @@
 
         <hr class="divider" />
 
-      <section class="comment-section">
+      <section class="comment-section" id="comment-form">
         <h2 class="comment-amount"></h2>
         <p class="be-the-first-to-comment"></p>
         <div class="comment-container">
@@ -100,7 +100,7 @@
             <input type="hidden" id="postId"/>
             <!-- comment -->
             
-            <label for="comment">Comment</label>
+            <label for="comment">Comment<p class="required">*</p></label>
             <p class="comment-error error-message">
               Please input more atleast one character
             </p>
@@ -113,7 +113,7 @@
 
             <!-- Name -->
            
-            <label for="name">Name</label>
+            <label for="name">Name<p class="required">*</p></label>
             <p class="name-error error-message">
               Please input more than 5 characters
             </p>
@@ -123,7 +123,7 @@
 
             <!-- email -->
 
-            <label for="email">Email</label>
+            <label for="email">Email<p class="required">*</p></label>
             <p class="email-error error-message">Please input a valid email</p>
             <input type="text" name="email" id="email" />
 

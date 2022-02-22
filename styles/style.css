@@ -56,13 +56,20 @@ header {
   font-family: source sans pro, sans-serif, Arial, Helvetica;
   font-weight: bold;
   color: black;
-  padding: 5px;
+  padding: 10px;
   font-size: 1.2em;
+}
+
+.nav-menu a:hover,
+.logo:hover,
+.breadcrumbs-link:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
 }
 
 nav li {
   list-style: none;
-  margin: 8px auto;
+  margin: 12px auto;
   padding: 2px;
   position: relative;
 }
@@ -108,7 +115,9 @@ Breadcrumbs
   margin-right: 6px;
 }
 .breadcrumbs {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  /* font-family: Georgia, "Times New Roman", Times, serif; */
+  font-family: Merriweather, sans-serif, Arial, Helvetica;
+
   display: flex;
   text-align: left;
   margin: 10px 0px 0px 20px;
@@ -117,20 +126,21 @@ Breadcrumbs
 .breadcrumbs a,
 .breadcrumbs p {
   margin: 0px 7px;
-  color: rgb(44, 44, 44);
+  color: black;
 }
 .crumb {
-  font-weight: bold;
   font-size: 0.8em;
+  font-weight: normal;
 }
 
 .breadcrumbs-link {
-  text-decoration: underline;
+  font-weight: bold;
+  text-decoration: none;
   font-size: 0.8em;
 }
 
 .active-page {
-  font-weight: bold;
+  /* font-weight: bold; */
   font-size: 0.8em;
 }
 
@@ -270,7 +280,7 @@ h3 {
   margin: 8px 3px 5px 3px;
   /* font-size: 1em; */
   height: 36px;
-  line-height: 90%;
+  /* line-height: 90%; */
 }
 
 .author-info {
@@ -464,6 +474,10 @@ footer h3,
 /* 
 Global styles
 */
+.required {
+  margin: 3px 0px 0px 5px;
+  color: red;
+}
 
 p {
   font-family: Merriweather, sans-serif, Arial, Helvetica;
@@ -546,7 +560,7 @@ test posts
     margin-left: 10px;
   }
   .nav-menu a {
-    font-size: 1.6em;
+    font-size: 1.4em;
     padding: 10px;
     margin: auto 0px;
   }

@@ -52,12 +52,15 @@ h2 {
 }
 
 @media (min-width: 700px) {
+  h2 {
+    font-size: 1.7em;
+  }
   .profile-picture {
     height: 110px;
     width: 110px;
   }
   .profile p {
-    font-size: 1.4em;
+    font-size: 1.6em;
   }
   .profile {
     gap: 50px;
@@ -73,7 +76,7 @@ h2 {
   }
   .what-do-we-do p {
     max-width: 700px;
-    font-size: 1.4em;
+    font-size: 1.6em;
     margin: 20px auto;
   }
 }
