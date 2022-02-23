@@ -406,10 +406,23 @@ footer {
   background-color: #d7ecd7;
   margin-top: auto;
   text-align: center;
-  font-family: alegreya, sans-serif, Arial, Helvetica;
+  font-family: source sans pro, sans-serif, Arial, Helvetica;
   color: black;
 }
-
+.footer-top {
+  display: flex;
+  margin: 20px;
+}
+.to-the-top {
+  position: absolute;
+  margin: 20px;
+  right: 10%;
+  bottom: 20px;
+}
+.footer-top h4 {
+  position: absolute;
+  margin: 20px auto;
+}
 footer h3,
 .copyright {
   margin: 0px;
@@ -417,15 +430,15 @@ footer h3,
 }
 .copyright {
   opacity: 0.9;
-  padding: 10px;
+  padding: 20px;
 }
 
 .social-media-icons {
-  margin: 5px auto;
-  font-size: 1.5em;
+  margin: 20px auto;
+  font-size: 1.7em;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 25px;
 }
 .fa-facebook {
   color: #3b5998;

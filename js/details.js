@@ -82,38 +82,35 @@ fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
 function createHtml(post, author, comment, allPosts) {
   loader.style.display = "none";
   loaderContainer.style.display = "none";
-  // HUSK Å FIKSE MÅNED // / //  / /  /  / /
-  const commentData = comment[0];
-  // console.log(commentData);
 
   const data = post[0];
   console.log(data);
   const postImage = data._embedded["wp:featuredmedia"][0];
-  // const d = new Date(data.date);
-  // // console.log(d);
-  // const year = d.getFullYear();
-  // const month = d.getMonth();
-  // const day = d.getDate();
-  // const date = day + "." + month + 1 + "." + year;
-  //
-
+  // Month construction
   const dateCreation = new Date(data.date);
   const year = dateCreation.getFullYear();
   const monthIndex = dateCreation.getMonth();
   const day = dateCreation.getDate();
   const date = day + "." + month[monthIndex] + "." + year;
-  //
-  // console.log(date);
-  // console.log(data.content.rendered);
-  // console.log(data);
-  title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
+
+  // Page content
   detailsHeader.innerHTML = `${data.title.rendered}`;
   imageContainer.innerHTML = `<img src="${postImage.source_url}" class="post-img" alt="${postImage.alt_text}">`;
   detailsContainer.innerHTML = `${data.content.rendered}`;
-  // const imageContainer = document.querySelector(".post-img");
-  // console.log(imageContainer);
 
-  // MODAL MODAL MODAL
+  // title and meta description
+  const dataHeader = document.querySelector(".details-container h2");
+  title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
+  const metaDescription = document.createElement("meta");
+
+  metaDescription.name = "content";
+  metaDescription.setAttribute(
+    `content`,
+    `${data.title.rendered}: ${dataHeader.innerHTML}`
+  );
+  console.log(metaDescription);
+
+  // MODAL
 
   imageContainer.addEventListener("click", function () {
     modalContainer.classList.add("visible");
@@ -128,8 +125,6 @@ function createHtml(post, author, comment, allPosts) {
     event.stopImmediatePropagation();
     return false;
   });
-
-  //
 
   // Author information
 
@@ -148,7 +143,6 @@ function createHtml(post, author, comment, allPosts) {
   const index = allPosts.findIndex(function (post) {
     return post.id == id;
   });
-  console.log(index);
 
   const nextIndex = index + 1;
 
@@ -187,15 +181,11 @@ function createHtml(post, author, comment, allPosts) {
    <h3 class="no-more-posts"> No more posts</h3>
    `;
   }
-  // Comment form : POSTID value inserted into the form
-  // commentForm.innerHTML += `
-  //  <input type="hidden" id="postId" value=${data.id} />`;
+  // Comment form : Post.ID value inserted into the comment form
 
-  // console.log(data.id);
   postIdInForm.value = Number(data.id);
+  console.log(postIdInForm);
 
-  const postId = postIdInForm.value;
-  console.log(postId);
   // Comment section
   commentAmount.innerHTML = `
   Comments(${comment.length})`;
