@@ -88,7 +88,7 @@ function createHtml(post, author, comment, allPosts) {
 
   const data = post[0];
   console.log(data);
-  const postImage = data._embedded["wp:featuredmedia"][0].source_url;
+  const postImage = data._embedded["wp:featuredmedia"][0];
   // const d = new Date(data.date);
   // // console.log(d);
   // const year = d.getFullYear();
@@ -108,7 +108,7 @@ function createHtml(post, author, comment, allPosts) {
   // console.log(data);
   title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
   detailsHeader.innerHTML = `${data.title.rendered}`;
-  imageContainer.innerHTML = `<img src="${postImage}" class="post-img">`;
+  imageContainer.innerHTML = `<img src="${postImage.source_url}" class="post-img" alt="${postImage.alt_text}">`;
   detailsContainer.innerHTML = `${data.content.rendered}`;
   // const imageContainer = document.querySelector(".post-img");
   // console.log(imageContainer);
@@ -117,7 +117,7 @@ function createHtml(post, author, comment, allPosts) {
 
   imageContainer.addEventListener("click", function () {
     modalContainer.classList.add("visible");
-    modalContent.innerHTML = `<img src="${postImage}" class="modal-img">`;
+    modalContent.innerHTML = `<img src="${postImage.source_url}" class="modal-img" alt="${postImage.alt_text}">`;
   });
   modalContainer.addEventListener("click", function () {
     modalContainer.classList.remove("visible");
@@ -135,7 +135,7 @@ function createHtml(post, author, comment, allPosts) {
 
   authorContainer.innerHTML = `
   <div>
-    <img src="${author.simple_local_avatar[64]}" class="author-img">
+    <img src="${author.simple_local_avatar[64]}" class="author-img" alt="profile picture of ${author.name}">
     <p> Written by ${author.name}</p>
   </div>
   <p>${date}</p>

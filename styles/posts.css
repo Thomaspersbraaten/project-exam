@@ -11,7 +11,7 @@
 #search {
   width: 150px;
   border: 1px solid black;
-  border-radius: 3px;
+  border-radius: 50px;
   margin: auto;
 }
 .search-container {
@@ -101,8 +101,8 @@ input:focus {
     font-size: 1.2em;
   }
   .more-posts-info {
-    font-size: 1.5em;
-    margin: 30px auto;
+    font-size: 2em;
+    margin: 50px auto;
   }
   label {
     font-size: 1.3em;

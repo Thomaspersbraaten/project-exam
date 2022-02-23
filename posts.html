@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Environmentalist | Posts</title>
-
     <script
       src="https://kit.fontawesome.com/ba0e3e950c.js"
       crossorigin="anonymous"
@@ -22,6 +21,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+
     <link rel="stylesheet" href="https://use.typekit.net/dvp5txa.css" />
     <!-- Hotjar Tracking Code for https://optimistic-mestorf-829d84.netlify.app/ -->
     <script>
@@ -66,10 +66,17 @@
         <p class="active-page">Posts</p>
       </div>
       <h1>Posts</h1>
-      <div>
-        <form action="submit" class="search-container">
+      <div class="search-container">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <form action="submit" class="search-form">
           <label for="search">Search for posts</label>
-          <input type="search" name="search" id="search" />
+
+          <input
+            type="search"
+            name="search"
+            id="search"
+            placeholder="Search..."
+          />
         </form>
       </div>
       <section class="posts-section">

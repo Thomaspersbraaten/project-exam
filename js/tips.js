@@ -20,7 +20,8 @@ async function fetchApi(tipsUrl) {
       const monthIndex = dateCreation.getMonth();
       const day = dateCreation.getDate();
       const date = day + "." + month[monthIndex] + "." + year;
-      // <div class="tips__bullet">&bull;</div>
+
+      // on the last tip, no divider but a paragraph showing that there are no more posts
       if (i === results.length - 1) {
         tipsSection.innerHTML += `
         <div class="tips">
@@ -39,7 +40,9 @@ async function fetchApi(tipsUrl) {
       
           
           `;
-      } else {
+      }
+      // Creates tips with divider
+      else {
         tipsSection.innerHTML += `
           <div class="tips">
               <h2 class="tips__heading"> ${i + 1} - ${data.title.rendered}</h2>
