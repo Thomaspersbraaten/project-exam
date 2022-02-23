@@ -64,7 +64,22 @@ toTopButton.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-document.onscroll = function () {
+// document.onscroll = function () {
+//   if (
+//     document.documentElement.scrollTop + window.innerHeight ==
+//     document.documentElement.scrollHeight
+//   ) {
+//     if (window.innerWidth > 2000) {
+//       toTopButton.style.right = 500 + "px";
+//     } else {
+//       toTopButton.style.right = 20 + "px";
+//     }
+//   } else {
+//     toTopButton.style.right = -140 + "px";
+//   }
+// };
+// };
+document.addEventListener("scroll", function () {
   if (
     document.documentElement.scrollTop + window.innerHeight ==
     document.documentElement.scrollHeight
@@ -77,4 +92,4 @@ document.onscroll = function () {
   } else {
     toTopButton.style.right = -140 + "px";
   }
-};
+});
