@@ -26,6 +26,9 @@ section {
 .details-container p {
   font-style: normal;
 }
+.details-container h4 {
+  display: none;
+}
 /* 
 .details-header {
   font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
@@ -306,7 +309,7 @@ Comment Section
   }
   h2 {
     font-size: 2em;
-    margin: 30px;
+    margin: 30px auto;
   }
   .details-container {
     margin: 30px;
