@@ -317,3 +317,23 @@ function createHtml(pageNumbers, pageArray, pageContainerArray) {
   }
   totalPages.innerHTML = `${pageNumbers}`;
 }
+
+const toTopButton = document.querySelector(".to-the-top");
+toTopButton.addEventListener("click", function () {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+document.addEventListener("scroll", function () {
+  if (
+    document.documentElement.scrollTop + window.innerHeight ==
+    document.documentElement.scrollHeight
+  ) {
+    if (window.innerWidth > 1800) {
+      toTopButton.style.right = 500 + "px";
+    } else {
+      toTopButton.style.right = 20 + "px";
+    }
+  } else {
+    toTopButton.style.right = -140 + "px";
+  }
+});

@@ -2,7 +2,6 @@ const navMenu = document.querySelector(".nav-menu");
 const hamburgerMenu = document.querySelector(".hamburger");
 const hamburgerBars = document.querySelector(".fa-bars");
 const hamburgerX = document.querySelector(".far");
-const toTopButton = document.querySelector(".to-the-top");
 
 // const searchUrl =
 //   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&search=";
@@ -60,10 +59,6 @@ function showErrorMessage(error) {
   return errorHtml;
 }
 
-toTopButton.addEventListener("click", function () {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
 // document.onscroll = function () {
 //   if (
 //     document.documentElement.scrollTop + window.innerHeight ==
@@ -79,17 +74,3 @@ toTopButton.addEventListener("click", function () {
 //   }
 // };
 // };
-document.addEventListener("scroll", function () {
-  if (
-    document.documentElement.scrollTop + window.innerHeight ==
-    document.documentElement.scrollHeight
-  ) {
-    if (window.innerWidth > 2000) {
-      toTopButton.style.right = 500 + "px";
-    } else {
-      toTopButton.style.right = 20 + "px";
-    }
-  } else {
-    toTopButton.style.right = -140 + "px";
-  }
-});

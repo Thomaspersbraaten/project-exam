@@ -460,7 +460,7 @@ footer {
   align-items: center;
   background-color: azure;
   border-radius: 10px;
-  transition: all 1s ease;
+  transition: all 0.7s ease;
   box-shadow: 8px 8px 5px #aaaaaa;
 
   /* position: absolute;

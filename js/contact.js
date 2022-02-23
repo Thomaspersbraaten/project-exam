@@ -59,15 +59,15 @@ function sendContactForm() {
   console.log(postData);
 
   fetch(
-    "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback"
-  ),
+    "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback",
     {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
       body: postData,
-    };
+    }
+  );
 }
 
 // Input validation function //

@@ -97,6 +97,8 @@ next and previous post
 
 .next-post,
 .previous-post {
+  display: flex;
+
   color: black;
   font-size: 1em;
   height: 100%;
@@ -155,6 +157,7 @@ next and previous post
   width: 70px;
   text-decoration: none;
   font-size: 0.5em;
+  margin: auto;
 }
 
 .fa-arrow-circle-right,
