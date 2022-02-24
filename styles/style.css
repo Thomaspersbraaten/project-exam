@@ -5,7 +5,7 @@ body {
   flex-direction: column;
 }
 :focus {
-  outline: 5px solid black;
+  outline: 3px solid black;
   outline-style: solid;
 }
 
@@ -227,7 +227,7 @@ h2 {
 }
 .carousel-container {
   overflow: hidden;
-  height: 350px;
+  height: 380px;
   /* width: 100%; */
 }
 
@@ -240,7 +240,7 @@ h2 {
   position: relative;
   /* transition: transform 0.4s ease-in; */
 
-  transition: transform 0.4s cubic-bezier(0.55, 0.09, 0.68, 0.53);
+  transition: transform 0.6s cubic-bezier(0.55, 0.09, 0.68, 0.53);
   width: 100%;
   /* overflow: hidden; */
   margin: auto;
@@ -253,7 +253,7 @@ h2 {
   /* width: 90%;
   margin: 0px 5%; */
   width: 100%;
-  margin: 0px;
+
   position: absolute;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -267,7 +267,7 @@ h2 {
 .post {
   border: 2px solid black;
   border-radius: 20px;
-  height: 145px;
+  height: 170px;
   /* width: 145px; */
   margin: 10px 7px;
   color: black;
@@ -295,6 +295,7 @@ h3 {
 .author-info {
   display: flex;
   justify-content: space-around;
+  height: auto;
 }
 
 .author-info p {
@@ -309,10 +310,10 @@ h3 {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  height: 36px;
+  height: 42px;
   margin: 0px 15px;
   text-align: left;
-  font-size: 0.6em;
+  font-size: 0.7em;
 }
 
 /* TRY NEW
@@ -672,11 +673,14 @@ test posts
   }
 
   .post-container__page-container {
-    width: 92%;
+    /* width: 92%;
     margin: 0px 4%;
+    width: 92%;
+    margin: 0px 4%; */
   }
   .post {
     height: 200px;
+    margin: 15px 20px;
   }
   h3 {
     font-size: 1.3em;
@@ -694,7 +698,7 @@ test posts
   }
 
   .carousel-container {
-    height: 450px;
+    height: 460px;
   }
   .link-text {
     font-size: 1.2em;
@@ -783,32 +787,33 @@ test posts
     max-width: 1150px;
     margin: auto;
   }
+  /* posts */
+  .carousel-container {
+    height: 670px;
+  }
 
   .post-container__page-container {
     width: 100%;
     margin: auto;
-    gap: 45px;
   }
   .post {
-    height: 320px;
+    height: 300px;
   }
-  .carousel-container {
-    height: 730px;
-  }
+
   h3 {
-    font-size: 1.8em;
-    text-decoration: underline;
+    font-size: 1.6em;
+    /* text-decoration: underline; */
   }
   .post-intro p {
-    font-size: 1.6em;
+    font-size: 1.3em;
     height: 40%;
     -webkit-line-clamp: 4;
   }
   .author-info p {
-    font-size: 1.5em;
+    font-size: 1.3em;
   }
   .link-text {
-    font-size: 1.9em;
+    font-size: 1.4em;
     margin-right: 40px;
   }
   .previous-page,

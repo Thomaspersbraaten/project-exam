@@ -30,7 +30,7 @@ function validateForm(event) {
   // validateMessage();
   event.preventDefault();
   if (nameValid && emailValid && subjectValid && messageValid) {
-    // sendContactForm();
+    sendContactForm();
     contactForm.reset();
     successMessage.style.display = "flex";
     successMessage.innerHTML = `<p>Thank you for contacting us!</p>`;
@@ -45,7 +45,7 @@ function validateForm(event) {
 
 contactForm.addEventListener("submit", validateForm);
 
-// Send contact form to wordpress -> redirected to my personal email
+// Send contact form to wordpress -> redirected to my personal email and stored in "flamingo" plugin on wordpress.
 
 function sendContactForm(e) {
   var formData = new FormData();
@@ -57,7 +57,6 @@ function sendContactForm(e) {
     "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback",
     {
       method: "post",
-
       body: formData,
     }
   );

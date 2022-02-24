@@ -10,6 +10,8 @@ const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 const showMore = document.querySelector(".show-more-btn");
 const searchField = document.querySelector("#search");
 const searchForm = document.querySelector(".search-form");
+const searchButton = document.querySelector(".search-button");
+
 const searchUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&search=";
 
@@ -30,6 +32,10 @@ async function getPosts(url) {
       // createHtml(results);
     });
     searchForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      searchFunction(searchUrl);
+    });
+    searchButton.addEventListener("submit", function (e) {
       e.preventDefault();
       searchFunction(searchUrl);
     });
