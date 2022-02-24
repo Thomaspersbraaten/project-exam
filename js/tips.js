@@ -79,7 +79,7 @@ document.addEventListener("scroll", function () {
     document.documentElement.scrollHeight
   ) {
     if (window.innerWidth > 1800) {
-      toTopButton.style.right = 500 + "px";
+      toTopButton.style.right = 5 + "%";
     } else {
       toTopButton.style.right = 20 + "px";
     }

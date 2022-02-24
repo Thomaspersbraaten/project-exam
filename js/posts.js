@@ -143,9 +143,10 @@ function createHtml(results) {
 
   if (postsContainer.childElementCount === results.length) {
     morePostsInfo.innerHTML = `<p>There are <b>no</b> more posts to show...</p>`;
-  } else {
-    morePostsInfo.innerHTML = `<p>There are more posts to show</p>`;
   }
+  //  else {
+  //   // morePostsInfo.innerHTML = `<p>There are more posts to show</p>`;
+  // }
 }
 
 function showMorePosts(results) {
@@ -153,7 +154,8 @@ function showMorePosts(results) {
   // Function keep showing 10 more posts.
   for (let i = currentPostCount; i <= morePostsCount; i++) {
     if (i === results.length) {
-      morePostsInfo.innerHTML = `<p>There are <b>no</b> more posts to show...</p>`;
+      // morePostsInfo.innerHTML = `<p>There are <b>no</b> more posts to show...</p>`;
+      morePostsInfo.style.display = "block";
       showMore.classList.add("inactive-button");
       showMore.classList.remove("active-button");
       return;
@@ -187,7 +189,7 @@ function showMorePosts(results) {
           `;
       }
     }
-    morePostsInfo.innerHTML = `<p>There are more posts to show</p>`;
+    // morePostsInfo.innerHTML = `<p>There are more posts to show</p>`;
   }
 
   morePostsCount = morePostsCount + 10;
@@ -205,7 +207,7 @@ document.addEventListener("scroll", function () {
     document.documentElement.scrollHeight
   ) {
     if (window.innerWidth > 1800) {
-      toTopButton.style.right = 500 + "px";
+      toTopButton.style.right = 5 + "%";
     } else {
       toTopButton.style.right = 20 + "px";
     }

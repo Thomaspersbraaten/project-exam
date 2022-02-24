@@ -72,7 +72,7 @@
 
       <h1>Posts</h1>
       <div class="search-container">
-        <form action="submit" class="search-form">
+        <form action="submit" class="search-form" autocomplete="off">
           <label for="search">Search for posts</label>
           <div class="search-input-container">
             <input
@@ -90,7 +90,9 @@
 
         <div class="search-info"></div>
         <div class="post__posts-container"></div>
-        <div class="more-posts-info"></div>
+        <div class="more-posts-info">
+          <p>There are <b>no</b> more posts to show...</p>
+        </div>
         <button class="show-more-btn active-button">Show more posts</button>
       </section>
       <div class="to-the-top">

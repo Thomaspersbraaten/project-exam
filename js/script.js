@@ -227,6 +227,9 @@ async function getPosts(url) {
 
     // Previous button moves to the previous page
     function previousPageFunction() {
+      if (pageIndex === pageContainerArray.length) {
+        nextPageButton.classList.remove("opacity");
+      }
       if (pageIndex === 1) {
         return;
       } else {
@@ -235,6 +238,9 @@ async function getPosts(url) {
         pageIndex--;
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, previousPage);
+        if (pageIndex === 1) {
+          previousPageButton.classList.add("opacity");
+        }
       }
     }
 
@@ -243,6 +249,9 @@ async function getPosts(url) {
     // Next button moves to the next page
     nextPageButton.addEventListener("click", nextPageFunction);
     function nextPageFunction() {
+      if (pageIndex === 1) {
+        previousPageButton.classList.remove("opacity");
+      }
       if (pageIndex === pageContainerArray.length) {
         return;
       } else {
@@ -252,6 +261,9 @@ async function getPosts(url) {
         console.log(pageIndex);
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, nextPage);
+        if (pageIndex === pageContainerArray.length) {
+          nextPageButton.classList.add("opacity");
+        }
       }
     }
   } catch (error) {
@@ -314,7 +326,7 @@ document.addEventListener("scroll", function () {
     document.documentElement.scrollHeight
   ) {
     if (window.innerWidth > 1800) {
-      toTopButton.style.right = 500 + "px";
+      toTopButton.style.right = 5 + "%";
     } else {
       toTopButton.style.right = 20 + "px";
     }

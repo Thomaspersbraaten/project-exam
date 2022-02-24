@@ -5,8 +5,9 @@ body {
   flex-direction: column;
 }
 :focus {
-  outline: 3px solid black;
+  outline: 1px solid black;
   outline-style: solid;
+  border-radius: 10px;
 }
 
 /* Header and Nav */
@@ -90,16 +91,18 @@ nav li {
 .fa-times-circle {
   display: none;
 }
-
+.opacity {
+  opacity: 0.4;
+}
 .nav-active {
   /* text-decoration: underline; */
   border: 2px solid black;
   border-radius: 10px;
 }
 
-.opacity-container {
+/* .opacity-container {
   background-color: rgba(0, 0, 0, 0.336);
-}
+} */
 
 h1 {
   /* font-family: source sans pro, sans-serif, Arial, Helvetica; */
@@ -392,6 +395,10 @@ Posts Navigation
   font-weight: bold;
   padding: 5px;
   margin: 5px;
+}
+.previous-page,
+.next-page {
+  transition: all 0.4s;
 }
 .next-page:hover,
 .previous-page:hover {

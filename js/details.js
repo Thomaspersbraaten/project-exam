@@ -158,9 +158,10 @@ function createHtml(post, author, comment, allPosts) {
     `;
     nextPost.classList.add("hover-style");
   } catch {
-    nextPost.innerHTML = `
-    <h3 class="no-more-posts"> No more posts</h3>
-    `;
+    // nextPost.innerHTML = `
+    // <h3 class="no-more-posts"> No more posts</h3>
+    // `;
+    nextPost.style.display = "none";
   }
 
   const previousIndex = index - 1;
@@ -178,8 +179,11 @@ function createHtml(post, author, comment, allPosts) {
     previousPost.classList.add("hover-style");
   } catch {
     previousPost.innerHTML = `
-   <h3 class="no-more-posts"> No more posts</h3>
-   `;
+     <h3 class="no-more-posts"> No more posts</h3>
+     `;
+    // postNavigation.style.justifyContent = "right";
+    // previousPost.style.display = "none";
+    previousPost.style.opacity = 0.4;
   }
   // Comment form : Post.ID value inserted into the comment form
 
@@ -278,7 +282,7 @@ email.addEventListener("input", validateEmailKeyup);
 // Comment Validation
 
 function validateComment() {
-  if (checkLength(commentInput.value, 2)) {
+  if (checkLength(commentInput.value, 1)) {
     commentValid = true;
     commentError.style.display = "none";
   } else {
@@ -289,7 +293,7 @@ function validateComment() {
 
 function validateCommentKeyup() {
   console.log(commentValid);
-  if (checkLength(commentInput.value, 2)) {
+  if (checkLength(commentInput.value, 1)) {
     commentValid = true;
     commentError.style.display = "none";
   } else {
@@ -328,9 +332,9 @@ function validateForm(event) {
     commentValid = false;
 
     // Reloads page after comment submission
-    const delayedRedirect = setTimeout(() => {
-      location.reload();
-    }, 500);
+    // const delayedRedirect = setTimeout(() => {
+    //   location.reload();
+    // }, 500);
   } else {
     validateName();
     validateEmail();
@@ -371,7 +375,7 @@ document.addEventListener("scroll", function () {
     document.documentElement.scrollHeight
   ) {
     if (window.innerWidth > 1800) {
-      toTopButton.style.right = 500 + "px";
+      toTopButton.style.right = 5 + "%";
     } else {
       toTopButton.style.right = 20 + "px";
     }

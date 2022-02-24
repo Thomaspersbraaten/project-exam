@@ -308,9 +308,12 @@ Comment Section
     font-size: 1.7em;
     gap: 7px;
   }
-  main h2 {
+  .details-container h2 {
     font-size: 2em;
     margin: 30px auto;
+  }
+  .comment-amount {
+    font-size: 2em;
   }
   .details-container {
     margin: 30px;
@@ -426,6 +429,7 @@ Comment Section
   .post-img {
     max-width: 950px;
   }
+
   .details-container {
     max-width: 950px;
     margin: 20px auto 50px auto;
