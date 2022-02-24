@@ -24,23 +24,28 @@
     />
     <link rel="stylesheet" href="https://use.typekit.net/dvp5txa.css" />
     <!-- Hotjar Tracking Code for https://optimistic-mestorf-829d84.netlify.app/ -->
-<script>
-  (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:2721320,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-      a.appendChild(r);
-  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 2721320, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
   </head>
   <body>
     <header>
       <nav>
         <a href="index.html" class="logo">The Environmentalist</a>
         <ul class="nav-menu" style="display: none">
-          <li><a href="index.html" >Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="posts.html" class="nav-active">Posts</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -53,25 +58,23 @@
       </nav>
     </header>
     <main>
-    
-
       <div class="breadcrumbs">
-        <a href="index.html" class="breadcrumbs-link">      <i class="fas fa-home"></i> Home</a>
+        <a href="index.html" class="breadcrumbs-link">
+          <i class="fas fa-home"></i> Home</a
+        >
         <div class="crumb">&gt;</div>
         <a href="posts.html" class="breadcrumbs-link"> Posts</a>
         <div class="crumb">&gt;</div>
         <p class="active-page"></p>
       </div>
       <div class="loader-container"><div class="loader"></div></div>
-      
 
       <section>
         <h1 class="details-header"></h1>
         <div class="details-image"></div>
 
-     
         <div class="modal-container">
-          <div class="modal"> 
+          <div class="modal">
             <div class="modal-content"></div>
           </div>
         </div>
@@ -83,23 +86,23 @@
           <div class="previous-post"></div>
           <div class="next-post"></div>
         </div>
-
-
       </section>
 
-        <hr class="divider" />
+      <hr class="divider" />
 
       <section class="comment-section" id="comment-form">
         <h2 class="comment-amount"></h2>
         <p class="be-the-first-to-comment"></p>
         <div class="comment-container">
           <h3 class="leave-comment">Leave a comment</h3>
-                    <form class="comment-form" >
-         
-            <input type="hidden" id="postId"/>
+          <form class="comment-form">
+            <input type="hidden" id="postId" />
             <!-- comment -->
-            
-            <label for="comment">Comment<p class="required">*</p></label>
+
+            <label for="comment"
+              >Comment
+              <p class="required">*</p></label
+            >
             <p class="comment-error error-message">
               Please input more atleast one character
             </p>
@@ -111,51 +114,59 @@
             ></textarea>
 
             <!-- Name -->
-           
-            <label for="name">Name<p class="required">*</p></label>
+
+            <label for="name"
+              >Name
+              <p class="required">*</p></label
+            >
             <p class="name-error error-message">
               Please input more than 5 characters
             </p>
 
             <input type="text" name="name" id="name" />
 
-
             <!-- email -->
 
-            <label for="email">Email<p class="required">*</p></label>
+            <label for="email"
+              >Email
+              <p class="required">*</p></label
+            >
             <p class="email-error error-message">Please input a valid email</p>
             <input type="text" name="email" id="email" />
 
             <div class="success-message"></div>
-           
-              <button class="submit-button">Post comment</button>
-   
+
+            <button class="submit-button">Post comment</button>
           </form>
         </div>
         <div class="reader-comments"></div>
       </section>
 
-
       <div class="to-the-top">
         <i class="fas fa-arrow-circle-up"></i>
         <p>Scroll to top</p>
       </div>
-      <footer>
-        <h4>The Environmentalist 2022</h4>
-  
-        <div class="social-media-icons">
-          <i class="fab fa-facebook"></i>
-          <i class="fab fa-twitter"></i>
-          <i class="fa fa-instagram" id="insta" aria-hidden="true"></i>
-        </div>
-        <p class="footer-disclaimer">
-          The research done for our posts are based public information found on
-          the internett. Please keep comments within reasonable limits.
-        </p>
-        <p class="copyright">Copyright <b>&copy;</b> 2022 The Environmentalist</p>
-      </footer>
+    </main>
+    <footer>
+      <h4>The Environmentalist 2022</h4>
+
+      <div class="social-media-icons">
+        <a href="https://nb-no.facebook.com/"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/"
+          ><i class="fa fa-instagram" id="insta" aria-hidden="true"></i
+        ></a>
+      </div>
+      <p class="footer-disclaimer">
+        The research done for our posts are based public information found on
+        the internett. Please keep comments within reasonable limits.
+      </p>
+      <p class="copyright">Copyright <b>&copy;</b> 2022 The Environmentalist</p>
+    </footer>
     <script src="js/functions.js"></script>
-    <!-- <script src="js/script.js"></script> -->
+
     <script src="js/details.js"></script>
   </body>
 </html>

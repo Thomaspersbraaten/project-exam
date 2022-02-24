@@ -38,21 +38,18 @@ section {
   text-align: center;
 } */
 
-h2,
-p {
+main h2,
+main p {
   text-align: left;
-  margin: 10px 20px;
 }
-h2 {
+main h2 {
   font-size: 1.3em;
+  margin: 25px 3%;
 }
 
-p {
+main p {
   font-size: 1em;
-}
-
-ul {
-  text-align: left;
+  margin: 20px 3%;
 }
 
 /* 
@@ -287,6 +284,7 @@ Comment Section
 
 .visible {
   display: flex;
+  z-index: 1;
 }
 
 .modal-img {
@@ -310,7 +308,7 @@ Comment Section
     font-size: 1.7em;
     gap: 7px;
   }
-  h2 {
+  main h2 {
     font-size: 2em;
     margin: 30px auto;
   }
@@ -318,7 +316,7 @@ Comment Section
     margin: 30px;
   }
   .details-container p {
-    font-size: 1.6em;
+    font-size: 1.4em;
     margin: 30px auto;
   }
   .author-info {
@@ -454,6 +452,9 @@ Comment Section
   .modal-content {
     max-width: 1200px;
     margin: auto 20px;
+  }
+  .details-container p {
+    max-width: 750px;
   }
   /* .modal-img {
     position: relative;

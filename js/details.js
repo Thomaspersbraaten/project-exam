@@ -318,16 +318,16 @@ function checkEmail(email) {
 function validateForm(event) {
   event.preventDefault();
   if (nameValid && emailValid && commentValid) {
-    successMessage.style.display = "flex";
-    successMessage.innerHTML = `<p>Thank you for commenting!</p>`;
+    // successMessage.style.display = "flex";
+    // successMessage.innerHTML = `<p>Thank you for commenting!</p>`;
     // submitButton.disabled = true;
     postComment();
     commentForm.reset();
     nameValid = false;
     emailValid = false;
     commentValid = false;
-    const pageUrl = window.location.href;
-    // Reloads page after comment submission and keeps the user in the comment area
+
+    // Reloads page after comment submission
     const delayedRedirect = setTimeout(() => {
       location.reload();
     }, 500);

@@ -24,8 +24,13 @@ var messageValid = false;
 // Form Validation function
 
 function validateForm(event) {
+  // validateName();
+  // validateEmail();
+  // validateSubject();
+  // validateMessage();
   event.preventDefault();
   if (nameValid && emailValid && subjectValid && messageValid) {
+    // sendContactForm();
     contactForm.reset();
     successMessage.style.display = "flex";
     successMessage.innerHTML = `<p>Thank you for contacting us!</p>`;
@@ -38,36 +43,16 @@ function validateForm(event) {
   }
 }
 
-contactForm.addEventListener("submit", sendContactForm);
+contactForm.addEventListener("submit", validateForm);
 
-// function sendContactForm() {
-//   const postData = JSON.stringify({
-//     post: postIdInForm.value,
-//     author_name: nameInput.value,
-//     author_email: emailInput.value,
-//     content: commentInput.value,
-//   });
-// your-name: fullName.value,
-// email: email.value,
-// subject: subject.value,
-// message: message.value,
-
-// }
+// Send contact form to wordpress -> redirected to my personal email
 
 function sendContactForm(e) {
-  e.preventDefault();
-
   var formData = new FormData();
-
   formData.append("your-name", fullName.value);
   formData.append("your-email", email.value);
   formData.append("your-subject", subject.value);
   formData.append("your-message", message.value);
-  console.log(formData.get("your-name"));
-  console.log(formData.get("your-email"));
-  console.log(formData.get("your-subject"));
-  console.log(formData.get("your-message"));
-
   fetch(
     "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback",
     {
@@ -77,8 +62,6 @@ function sendContactForm(e) {
     }
   );
 }
-
-// Input validation function //
 
 // Name validation
 
@@ -123,7 +106,7 @@ function validateEmailKeyup() {
     emailValid = false;
   }
 }
-email.addEventListener("keyup", validateEmailKeyup);
+email.addEventListener("input", validateEmailKeyup);
 
 // Subject validation
 

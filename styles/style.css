@@ -250,8 +250,10 @@ h2 {
   /* padding: 10px; */
   color: black;
   border-radius: 5px;
-  width: 90%;
-  margin: 0px 5%;
+  /* width: 90%;
+  margin: 0px 5%; */
+  width: 100%;
+  margin: 0px;
   position: absolute;
   display: grid;
   grid-template-columns: 1fr 1fr;

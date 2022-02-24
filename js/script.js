@@ -167,30 +167,15 @@ const welcomeContainer = document.querySelector(".welcome");
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 const postUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
-const newUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&_fields[]=title&_fields[]=excerpt&per_page=100&_embed";
 
 var pageIndex = 1;
 var arrayIndex = 0;
 
-async function getPosts(url, urlTwo) {
+async function getPosts(url) {
   try {
     const response = await fetch(url);
     console.log(response);
     const results = await response.json();
-
-    const responseTwo = await fetch(urlTwo);
-
-    const resultsTwo = await responseTwo.json();
-    // console.log(resultsTwo);
-
-    // const tryone = results[0].content.rendered;
-    // console.log(tryone);
-    // const trytwo = tryone.outerHTMl;
-    // console.log(trytwo);
-    // const trydata = { html: trytwo };
-    // const jason = JSON.stringify(tryone);
-    // console.log(jason);
 
     // creates the variable that calculates the number of pages to create
     const posts = results.length;
@@ -276,7 +261,7 @@ async function getPosts(url, urlTwo) {
   }
 }
 
-getPosts(postUrl, newUrl);
+getPosts(postUrl);
 
 function createHtml(pageNumbers, pageArray, pageContainerArray) {
   loader.style.display = "none";
