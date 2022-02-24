@@ -38,7 +38,7 @@ function validateForm(event) {
   }
 }
 
-contactForm.addEventListener("submit", validateForm);
+contactForm.addEventListener("submit", sendContactForm);
 
 // function sendContactForm() {
 //   const postData = JSON.stringify({
@@ -47,25 +47,33 @@ contactForm.addEventListener("submit", validateForm);
 //     author_email: emailInput.value,
 //     content: commentInput.value,
 //   });
+// your-name: fullName.value,
+// email: email.value,
+// subject: subject.value,
+// message: message.value,
 
 // }
-function sendContactForm() {
-  const postData = JSON.stringify({
-    fullName: fullName.value,
-    email: email.value,
-    subject: subject.value,
-    message: message.value,
-  });
-  console.log(postData);
+
+function sendContactForm(e) {
+  e.preventDefault();
+
+  var formData = new FormData();
+
+  formData.append("your-name", fullName.value);
+  formData.append("your-email", email.value);
+  formData.append("your-subject", subject.value);
+  formData.append("your-message", message.value);
+  console.log(formData.get("your-name"));
+  console.log(formData.get("your-email"));
+  console.log(formData.get("your-subject"));
+  console.log(formData.get("your-message"));
 
   fetch(
     "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback",
     {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: postData,
+      method: "post",
+
+      body: formData,
     }
   );
 }
