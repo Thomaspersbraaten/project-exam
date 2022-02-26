@@ -7,8 +7,10 @@ body {
 :focus {
   outline: 1px solid black;
   outline-style: solid;
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
+
+
 
 /* Header and Nav */
 
@@ -95,14 +97,10 @@ nav li {
   opacity: 0.4;
 }
 .nav-active {
-  /* text-decoration: underline; */
   border: 2px solid black;
   border-radius: 10px;
 }
 
-/* .opacity-container {
-  background-color: rgba(0, 0, 0, 0.336);
-} */
 
 h1 {
   /* font-family: source sans pro, sans-serif, Arial, Helvetica; */
@@ -119,8 +117,8 @@ Breadcrumbs
 }
 .breadcrumbs {
   /* font-family: Georgia, "Times New Roman", Times, serif; */
-  font-family: Merriweather, sans-serif, Arial, Helvetica;
-
+  font-family: merrriweather, sans-serif, Arial, Helvetica;
+  font-style: italic;
   display: flex;
   text-align: left;
   margin: 10px 0px 0px 20px;
@@ -303,17 +301,20 @@ h3 {
 
 .author-info p {
   font-size: 0.6em;
+
   /* margin: 10px; */
+  font-style: italic;
 }
 
 .post-intro p {
+  font-family: roboto, sans-serif, Arial, Helvetica;
   overflow: hidden;
   text-overflow: ellipsis;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  height: 42px;
+  height: 40px;
   margin: 0px 15px;
   text-align: left;
   font-size: 0.7em;
@@ -416,6 +417,7 @@ Get Involved Section
   background-size: cover;
   background-position: center;
   display: flex;
+
 }
 
 .get-involved-text {
@@ -461,7 +463,6 @@ footer {
   right: -140px;
   bottom: 120px;
   z-index: 2;
-  /* border: 1px solid black; */
   width: 75px;
   height: 50px;
   display: flex;
@@ -562,6 +563,12 @@ Global styles
 */
 
 /* inputs*/
+
+.input-error-border-red {
+  border: 1px solid red;
+}
+
+
 .comment-form, #contact-form {
   text-align: left;
   display: flex;
@@ -570,8 +577,23 @@ Global styles
   margin: 20px 20px 80px 20px;
   padding: 10px;
   /* background-color: #a9a9a927; */
+  /* background-color: #a9a9a912;
+  border: 1px solid #707070; */
+  max-width: 600px;
+}
+.comment-form {
   background-color: #a9a9a912;
   border: 1px solid #707070;
+  padding: 30px 10px 10px 10px;
+}
+/* .comment-form div, #contact-form div {
+margin: auto;
+width: 100%;
+} */
+ .container-large-inputs, .container-small-inputs {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 label {
@@ -584,7 +606,7 @@ label {
 }
 input {
   border: 1px #707070 solid;
-  width: 270px;
+  /* width: 270px; */
   margin: 0px 0px 10px 0px;
   padding: 5px;
   height: 35px;
@@ -592,20 +614,24 @@ input {
 #name,
 #email {
   height: 35px;
+  max-width: 250px;
+  /* width: 65%; */
   /* width: 75%;
   max-width: 300px;
   margin: 5px 5%; */
 }
 
 
-#message, #comment {
+#message, #comment, #subject {
   padding-bottom: 75px;
   margin-bottom: 5px;
-  width: 270px;
+  max-width: 350px;
+
+
 }
-#comment {
+/* #comment {
   height: 105px;
-}
+} */
 #contact-form input[type="text"],
 #contact-form input[type="email"],
 #contact-form textarea[type="text"], 
@@ -626,7 +652,6 @@ input {
 
 p {
   font-family: Merriweather, sans-serif, Arial, Helvetica;
-  font-style: italic;
 }
 
 .error-message {
@@ -638,29 +663,6 @@ p {
   display: none;
 }
 
-/* @media (min-width: 900px) {
-  nav ul {
-    max-width: 1200px;
-    justify-content: center;
-    margin: 0px auto;
-    gap: 20px;
-    display: flex;
-    flex-direction: row;
-  }
-} */
-
-/* @media (min-width: 392px) {
-  .posts-container {
-    margin: auto;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-  }
-} */
 
 /*
 test posts
@@ -702,9 +704,39 @@ test posts
     opacity: 1;
   }
 }
+@media (min-width: 622px) {
+  #contact-form, .comment-form {
+    margin: 20px auto 80px;
+  }
+}
 
 
 @media (min-width: 700px) {
+  /* #contact-form input[type="text"],
+  #contact-form input[type="email"],
+  #contact-form textarea[type="text"] {
+    font-size: 1.2em;
+  }
+  */
+  .error-message {
+    font-size: 0.9em;
+  }
+  
+  #contact-form label, .comment-form label {
+    font-size: 1.3em;
+  } 
+  /* #contact-form input,
+  #message {
+    margin: 5px auto;
+    width: 350px;
+  }  */
+  /* .name-container, .email-container, .subject-container, .message-container {
+    width: 500px;
+    margin: auto;
+  } */
+  #name, #email {
+    max-width: none;
+  }
   .breadcrumbs {
     font-size: 1.7em;
     gap: 7px;
@@ -759,7 +791,7 @@ test posts
     margin: 15px 20px;
   }
   h3 {
-    font-size: 1.3em;
+    font-size: 1.4em;
   }
   .author-info p {
     font-size: 1em;
@@ -770,7 +802,7 @@ test posts
   }
   .post-intro p {
     font-size: 1em;
-    height: 60px;
+    height: 56px;
   }
 
   .carousel-container {
@@ -814,6 +846,28 @@ test posts
 }
 
 @media (min-width: 1000px) {
+
+  .container-large-inputs, .container-small-inputs {
+    width: 500px;
+  }
+  /* .comment-form .container-large-inputs, .comment-form .container-small-inputs {
+    align-items: center;
+  } */
+
+  #name, #email {
+    width: 350px;
+  }
+  #contact-form textarea {
+    max-width: none;
+  }
+  #subject, #comment, #message {
+    max-width: none;
+    width: 500px;
+  }
+  .error-message {
+    font-size: 1.2em;
+  }
+
   /* .nav-active {
     border: none;
     text-decoration: underline;
@@ -864,7 +918,7 @@ test posts
     margin: auto;
   }
   /* posts */
-  .carousel-container {
+  /* .carousel-container {
     height: 670px;
   }
 
@@ -878,7 +932,7 @@ test posts
 
   h3 {
     font-size: 1.6em;
-    /* text-decoration: underline; */
+  
   }
   .post-intro p {
     font-size: 1.3em;
@@ -891,7 +945,7 @@ test posts
   .link-text {
     font-size: 1.4em;
     margin-right: 40px;
-  }
+  } */
 
   /* */
   .previous-page,

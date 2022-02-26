@@ -1,3 +1,6 @@
+main {
+  margin-bottom: 75px;
+}
 .posts-section {
   text-align: center;
   display: flex;
@@ -7,7 +10,7 @@
   align-items: center;
   /* width: 92%;
   margin: 5px 4% 75px 4%; */
-  margin-bottom: 100px;
+  /* margin-bottom: 100px; */
 }
 
 .search-container {
@@ -140,6 +143,9 @@ input:focus {
 } */
 
 @media (min-width: 700px) {
+  main {
+    margin-bottom: 100px;
+  }
   .search-container input[type="search"] {
     font-size: 1.2em;
   }

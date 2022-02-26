@@ -1,81 +1,11 @@
+
 .contact-text {
   text-align: center;
-  margin: 15px 20px;
+  margin: 15px 20px 50px 20px;
 }
 body {
   text-align: center;
 }
-
-/*
-Contact form
-*/
-
-
-
-/* #contact-form {
-  gap: 5px;
-  width: 270px;
-  display: flex;
-  flex-direction: column;
-  margin: 30px auto 60px auto;
-  justify-content: center;
-} */
-
-
-
-/* .submit-area {
-  text-align: center;
-  margin: 20px auto;
-} */
-
-
-/* #contact-form input {
-  border: 1px #707070 solid;
-  width: 270px;
-  margin: 0px 0px 15px 0px;
-} */
-
-/* #email,
-#name,
-#subject {
- padding: 5px;
-} */
-
- /* #message {
-   height: 130px; 
-  padding-bottom: 75px;
-  margin-bottom: 5px;
-  width: 270px;
-}  */
-/* 
-#contact-form label {
-  margin: 5px 5px 5px 0px;
-
-  font-family: Merriweather, sans-serif, Arial, Helvetica;
-  font-weight: 700;
-  font-style: italic;
-  display: flex;
-} */
-
-/* #contact-form input[type="text"],
-#contact-form input[type="email"],
-#contact-form textarea[type="text"] {
-  font-size: 1.1em;
- 
-  font-family: Merriweather, sans-serif, Arial, Helvetica;
-  box-sizing: border-box;
-} */
-
-/* .submit-button {
-  background-color: white;
-  color: black;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 20px auto;
-  border: 2px solid black;
-  padding: 15px 35px;
-  border-radius: 25px;
-} */
 
 .submit-button {
   background-color: white;
@@ -95,39 +25,41 @@ Contact form
 }
 
 .success-message {
-  display: none;
+  text-align: center;
+  /* display: none; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   background-color: rgba(51, 255, 0, 0.774);
   margin: 10px auto;
   border: 1px solid black;
   padding: 5px 25px;
   border-radius: 30px;
 }
+.success-message > * {
+  margin: 15px auto;
+}
+.thumbs-up {
+  margin: auto;
+  font-size: 1.5em;
+}
 
 @media (min-width: 700px) {
+  .success-message {
+    margin: 30px auto;
+    
+  }
+
+
   .contact-text {
     font-size: 1.6em;
     max-width: 700px;
-    margin: 15px auto;
+    margin: 15px auto 70px auto;
   }
-  #contact-form {
-    width: 350px;
-  }
-  #contact-form input[type="text"],
-  #contact-form input[type="email"],
-  #contact-form textarea[type="text"] {
-    font-size: 1.2em;
-  }
-  .error-message {
-    font-size: 1.1em;
-  }
-  #contact-form label {
-    font-size: 1.3em;
-  }
-  #contact-form input,
-  #message {
-    margin: 5px auto;
-    width: 350px;
-  }
+
+
 
   .submit-button {
     padding: 15px 55px;
@@ -140,11 +72,7 @@ Contact form
 }
 @media (min-width: 1000px) {
   
-  .contact-text {
-    margin: 15px auto;
-  }
 
-  /* #contact-form label {
-    font-size: 1.3em;
-  } */
+
+
 }

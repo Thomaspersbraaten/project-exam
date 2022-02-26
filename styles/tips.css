@@ -1,5 +1,6 @@
 main {
   text-align: center;
+  margin-bottom: 75px;
 }
 .tips-intro {
   margin: 20px 20px 60px 20px;
@@ -7,7 +8,6 @@ main {
 .tips-section {
   margin: 40px 10px;
   background-color: #d9d7d736;
-
   border: 1px solid black;
   border-radius: 20px;
 }
@@ -60,6 +60,9 @@ main {
 }
 
 @media (min-width: 700px) {
+  main {
+    margin-bottom: 100px;
+  }
   .tips-intro {
     margin: 40px;
     font-size: 1.6em;

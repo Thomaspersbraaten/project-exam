@@ -73,35 +73,75 @@
         contact us, Please use the form below.
       </p>
 
-      <form id="contact-form" autocomplete="off">
+      <!-- <form id="contact-form" autocomplete="off">
         <div class="success-message"></div>
-        <!-- NAME -->
+        NAME
         <div>
           <label for="name">Full Name<p class="required">*</p></label>
           <p class="name-error error-message">Please input more than 5 characters</p>
           <input type="text" name="name" id="name"  />
         </div>
 
-        <!-- EMAIL -->
+        EMAIL
         <div>
           <label for="email">Email<p class="required">*</p></label>
           <p class="email-error error-message">Please input a valid email</p>
           <input type="text" name="email" id="email"  />
         </div>
 
-        <!-- SUBJECT -->
+        SUBJECT
         <div>
           <label for="subject">Subject<p class="required">*</p></label>
           <p class="subject-error error-message">Please input more than 15 characters</p>
-          <input type="text" name="subject" id="subject"  />
+          <textarea type="text" name="subject" id="subject" style="resize: none;" ></textarea>
         </div>
 
-        <!-- MESSAGE -->
+        MESSAGE
         <div>
           <label for="message">Message<p class="required">*</p></label>
           <p class="message-error error-message">Please input more than 25 characters</p>
           <textarea type="text" name="message" id="message" style="resize: none"></textarea>
         </div>    
+        <button class="submit-button">Submit</button>
+      </form> -->
+
+      <form id="contact-form" autocomplete="off">
+        <div class="success-message">
+          <p>Thank you for contacting us!</p>
+          <p class="thumbs-up"> 👍</p>
+
+          <p>We will respond to you via Email within 24hours</p>
+    
+        </div>
+     
+              <!-- NAME -->
+        <div class="container-small-inputs">
+          <div class="name-container">
+            <label for="name">Full Name<p class="required">*</p></label>
+            <p class="name-error error-message">Please input more than 5 characters</p>
+            <input type="text" name="name" id="name"  />
+          </div>
+              <!-- EMAIL -->
+          <div class="email-container">
+            <label for="email">Email<p class="required">*</p></label>
+            <p class="email-error error-message">Please input a valid email</p>
+            <input type="text" name="email" id="email"  />
+          </div>
+        </div>
+              <!-- SUBJECT -->
+        <div class="container-large-inputs">
+          <div class="subject-container">
+            <label for="subject">Subject<p class="required">*</p></label>
+            <p class="subject-error error-message">Please input more than 15 characters</p>
+            <textarea type="text" name="subject" id="subject" style="resize: none;" ></textarea>
+            </div>
+              <!-- MESSAGE -->
+          <div class="message-container">
+            <label for="message">Message<p class="required">*</p></label>
+            <p class="message-error error-message">Please input more than 25 characters</p>
+            <textarea type="text" name="message" id="message" style="resize: none"></textarea>
+          </div>
+        </div>
         <button class="submit-button">Submit</button>
       </form>
     </main>

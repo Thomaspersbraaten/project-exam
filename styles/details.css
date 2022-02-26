@@ -1,3 +1,6 @@
+main {
+  margin-bottom: 75px;
+}
 section {
   text-align: center;
 }
@@ -74,11 +77,11 @@ Author info
 .author-info {
   display: flex;
   justify-content: space-between;
-  margin: 20px 20px;
+  margin: 20px 10px;
 }
 .author-info p {
-  font-size: 0.7em;
-  margin: auto 10px;
+  font-size: 0.8em;
+  margin: auto 10px 10px 10px;
 }
 .author-info div {
   display: flex;
@@ -93,8 +96,8 @@ next and previous post
 }
 
 .next-previous {
-  height: 60px;
-  margin: 20px;
+  height: 70px;
+  margin: 15px;
   display: flex;
   justify-content: space-between;
 }
@@ -106,7 +109,7 @@ next and previous post
   color: black;
   font-size: 1em;
   height: 100%;
-  width: 100px;
+  width: 110px;
   background-color: #a9a9a927;
   border-radius: 20px;
   border: 1px solid black;
@@ -137,7 +140,7 @@ next and previous post
 
 .next-title {
   margin: 2px 0px;
-  width: 55px;
+  width: 70px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
@@ -154,7 +157,7 @@ next and previous post
 }
 
 .next-previous p {
-  font-size: 0.55em;
+  font-size: 0.7em;
 }
 .no-more-posts {
   text-align: center;
@@ -175,6 +178,27 @@ Comment Section
 /* .comment-amount {
   margin: 30px 20px;
 } */
+.comment-loader {
+
+    margin: 30px auto 30px auto;
+    border: 10px solid #d6d3d3;
+    border-top: 10px solid rgb(0, 0, 0);
+    border-bottom: 10px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1.7s linear infinite;
+}
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 .leave-comment {
   margin: 20px auto;
   text-decoration: none;
@@ -259,11 +283,17 @@ Comment Section
 }
 .success-message {
   display: none;
+
   background-color: rgba(51, 255, 0, 0.774);
-  margin: 10px auto;
+  margin: 20px auto;
   border: 1px solid black;
   padding: 5px 25px;
   border-radius: 30px;
+  align-items: center;
+}
+.checkmark {
+  font-size: 1em;
+
 }
 /* Modal */
 
@@ -296,6 +326,15 @@ Comment Section
 }
 
 @media (min-width: 700px) {
+  main {
+    margin-bottom: 100px;
+  }
+  .post-img, .details-container h2 {
+    max-width: 750px;
+  }
+  .author-info, .details-container p, .next-previous, .comment-section {
+    max-width: 650px;
+  }
   .submit-button:hover {
  
     padding: 25px 65px;
@@ -313,24 +352,24 @@ Comment Section
   }
   .details-container h2 {
     font-size: 2em;
-    margin: 30px auto;
+    margin: 10px auto 30px auto;
   }
   .comment-amount {
     font-size: 2em;
   }
   .details-container {
-    margin: 30px;
+    margin: 10px 30px 30px 30px;
   }
   .details-container p {
     font-size: 1.4em;
     margin: 30px auto;
   }
   .author-info {
-    margin: 40px 3%;
+    margin: 40px auto;
   }
   .author-img {
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
   }
   .author-info p {
     font-size: 1.6em;
@@ -372,7 +411,8 @@ Comment Section
     font-size: 1.5em;
   }
   .divider {
-    margin: 45px 5%;
+    margin: 45px 10%;
+    max-width: 650px;
   }
 
   /* 
@@ -429,39 +469,43 @@ Comment Section
     text-decoration: none;
   } */
   .post-img {
-    max-width: 950px;
+    margin: 0px;
+    height: auto;
+    width: auto;
   }
+  .success-message {
+    width: 450px;
+  }
+.checkmark {
+  font-size: 3em;
+}
 
   .details-container {
-    max-width: 950px;
     margin: 20px auto 50px auto;
   }
   .details-container > * {
     margin: 0px;
   }
   .author-info {
-    max-width: 950px;
     margin: auto;
   }
   .next-previous {
-    max-width: 950px;
     margin: 70px auto;
   }
   .divider {
-    max-width: 950px;
     margin: 45px auto;
+   
   }
   .comment-section {
-    max-width: 950px;
     margin: auto;
   }
   .modal-content {
     max-width: 1200px;
     margin: auto 20px;
   }
-  .details-container p {
+  /* .details-container p {
     max-width: 750px;
-  }
+  } */
   /* .modal-img {
     position: relative;
     margin: 200px auto;

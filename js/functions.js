@@ -3,6 +3,8 @@ const hamburgerMenu = document.querySelector(".hamburger");
 const hamburgerBars = document.querySelector(".fa-bars");
 const hamburgerX = document.querySelector(".far");
 
+
+
 // const searchUrl =
 //   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&search=";
 
@@ -73,6 +75,7 @@ function showErrorMessage(error) {
 // };
 // };
 
+// Global form checks 
 
 function checkLength(value, length) {
   if (value.trim().length > length) {
@@ -87,3 +90,5 @@ function checkEmail(email) {
   const patterMatches = regEx.test(email);
   return patterMatches;
 }
+
+// Changes margin on forms when hitting max width

@@ -48,7 +48,7 @@ h2 {
   margin: 20px 20px 50px 20px;
 }
 .who-are-we {
-  margin: 40px auto;
+  margin: 40px auto 85px auto;
 }
 
 @media (min-width: 700px) {
@@ -71,9 +71,7 @@ h2 {
   .divider {
     margin: 30px auto;
   }
-  .rachel {
-    margin-bottom: 75px;
-  }
+
   .what-do-we-do p {
     max-width: 700px;
     font-size: 1.6em;

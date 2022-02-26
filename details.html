@@ -99,6 +99,7 @@
           <form class="comment-form" autocomplete="off">
            
             <input type="hidden" id="postId" />
+            <div class="container-small-inputs">
           
 
             <!-- Name -->
@@ -128,6 +129,8 @@
           <input type="text" name="email" id="email" />
 
             </div>
+          </div>
+          <div class="container-large-inputs">
 
 
               <!-- comment -->
@@ -147,16 +150,24 @@
               ></textarea>
 
               </div>
+            </div>
 
       
 
-            <div class="success-message"></div>
-            <div class="comment-loader"></div>
+            <div class="success-message">
+              <p>Comment posted succesfully, Thank you! </p>
+              <p class="checkmark">✔️ </p>
+       
+               
+              </div>
+         
             <div class="post-comment-error-message"></div>
             <button class="submit-button">Post comment</button>
+            <!-- <div class="comment-loader"></div> -->
           
           </form>
         </div>
+        <div class="comment-loader"></div>
         <div class="reader-comments"></div>
       </section>
 

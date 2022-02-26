@@ -68,9 +68,11 @@ function validateName() {
   if (checkLength(fullName.value, 5)) {
     nameValid = true;
     nameError.style.display = "none";
+    fullName.classList.remove("input-error-border-red");
   } else {
     nameValid = false;
     nameError.style.display = "flex";
+    fullName.classList.add("input-error-border-red");
   }
 }
 
@@ -78,6 +80,7 @@ function validateNameKeyup() {
   if (checkLength(fullName.value, 5)) {
     nameValid = true;
     nameError.style.display = "none";
+    fullName.classList.remove("input-error-border-red");
   } else {
     nameValid = false;
   }
@@ -87,13 +90,15 @@ fullName.addEventListener("keyup", validateNameKeyup);
 
 // Email validation
 
-function validateEmail(event) {
+function validateEmail() {
   if (checkEmail(email.value)) {
     emailValid = true;
     emailError.style.display = "none";
+    email.classList.remove("input-error-border-red");
   } else {
     emailValid = false;
     emailError.style.display = "flex";
+    email.classList.add("input-error-border-red");
   }
 }
 
@@ -101,6 +106,7 @@ function validateEmailKeyup() {
   if (checkEmail(email.value, 5)) {
     emailValid = true;
     emailError.style.display = "none";
+    email.classList.remove("input-error-border-red");
   } else {
     emailValid = false;
   }
@@ -113,9 +119,12 @@ function validateSubject() {
   if (checkLength(subject.value, 15)) {
     subjectValid = true;
     subjectError.style.display = "none";
+    subject.classList.remove("input-error-border-red");
   } else {
     subjectValid = false;
     subjectError.style.display = "flex";
+    subject.classList.add("input-error-border-red");
+
   }
 }
 
@@ -123,6 +132,7 @@ function validateSubjectKeyup() {
   if (checkLength(subject.value, 15)) {
     subjectValid = true;
     subjectError.style.display = "none";
+    subject.classList.remove("input-error-border-red");
   } else {
     subjectValid = false;
   }
@@ -135,9 +145,11 @@ function validateMessage() {
   if (checkLength(message.value, 25)) {
     messageValid = true;
     messageError.style.display = "none";
+    message.classList.remove("input-error-border-red");
   } else {
     messageValid = false;
     messageError.style.display = "flex";
+    message.classList.add("input-error-border-red");
   }
 }
 
@@ -145,8 +157,10 @@ function validateMessageKeyup() {
   if (checkLength(message.value, 25)) {
     messageValid = true;
     messageError.style.display = "none";
+    message.classList.remove("input-error-border-red");
   } else {
     messageValid = false;
+    
   }
 }
 
@@ -167,3 +181,26 @@ message.addEventListener("keyup", validateMessageKeyup);
 //   const patterMatches = regEx.test(email);
 //   return patterMatches;
 // }
+// window.addEventListener("resize", function() {
+//   console.log(contactForm.getBoundingClientRect().width);
+
+//   if (contactForm.getBoundingClientRect().width > 620) {
+//     contactForm.style.margin = "20px auto 80px auto";
+//     console.log("greater");
+//   }
+
+
+// });
+
+
+// window.addEventListener("resize", function() {
+  
+//   if (contactForm.getBoundingClientRect().width < 620) {
+//     contactForm.style.margin = "20px 20px 80px 20px";
+//     console.log("less");
+//   }
+
+
+// });
+
+

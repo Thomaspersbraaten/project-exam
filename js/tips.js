@@ -78,12 +78,13 @@ document.addEventListener("scroll", function () {
     document.documentElement.scrollTop + window.innerHeight ==
     document.documentElement.scrollHeight
   ) {
-    if (window.innerWidth > 1800) {
-      toTopButton.style.right = 5 + "%";
+    if (window.innerWidth > 1500) {
+      toTopButton.style.right = 25 + "%";
     } else {
-      toTopButton.style.right = 20 + "px";
+      toTopButton.style.right = 5 + "%";
     }
   } else {
     toTopButton.style.right = -140 + "px";
   }
 });
+

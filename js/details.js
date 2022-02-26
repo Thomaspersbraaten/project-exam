@@ -31,18 +31,19 @@ const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const commentInput = document.querySelector("#comment");
 const commentErrorMessage = document.querySelector(".post-comment-error-message");
+const commentLoader = document.querySelector(".comment-loader");
 
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 //
 
 // API URLS
 const detailsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&_embed&include[]=" +
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&include[]=" +
   id;
 const authorUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
 const commentUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?post=" + id;
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?&per_page=100&post=" + id;
 // const commentUrl =
 //   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments";
 const postsUrl =
@@ -65,6 +66,7 @@ async function fetchApi(
   const authorResponse = await fetch(urlForAthor + authorId);
   const authorResults = await authorResponse.json();
   console.log(authorResults);
+
 
   const commentResponse = await fetch(urlForComments);
   const commentResults = await commentResponse.json();
@@ -218,38 +220,49 @@ function createHtml(post, author, comment, allPosts) {
 }
 
 async function createComments(commentUrl) {
-  readerComments.innerHTML = "";
-  const commentResponse = await fetch(commentUrl);
-  const commentResults = await commentResponse.json();
-  console.log(comment);
+  try {
+    readerComments.innerHTML = "";
+ 
 
-  // const detailsResponse = await fetch(postData);
-  // const detailsResults = await detailsResponse.json();
-  // const data = detailsResults[0];
-  commentAmount.innerHTML = `
-  Comments(${commentResults.length})`;
+    const commentResponse = await fetch(commentUrl);
+    const commentResults = await commentResponse.json();
+    console.log(commentResults);
+  
+    // const detailsResponse = await fetch(postData);
+    // const detailsResults = await detailsResponse.json();
+    // const data = detailsResults[0];
+    commentAmount.innerHTML = `
+    Comments(${commentResults.length})`;
+  
+    if (commentResults.length === 0) {
+      firstComment.innerHTML = "Be the first to leave a comment";
+    } else {
+      firstComment.style.display = "none";
+    }
+    commentResults.forEach(function (data) {
+      
+  
+      const dateCreation = new Date(data.date);
+      const year = dateCreation.getFullYear();
+      const monthIndex = dateCreation.getMonth();
+      const day = dateCreation.getDate();
+      const date = day + "." + month[monthIndex] + "." + year;
+      readerComments.innerHTML += `
+      <div class="user-comment-container">
+        <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
+        </div>  
+        <div class="comment-content"> ${data.content.rendered}</div>
+      </div>
+      `;
+    });
+  
+    commentLoader.style.display = "none";
 
-  if (commentResults.length === 0) {
-    firstComment.innerHTML = "Be the first to leave a comment";
-  } else {
-    firstComment.style.display = "none";
   }
-  commentResults.forEach(function (data) {
-    
+  catch (error) {
+    readerComments.innerHTML = showErrorMessage(error);
+  }
 
-    const dateCreation = new Date(data.date);
-    const year = dateCreation.getFullYear();
-    const monthIndex = dateCreation.getMonth();
-    const day = dateCreation.getDate();
-    const date = day + "." + month[monthIndex] + "." + year;
-    readerComments.innerHTML += `
-    <div class="user-comment-container">
-      <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
-      </div>  
-      <div class="comment-content"> ${data.content.rendered}</div>
-    </div>
-    `;
-  });
 
 }
 createComments(commentUrl)
@@ -305,6 +318,7 @@ function validateForm(event) {
   if (nameValid && emailValid && commentValid) {
 
     // submitButton.disabled = true;
+    commentLoader.style.display = "block";
     postComment();
     commentForm.reset();
     nameValid = false;
@@ -331,7 +345,7 @@ function postComment() {
     content: commentInput.value,
     post: postIdInForm.value,
   });
-  try {
+  // try {
     fetch(
       "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments",
   
@@ -343,31 +357,32 @@ function postComment() {
         body: postData,
       }
     );
- 
-  }
-  catch (error) {
-    console.log(error);
-    commentErrorMessage.style.display = "flex";
-    commentErrorMessage.innerHTML = showErrorMessage(error);
-
-  }
-  finally {
-    console.log("no error boiii");
-    // readerComments.innerHTML = "";
-    // fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
- 
+     
     const reloadComments = setTimeout(() => {
+     
         successMessage.style.display = "flex";
-        successMessage.innerHTML = `<p>Thank you for commenting!</p>`;
       // location.reload();
       // callCreateCommentsFunction();
       createComments(commentUrl)
     }, 1000);
-
-
-
+ 
   }
-}
+  // catch (error) {
+  //   console.log(error);
+  //   commentErrorMessage.style.display = "flex";
+  //   commentErrorMessage.innerHTML = showErrorMessage(error);
+
+  // }
+  // finally {
+  //   console.log("no error boiii");
+  //   // readerComments.innerHTML = "";
+  //   // fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
+
+
+
+
+  // }
+// }
 
 // Comment validation
 const nameError = document.querySelector(".name-error");
@@ -384,9 +399,11 @@ function validateName() {
   if (checkLength(nameInput.value, 5)) {
     nameValid = true;
     nameError.style.display = "none";
+    nameInput.classList.remove("input-error-border-red");
   } else {
     nameValid = false;
     nameError.style.display = "flex";
+    nameInput.classList.add("input-error-border-red");
   }
 }
 
@@ -394,6 +411,7 @@ function validateNameKeyup() {
   if (checkLength(nameInput.value, 5)) {
     nameValid = true;
     nameError.style.display = "none";
+    nameInput.classList.remove("input-error-border-red");
   } else {
     nameValid = false;
   }
@@ -407,9 +425,11 @@ function validateEmail(event) {
   if (checkEmail(email.value)) {
     emailValid = true;
     emailError.style.display = "none";
+    emailInput.classList.remove("input-error-border-red");
   } else {
     emailValid = false;
     emailError.style.display = "flex";
+    emailInput.classList.add("input-error-border-red");
   }
 }
 
@@ -417,6 +437,7 @@ function validateEmailKeyup() {
   if (checkEmail(email.value, 5)) {
     emailValid = true;
     emailError.style.display = "none";
+    emailInput.classList.remove("input-error-border-red");
   } else {
     emailValid = false;
   }
@@ -429,9 +450,11 @@ function validateComment() {
   if (checkLength(commentInput.value, 1)) {
     commentValid = true;
     commentError.style.display = "none";
+    commentInput.classList.remove("input-error-border-red");
   } else {
     commentValid = false;
     commentError.style.display = "flex";
+    commentInput.classList.add("input-error-border-red");
   }
 }
 
@@ -440,8 +463,12 @@ function validateCommentKeyup() {
   if (checkLength(commentInput.value, 1)) {
     commentValid = true;
     commentError.style.display = "none";
+    commentInput.classList.remove("input-error-border-red");
+
+
   } else {
     commentValid = false;
+ 
   }
 }
 
@@ -449,19 +476,19 @@ commentInput.addEventListener("input", validateCommentKeyup);
 
 // Checks
 
-function checkLength(value, length) {
-  if (value.trim().length > length) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// function checkLength(value, length) {
+//   if (value.trim().length > length) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-function checkEmail(email) {
-  const regEx = /\S+@\S+\.\S+/;
-  const patterMatches = regEx.test(email);
-  return patterMatches;
-}
+// function checkEmail(email) {
+//   const regEx = /\S+@\S+\.\S+/;
+//   const patterMatches = regEx.test(email);
+//   return patterMatches;
+// }
 
 
 const toTopButton = document.querySelector(".to-the-top");
