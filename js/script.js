@@ -244,7 +244,10 @@ async function getPosts(url) {
       }
     }
 
-    previousPageButton.addEventListener("click", previousPageFunction);
+    // previousPageButton.addEventListener("click", previousPageFunction);
+    previousPageButton.addEventListener("click", function() {
+      previousPageFunction();
+    });
 
     // Next button moves to the next page
     nextPageButton.addEventListener("click", nextPageFunction);
@@ -273,10 +276,12 @@ async function getPosts(url) {
   }
 }
 
+
+
 getPosts(postUrl);
 
 function createHtml(pageNumbers, pageArray, pageContainerArray) {
-  loader.style.display = "none";
+  // loader.style.display = "none";
   loaderContainer.style.display = "none";
   currentPageIndex.innerHTML = pageIndex;
 

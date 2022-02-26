@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" id="meta-description">
     <title></title>
 
     <script
@@ -90,32 +91,19 @@
 
       <hr class="divider" />
 
-      <section class="comment-section" id="comment-form">
+      <section class="comment-section" >
         <h2 class="comment-amount"></h2>
         <p class="be-the-first-to-comment"></p>
         <div class="comment-container">
           <h3 class="leave-comment">Leave a comment</h3>
           <form class="comment-form" autocomplete="off">
+           
             <input type="hidden" id="postId" />
-            <!-- comment -->
-
-            <label for="comment"
-              >Comment
-              <p class="required">*</p></label
-            >
-            <p class="comment-error error-message">
-              Please input more than one character
-            </p>
-            <textarea
-              type="textarea"
-              name="comment"
-              id="comment"
-              style="resize: none"
-            ></textarea>
+          
 
             <!-- Name -->
-
-            <label for="name"
+            <div>
+              <label for="name"
               >Name
               <p class="required">*</p></label
             >
@@ -125,18 +113,48 @@
 
             <input type="text" name="name" id="name" />
 
-            <!-- email -->
+            </div>
 
+    
+
+            <!-- email -->
+            <div>
+              
             <label for="email"
-              >Email
-              <p class="required">*</p></label
-            >
-            <p class="email-error error-message">Please input a valid email</p>
-            <input type="text" name="email" id="email" />
+            >Email
+            <p class="required">*</p></label
+          >
+          <p class="email-error error-message">Please input a valid email</p>
+          <input type="text" name="email" id="email" />
+
+            </div>
+
+
+              <!-- comment -->
+              <div>
+                <label for="comment"
+                >Comment
+                <p class="required">*</p></label
+              >
+              <p class="comment-error error-message">
+                Please input more than one character
+              </p>
+              <textarea
+                type="textarea"
+                name="comment"
+                id="comment"
+                style="resize: none"
+              ></textarea>
+
+              </div>
+
+      
 
             <div class="success-message"></div>
-
+            <div class="comment-loader"></div>
+            <div class="post-comment-error-message"></div>
             <button class="submit-button">Post comment</button>
+          
           </form>
         </div>
         <div class="reader-comments"></div>

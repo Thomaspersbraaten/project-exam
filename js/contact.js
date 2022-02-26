@@ -154,16 +154,16 @@ message.addEventListener("keyup", validateMessageKeyup);
 
 // Checks
 
-function checkLength(value, length) {
-  if (value.trim().length > length) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// function checkLength(value, length) {
+//   if (value.trim().length > length) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-function checkEmail(email) {
-  const regEx = /\S+@\S+\.\S+/;
-  const patterMatches = regEx.test(email);
-  return patterMatches;
-}
+// function checkEmail(email) {
+//   const regEx = /\S+@\S+\.\S+/;
+//   const patterMatches = regEx.test(email);
+//   return patterMatches;
+// }

@@ -10,84 +10,88 @@ body {
 Contact form
 */
 
-.error-message {
-  font-weight: normal;
-  font-size: 0.7em;
-  color: red;
-  margin: 0px;
-  text-align: left;
-  display: none;
-}
 
-#contact-form {
+
+/* #contact-form {
+  gap: 5px;
   width: 270px;
   display: flex;
   flex-direction: column;
-  margin: 30px auto 0px auto;
+  margin: 30px auto 60px auto;
   justify-content: center;
-}
+} */
 
-.label {
-  display: flex;
-}
 
-.submit-area {
+
+/* .submit-area {
   text-align: center;
   margin: 20px auto;
-}
+} */
 
-#contact-form input {
+
+/* #contact-form input {
   border: 1px #707070 solid;
   width: 270px;
   margin: 0px 0px 15px 0px;
-}
+} */
 
-#email,
+/* #email,
 #name,
 #subject {
-  /* height: 45px; */
-  padding-bottom: 15px;
-}
+ padding: 5px;
+} */
 
-#message {
-  /* height: 130px; */
+ /* #message {
+   height: 130px; 
   padding-bottom: 75px;
   margin-bottom: 5px;
   width: 270px;
-}
-
+}  */
+/* 
 #contact-form label {
   margin: 5px 5px 5px 0px;
-  /* font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif; */
+
   font-family: Merriweather, sans-serif, Arial, Helvetica;
   font-weight: 700;
   font-style: italic;
   display: flex;
-}
+} */
 
-#contact-form input[type="text"],
+/* #contact-form input[type="text"],
 #contact-form input[type="email"],
 #contact-form textarea[type="text"] {
   font-size: 1.1em;
-  /* font-family: "Times New Roman", Times, serif; */
+ 
   font-family: Merriweather, sans-serif, Arial, Helvetica;
   box-sizing: border-box;
-}
+} */
 
-.submit-button {
+/* .submit-button {
   background-color: white;
   color: black;
-  font-size: 1.3em;
+  font-size: 1em;
   font-weight: bold;
   margin: 20px auto;
   border: 2px solid black;
   padding: 15px 35px;
   border-radius: 25px;
-}
+} */
 
+.submit-button {
+  background-color: white;
+  color: black;
+  font-size: 1.3em;
+  /* font-weight: bold; */
+  margin: 50px auto;
+  border: 2px solid black;
+  padding: 15px 30px;
+  border-radius: 25px;
+  box-shadow: 5px 5px #8080802b;
+  transition: all 0.5s;
+}
 .submit-button:hover {
   cursor: pointer;
-  background-color: rgba(51, 255, 0, 0.774);
+  background-color: #d7ecd7;
 }
 
 .success-message {
@@ -106,7 +110,7 @@ Contact form
     margin: 15px auto;
   }
   #contact-form {
-    width: 450px;
+    width: 350px;
   }
   #contact-form input[type="text"],
   #contact-form input[type="email"],
@@ -122,21 +126,25 @@ Contact form
   #contact-form input,
   #message {
     margin: 5px auto;
-    width: 450px;
+    width: 350px;
   }
+
   .submit-button {
+    padding: 15px 55px;
+    font-size: 1.7em;
     margin: 45px auto;
+  }
+  .submit-button:hover {
+    padding: 15px 75px;
   }
 }
 @media (min-width: 1000px) {
+  
   .contact-text {
     margin: 15px auto;
   }
-  .submit-button {
-    padding: 25px 75px;
-    font-size: 2em;
-  }
-  #contact-form label {
-    font-size: 1.7em;
-  }
+
+  /* #contact-form label {
+    font-size: 1.3em;
+  } */
 }

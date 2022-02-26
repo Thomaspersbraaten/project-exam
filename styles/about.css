@@ -45,7 +45,7 @@ h2 {
 .what-do-we-do p {
   font-family: Merriweather, sans-serif, Arial, Helvetica;
   font-style: italic;
-  margin: 20px;
+  margin: 20px 20px 50px 20px;
 }
 .who-are-we {
   margin: 40px auto;
@@ -77,7 +77,7 @@ h2 {
   .what-do-we-do p {
     max-width: 700px;
     font-size: 1.6em;
-    margin: 20px auto;
+    margin: 20px auto 60px auto;
   }
 }
 @media (min-width: 1000px) {
@@ -85,9 +85,9 @@ h2 {
     max-width: 950px;
     margin: 0px auto;
   }
-  .what-do-we-do p {
+  /* .what-do-we-do p {
     margin: 20px auto;
-  }
+  } */
   .profile p {
     font-size: 2em;
   }

@@ -23,7 +23,7 @@ hamburgerMenu.addEventListener("click", function () {
 });
 
 // navMenu.style.display = "flex";
-// // navMenu.style.top = -180 + "px";
+// navMenu.style.top = -180 + "px";
 // const navMenuHeight = navMenu.getBoundingClientRect().height;
 // console.log(navMenuHeight);
 // // function previousPageFunction() {
@@ -42,9 +42,7 @@ hamburgerMenu.addEventListener("click", function () {
 //   navMenu.style.transform = "translateY(-" + 241 + "px" + ")";
 // };
 
-// hamburgerBars.addEventListener("click", moveNavMenuDown);
-
-// hamburgerX.addEventListener("click", moveNavMenuUp);
+// 1
 
 // Shows error message
 
@@ -74,3 +72,18 @@ function showErrorMessage(error) {
 //   }
 // };
 // };
+
+
+function checkLength(value, length) {
+  if (value.trim().length > length) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkEmail(email) {
+  const regEx = /\S+@\S+\.\S+/;
+  const patterMatches = regEx.test(email);
+  return patterMatches;
+}

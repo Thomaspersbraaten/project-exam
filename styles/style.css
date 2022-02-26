@@ -459,7 +459,7 @@ footer {
   border: 2px solid black;
   position: fixed;
   right: -140px;
-  bottom: 115px;
+  bottom: 120px;
   z-index: 2;
   /* border: 1px solid black; */
   width: 75px;
@@ -560,6 +560,65 @@ footer h3,
 /* 
 Global styles
 */
+
+/* inputs*/
+.comment-form, #contact-form {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 20px 80px 20px;
+  padding: 10px;
+  /* background-color: #a9a9a927; */
+  background-color: #a9a9a912;
+  border: 1px solid #707070;
+}
+
+label {
+  display: flex;
+  margin: 5px 5px 5px 0px;
+  font-family: Merriweather, sans-serif, Arial, Helvetica;
+  font-weight: 700;
+  font-style: italic;
+  display: flex;
+}
+input {
+  border: 1px #707070 solid;
+  width: 270px;
+  margin: 0px 0px 10px 0px;
+  padding: 5px;
+  height: 35px;
+}
+#name,
+#email {
+  height: 35px;
+  /* width: 75%;
+  max-width: 300px;
+  margin: 5px 5%; */
+}
+
+
+#message, #comment {
+  padding-bottom: 75px;
+  margin-bottom: 5px;
+  width: 270px;
+}
+#comment {
+  height: 105px;
+}
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea[type="text"], 
+.comment-form input[type="text"],
+.comment-form textarea[type="textarea"] {
+  font-size: 1.1em;
+  font-family: Merriweather, sans-serif, Arial, Helvetica;
+  box-sizing: border-box;
+}
+
+
+
+
 .required {
   margin: 3px 0px 0px 5px;
   color: red;
@@ -568,6 +627,15 @@ Global styles
 p {
   font-family: Merriweather, sans-serif, Arial, Helvetica;
   font-style: italic;
+}
+
+.error-message {
+  font-weight: normal;
+  font-size: 0.8em;
+  color: red;
+  margin: 5px 0px;
+  text-align: left;
+  display: none;
 }
 
 /* @media (min-width: 900px) {
@@ -634,6 +702,7 @@ test posts
     opacity: 1;
   }
 }
+
 
 @media (min-width: 700px) {
   .breadcrumbs {
@@ -823,6 +892,8 @@ test posts
     font-size: 1.4em;
     margin-right: 40px;
   }
+
+  /* */
   .previous-page,
   .navigation-pages,
   .next-page,

@@ -30,6 +30,8 @@ const postIdInForm = document.querySelector("#postId");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const commentInput = document.querySelector("#comment");
+const commentErrorMessage = document.querySelector(".post-comment-error-message");
+
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
 //
 
@@ -101,13 +103,8 @@ function createHtml(post, author, comment, allPosts) {
   // title and meta description
   const dataHeader = document.querySelector(".details-container h2");
   title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
-  const metaDescription = document.createElement("meta");
-
-  metaDescription.name = "content";
-  metaDescription.setAttribute(
-    `content`,
-    `${data.title.rendered}: ${dataHeader.innerHTML}`
-  );
+  const metaDescription = document.querySelector("#meta-description");
+  metaDescription.content = `${data.title.rendered}: ${dataHeader.innerText}`;
   console.log(metaDescription);
 
   // MODAL
@@ -178,29 +175,67 @@ function createHtml(post, author, comment, allPosts) {
   `;
     previousPost.classList.add("hover-style");
   } catch {
-    previousPost.innerHTML = `
-     <h3 class="no-more-posts"> No more posts</h3>
-     `;
-    // postNavigation.style.justifyContent = "right";
-    // previousPost.style.display = "none";
-    previousPost.style.opacity = 0.4;
+    // previousPost.innerHTML = `
+    //  <h3 class="no-more-posts"> No more posts</h3>
+    //  `;
+    // previousPost.style.opacity = 0.4;
+    postNavigation.style.justifyContent = "right";
+    previousPost.style.display = "none";
   }
+
+//  createCommentSection(data, comment);
+// createComments(comment)
   // Comment form : Post.ID value inserted into the comment form
 
   postIdInForm.value = Number(data.id);
   console.log(postIdInForm);
 
   // Comment section
-  commentAmount.innerHTML = `
-  Comments(${comment.length})`;
+  // commentAmount.innerHTML = `
+  // Comments(${comment.length})`;
 
-  if (comment.length === 0) {
+  // if (comment.length === 0) {
+  //   firstComment.innerHTML = "Be the first to leave a comment";
+  // } else {
+  //   firstComment.style.display = "none";
+  // }
+  // comment.forEach(function (data) {
+  //   //
+
+  //   const dateCreation = new Date(data.date);
+  //   const year = dateCreation.getFullYear();
+  //   const monthIndex = dateCreation.getMonth();
+  //   const day = dateCreation.getDate();
+  //   const date = day + "." + month[monthIndex] + "." + year;
+  //   readerComments.innerHTML += `
+  //   <div class="user-comment-container">
+  //     <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
+  //     </div>  
+  //     <div class="comment-content"> ${data.content.rendered}</div>
+  //   </div>
+  //   `;
+  // });
+}
+
+async function createComments(commentUrl) {
+  readerComments.innerHTML = "";
+  const commentResponse = await fetch(commentUrl);
+  const commentResults = await commentResponse.json();
+  console.log(comment);
+
+  // const detailsResponse = await fetch(postData);
+  // const detailsResults = await detailsResponse.json();
+  // const data = detailsResults[0];
+  commentAmount.innerHTML = `
+  Comments(${commentResults.length})`;
+
+  if (commentResults.length === 0) {
     firstComment.innerHTML = "Be the first to leave a comment";
   } else {
-    firstComment.innerHTML = "";
+    firstComment.style.display = "none";
   }
-  comment.forEach(function (data) {
-    //
+  commentResults.forEach(function (data) {
+    
 
     const dateCreation = new Date(data.date);
     const year = dateCreation.getFullYear();
@@ -215,7 +250,46 @@ function createHtml(post, author, comment, allPosts) {
     </div>
     `;
   });
+
 }
+createComments(commentUrl)
+// function callCreateCommentsFunction() {
+//   
+// }
+// callCreateCommentsFunction();
+// function createCommentSection(data, comment) {
+//     // Comment form : Post.ID value inserted into the comment form
+
+//     // postIdInForm.value = Number(data.id);
+//     // console.log(postIdInForm);
+  
+//     // Comment section
+//     commentAmount.innerHTML = `
+//     Comments(${comment.length})`;
+  
+//     if (comment.length === 0) {
+//       firstComment.innerHTML = "Be the first to leave a comment";
+//     } else {
+//       firstComment.style.display = "none";
+//     }
+//     comment.forEach(function (data) {
+//       //
+  
+//       const dateCreation = new Date(data.date);
+//       const year = dateCreation.getFullYear();
+//       const monthIndex = dateCreation.getMonth();
+//       const day = dateCreation.getDate();
+//       const date = day + "." + month[monthIndex] + "." + year;
+//       readerComments.innerHTML += `
+//       <div class="user-comment-container">
+//         <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
+//         </div>  
+//         <div class="comment-content"> ${data.content.rendered}</div>
+//       </div>
+//       `;
+//     });
+
+// }
 
 // function modalFunction() {
 //   modalContainer.style.display = "block";
@@ -224,6 +298,76 @@ function createHtml(post, author, comment, allPosts) {
 // modalContainer.addEventListener("click", function () {
 //   modalContainer.style.display = "none";
 // });
+
+
+function validateForm(event) {
+  event.preventDefault();
+  if (nameValid && emailValid && commentValid) {
+
+    // submitButton.disabled = true;
+    postComment();
+    commentForm.reset();
+    nameValid = false;
+    emailValid = false;
+    commentValid = false;
+
+    // Reloads page after comment submission
+    // const delayedRedirect = setTimeout(() => {
+    //   location.reload();
+    // }, 500);
+  } else {
+    validateName();
+    validateEmail();
+    validateComment();
+  }
+}
+
+commentForm.addEventListener("submit", validateForm);
+
+function postComment() {
+  const postData = JSON.stringify({
+    author_name: nameInput.value,
+    author_email: emailInput.value,
+    content: commentInput.value,
+    post: postIdInForm.value,
+  });
+  try {
+    fetch(
+      "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments",
+  
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: postData,
+      }
+    );
+ 
+  }
+  catch (error) {
+    console.log(error);
+    commentErrorMessage.style.display = "flex";
+    commentErrorMessage.innerHTML = showErrorMessage(error);
+
+  }
+  finally {
+    console.log("no error boiii");
+    // readerComments.innerHTML = "";
+    // fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
+ 
+    const reloadComments = setTimeout(() => {
+        successMessage.style.display = "flex";
+        successMessage.innerHTML = `<p>Thank you for commenting!</p>`;
+      // location.reload();
+      // callCreateCommentsFunction();
+      createComments(commentUrl)
+    }, 1000);
+
+
+
+  }
+}
 
 // Comment validation
 const nameError = document.querySelector(".name-error");
@@ -319,65 +463,36 @@ function checkEmail(email) {
   return patterMatches;
 }
 
-function validateForm(event) {
-  event.preventDefault();
-  if (nameValid && emailValid && commentValid) {
-    // successMessage.style.display = "flex";
-    // successMessage.innerHTML = `<p>Thank you for commenting!</p>`;
-    // submitButton.disabled = true;
-    postComment();
-    commentForm.reset();
-    nameValid = false;
-    emailValid = false;
-    commentValid = false;
-
-    // Reloads page after comment submission
-    // const delayedRedirect = setTimeout(() => {
-    //   location.reload();
-    // }, 500);
-  } else {
-    validateName();
-    validateEmail();
-    validateComment();
-  }
-}
-
-commentForm.addEventListener("submit", validateForm);
-
-function postComment() {
-  const postData = JSON.stringify({
-    author_name: nameInput.value,
-    author_email: emailInput.value,
-    content: commentInput.value,
-    post: postIdInForm.value,
-  });
-  fetch(
-    "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments",
-
-    {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: postData,
-    }
-  );
-}
 
 const toTopButton = document.querySelector(".to-the-top");
 toTopButton.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+// document.addEventListener("scroll", function () {
+//   if (
+//     document.documentElement.scrollTop + window.innerHeight ==
+//     document.documentElement.scrollHeight
+//   ) {
+//     if (window.innerWidth > 1800) {
+//       toTopButton.style.right = 5 + "%";
+//     } else {
+//       toTopButton.style.right = 20 + "px";
+//     }
+//   } else {
+//     toTopButton.style.right = -140 + "px";
+//   }
+// });
+
 document.addEventListener("scroll", function () {
   if (
     document.documentElement.scrollTop + window.innerHeight ==
     document.documentElement.scrollHeight
   ) {
-    if (window.innerWidth > 1800) {
-      toTopButton.style.right = 5 + "%";
+    if (window.innerWidth > 1500) {
+      toTopButton.style.right = 25 + "%";
     } else {
-      toTopButton.style.right = 20 + "px";
+      toTopButton.style.right = 5 + "%";
     }
   } else {
     toTopButton.style.right = -140 + "px";
