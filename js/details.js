@@ -15,26 +15,24 @@ const commentSection = document.querySelector(".comment-section");
 const commentAmount = document.querySelector(".comment-amount");
 const firstComment = document.querySelector(".be-the-first-to-comment");
 const modalContainer = document.querySelector(".modal-container");
-const modal = document.querySelector(".modal");
-
+// const modal = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
 const loaderContainer = document.querySelector(".loader-container");
-
 const loader = document.querySelector(".loader");
 const readerComments = document.querySelector(".reader-comments");
 // comment form consts
-
 const commentForm = document.querySelector(".comment-form");
 const submitButton = document.querySelector(".submit-button");
 const postIdInForm = document.querySelector("#postId");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const commentInput = document.querySelector("#comment");
-const commentErrorMessage = document.querySelector(".post-comment-error-message");
+const commentErrorMessage = document.querySelector(
+  ".post-comment-error-message"
+);
 const commentLoader = document.querySelector(".comment-loader");
 
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
-//
 
 // API URLS
 const detailsUrl =
@@ -43,52 +41,91 @@ const detailsUrl =
 const authorUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
 const commentUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?&per_page=100&post=" + id;
-// const commentUrl =
-//   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments";
+  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?&per_page=100&post=" +
+  id;
 const postsUrl =
   "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
-//
+async function fetchDetailsAndAuthor(urlForDetails, urlForAthor) {
+  try {
+    const detailsResponse = await fetch(urlForDetails);
+    const detailsResults = await detailsResponse.json();
 
-async function fetchApi(
-  urlForDetails,
-  urlForAthor,
-  urlForComments,
-  urlForPosts
-) {
-  const detailsResponse = await fetch(urlForDetails);
-  const detailsResults = await detailsResponse.json();
-  //   console.log(results[0].author);
-  const resultsData = detailsResults[0];
-  const authorId = detailsResults[0].author;
+    const resultsData = detailsResults[0];
+    const authorId = detailsResults[0].author;
 
-  const authorResponse = await fetch(urlForAthor + authorId);
-  const authorResults = await authorResponse.json();
-  console.log(authorResults);
+    const authorResponse = await fetch(urlForAthor + authorId);
+    const authorResults = await authorResponse.json();
 
+    // Creates the title of post in the breadcrumbs
+    activePage.innerHTML = `${resultsData.title.rendered}`;
 
-  const commentResponse = await fetch(urlForComments);
-  const commentResults = await commentResponse.json();
-  console.log(commentResults);
+    createDetails(detailsResults, authorResults);
+  } catch (error) {
+    commentLoader.style.display = "none";
+    loaderContainer.style.display = "none";
+    detailsContainer.innerHTML = showErrorMessage(error);
+  }
+}
 
-  //
+fetchDetailsAndAuthor(detailsUrl, authorUrl);
+
+// Creates the Next and Previous post links under post details.
+async function getAllPosts(urlForPosts) {
   const postsResponse = await fetch(urlForPosts);
   const postsResults = await postsResponse.json();
-  console.log(postsResults);
 
-  activePage.innerHTML = `${resultsData.title.rendered}`;
-
-  createHtml(detailsResults, authorResults, commentResults, postsResults);
+  createNextAndPreviousSection(postsResults);
 }
-fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
 
-function createHtml(post, author, comment, allPosts) {
+getAllPosts(postsUrl);
+
+function createNextAndPreviousSection(allPosts) {
+  const index = allPosts.findIndex(function (post) {
+    return post.id == id;
+  });
+
+  // finds next index of posts array and creates the next post link
+  const nextIndex = index + 1;
+
+  try {
+    nextPost.innerHTML = `
+    <a href="details.html?id=${allPosts[nextIndex].id}" style="text-decoration:none" class="next-container">
+      <h3 class="next-header"> Next post:</h3>
+      <div class="title-and-arrow">
+        <p class="next-title">${allPosts[nextIndex].title.rendered}</p>
+        <i class="fas fa-arrow-circle-right"></i>
+      </div>
+    </a>
+    `;
+  } catch {
+    nextPost.style.display = "none";
+  }
+
+  // Finds the previous index of posts and creates the previous post link
+  const previousIndex = index - 1;
+
+  try {
+    previousPost.innerHTML = `
+    <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
+      <h3 class="next-header"> Previous post:</h3>
+      <div class="title-and-arrow">
+        <i class="fas fa-arrow-circle-left"></i>
+        <p class="next-title">  ${allPosts[previousIndex].title.rendered}</p>
+      </div>
+    </a>
+  `;
+  } catch {
+    postNavigation.style.justifyContent = "right";
+    previousPost.style.display = "none";
+  }
+}
+
+function createDetails(post, author) {
   loader.style.display = "none";
   loaderContainer.style.display = "none";
 
   const data = post[0];
-  console.log(data);
   const postImage = data._embedded["wp:featuredmedia"][0];
   // Month construction
   const dateCreation = new Date(data.date);
@@ -102,14 +139,13 @@ function createHtml(post, author, comment, allPosts) {
   imageContainer.innerHTML = `<img src="${postImage.source_url}" class="post-img" alt="${postImage.alt_text}">`;
   detailsContainer.innerHTML = `${data.content.rendered}`;
 
-  // title and meta description
+  // dynamic title and meta description
   const dataHeader = document.querySelector(".details-container h2");
   title.innerHTML = `The Environmentalist | ${data.title.rendered}`;
   const metaDescription = document.querySelector("#meta-description");
   metaDescription.content = `${data.title.rendered}: ${dataHeader.innerText}`;
-  console.log(metaDescription);
 
-  // MODAL
+  // MODAL for image container
 
   imageContainer.addEventListener("click", function () {
     modalContainer.classList.add("visible");
@@ -134,114 +170,25 @@ function createHtml(post, author, comment, allPosts) {
   </div>
   <p>${date}</p>
   `;
-
-  // Next and previous posts
-
-  // finds next index of posts array
-
-  const index = allPosts.findIndex(function (post) {
-    return post.id == id;
-  });
-
-  const nextIndex = index + 1;
-
-  try {
-    nextPost.innerHTML = `
-    <a href="details.html?id=${allPosts[nextIndex].id}" style="text-decoration:none" class="next-container">
-      <h3 class="next-header"> Next post:</h3>
-      <div class="title-and-arrow">
-        <p class="next-title">${allPosts[nextIndex].title.rendered}</p>
-        <i class="fas fa-arrow-circle-right"></i>
-      </div>
-    </a>
-    `;
-    nextPost.classList.add("hover-style");
-  } catch {
-    // nextPost.innerHTML = `
-    // <h3 class="no-more-posts"> No more posts</h3>
-    // `;
-    nextPost.style.display = "none";
-  }
-
-  const previousIndex = index - 1;
-
-  try {
-    previousPost.innerHTML = `
-    <a href="details.html?id=${allPosts[previousIndex].id}" style="text-decoration:none" class="previous-container">
-      <h3 class="next-header"> Previous post:</h3>
-      <div class="title-and-arrow">
-        <i class="fas fa-arrow-circle-left"></i>
-        <p class="next-title">  ${allPosts[previousIndex].title.rendered}</p>
-      </div>
-    </a>
-  `;
-    previousPost.classList.add("hover-style");
-  } catch {
-    // previousPost.innerHTML = `
-    //  <h3 class="no-more-posts"> No more posts</h3>
-    //  `;
-    // previousPost.style.opacity = 0.4;
-    postNavigation.style.justifyContent = "right";
-    previousPost.style.display = "none";
-  }
-
-//  createCommentSection(data, comment);
-// createComments(comment)
-  // Comment form : Post.ID value inserted into the comment form
-
   postIdInForm.value = Number(data.id);
-  console.log(postIdInForm);
-
-  // Comment section
-  // commentAmount.innerHTML = `
-  // Comments(${comment.length})`;
-
-  // if (comment.length === 0) {
-  //   firstComment.innerHTML = "Be the first to leave a comment";
-  // } else {
-  //   firstComment.style.display = "none";
-  // }
-  // comment.forEach(function (data) {
-  //   //
-
-  //   const dateCreation = new Date(data.date);
-  //   const year = dateCreation.getFullYear();
-  //   const monthIndex = dateCreation.getMonth();
-  //   const day = dateCreation.getDate();
-  //   const date = day + "." + month[monthIndex] + "." + year;
-  //   readerComments.innerHTML += `
-  //   <div class="user-comment-container">
-  //     <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
-  //     </div>  
-  //     <div class="comment-content"> ${data.content.rendered}</div>
-  //   </div>
-  //   `;
-  // });
 }
+
+// Creates comments section
 
 async function createComments(commentUrl) {
   try {
     readerComments.innerHTML = "";
- 
-
     const commentResponse = await fetch(commentUrl);
     const commentResults = await commentResponse.json();
-    console.log(commentResults);
-  
-    // const detailsResponse = await fetch(postData);
-    // const detailsResults = await detailsResponse.json();
-    // const data = detailsResults[0];
     commentAmount.innerHTML = `
     Comments(${commentResults.length})`;
-  
+
     if (commentResults.length === 0) {
       firstComment.innerHTML = "Be the first to leave a comment";
     } else {
       firstComment.style.display = "none";
     }
     commentResults.forEach(function (data) {
-      
-  
       const dateCreation = new Date(data.date);
       const year = dateCreation.getFullYear();
       const monthIndex = dateCreation.getMonth();
@@ -255,80 +202,24 @@ async function createComments(commentUrl) {
       </div>
       `;
     });
-  
     commentLoader.style.display = "none";
-
-  }
-  catch (error) {
+  } catch (error) {
+    commentLoader.style.display = "none";
     readerComments.innerHTML = showErrorMessage(error);
   }
-
-
 }
-createComments(commentUrl)
-// function callCreateCommentsFunction() {
-//   
-// }
-// callCreateCommentsFunction();
-// function createCommentSection(data, comment) {
-//     // Comment form : Post.ID value inserted into the comment form
 
-//     // postIdInForm.value = Number(data.id);
-//     // console.log(postIdInForm);
-  
-//     // Comment section
-//     commentAmount.innerHTML = `
-//     Comments(${comment.length})`;
-  
-//     if (comment.length === 0) {
-//       firstComment.innerHTML = "Be the first to leave a comment";
-//     } else {
-//       firstComment.style.display = "none";
-//     }
-//     comment.forEach(function (data) {
-//       //
-  
-//       const dateCreation = new Date(data.date);
-//       const year = dateCreation.getFullYear();
-//       const monthIndex = dateCreation.getMonth();
-//       const day = dateCreation.getDate();
-//       const date = day + "." + month[monthIndex] + "." + year;
-//       readerComments.innerHTML += `
-//       <div class="user-comment-container">
-//         <div class="user-comment-top"> <h3 class="comment-name">Comment by: ${data.author_name}</h3><p class="comment-date">on ${date}</p>
-//         </div>  
-//         <div class="comment-content"> ${data.content.rendered}</div>
-//       </div>
-//       `;
-//     });
-
-// }
-
-// function modalFunction() {
-//   modalContainer.style.display = "block";
-// }
-
-// modalContainer.addEventListener("click", function () {
-//   modalContainer.style.display = "none";
-// });
-
+createComments(commentUrl);
 
 function validateForm(event) {
   event.preventDefault();
   if (nameValid && emailValid && commentValid) {
-
-    // submitButton.disabled = true;
     commentLoader.style.display = "block";
     postComment();
     commentForm.reset();
     nameValid = false;
     emailValid = false;
     commentValid = false;
-
-    // Reloads page after comment submission
-    // const delayedRedirect = setTimeout(() => {
-    //   location.reload();
-    // }, 500);
   } else {
     validateName();
     validateEmail();
@@ -345,46 +236,23 @@ function postComment() {
     content: commentInput.value,
     post: postIdInForm.value,
   });
-  // try {
-    fetch(
-      "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments",
-  
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: postData,
-      }
-    );
-     
-    const reloadComments = setTimeout(() => {
-     
-        successMessage.style.display = "flex";
-      // location.reload();
-      // callCreateCommentsFunction();
-      createComments(commentUrl)
-    }, 1000);
- 
-  }
-  // catch (error) {
-  //   console.log(error);
-  //   commentErrorMessage.style.display = "flex";
-  //   commentErrorMessage.innerHTML = showErrorMessage(error);
+  fetch("https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: postData,
+  });
 
-  // }
-  // finally {
-  //   console.log("no error boiii");
-  //   // readerComments.innerHTML = "";
-  //   // fetchApi(detailsUrl, authorUrl, commentUrl, postsUrl);
+  const reloadComments = setTimeout(() => {
+    successMessage.style.display = "flex";
+    createComments(commentUrl);
+  }, 1000);
+}
 
+// Comment validation functions
+// On form submission the error message and red border will show. When user inputs valid values, the error message is removed and border reset to black.
 
-
-
-  // }
-// }
-
-// Comment validation
 const nameError = document.querySelector(".name-error");
 const emailError = document.querySelector(".email-error");
 const commentError = document.querySelector(".comment-error");
@@ -395,6 +263,7 @@ var emailValid = false;
 var commentValid = false;
 
 // Name Validation
+
 function validateName() {
   if (checkLength(nameInput.value, 5)) {
     nameValid = true;
@@ -464,52 +333,19 @@ function validateCommentKeyup() {
     commentValid = true;
     commentError.style.display = "none";
     commentInput.classList.remove("input-error-border-red");
-
-
   } else {
     commentValid = false;
- 
   }
 }
 
 commentInput.addEventListener("input", validateCommentKeyup);
 
-// Checks
-
-// function checkLength(value, length) {
-//   if (value.trim().length > length) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
-// function checkEmail(email) {
-//   const regEx = /\S+@\S+\.\S+/;
-//   const patterMatches = regEx.test(email);
-//   return patterMatches;
-// }
-
+// To the top button
 
 const toTopButton = document.querySelector(".to-the-top");
 toTopButton.addEventListener("click", function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
-
-// document.addEventListener("scroll", function () {
-//   if (
-//     document.documentElement.scrollTop + window.innerHeight ==
-//     document.documentElement.scrollHeight
-//   ) {
-//     if (window.innerWidth > 1800) {
-//       toTopButton.style.right = 5 + "%";
-//     } else {
-//       toTopButton.style.right = 20 + "px";
-//     }
-//   } else {
-//     toTopButton.style.right = -140 + "px";
-//   }
-// });
 
 document.addEventListener("scroll", function () {
   if (

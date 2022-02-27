@@ -1,17 +1,15 @@
 
 .contact-text {
-  text-align: center;
+  text-align: left;
   margin: 15px 20px 50px 20px;
 }
 body {
   text-align: center;
 }
-
 .submit-button {
   background-color: white;
   color: black;
   font-size: 1.3em;
-  /* font-weight: bold; */
   margin: 50px auto;
   border: 2px solid black;
   padding: 15px 30px;
@@ -23,11 +21,9 @@ body {
   cursor: pointer;
   background-color: #d7ecd7;
 }
-
 .success-message {
   text-align: center;
-  /* display: none; */
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   align-content: center;
@@ -45,22 +41,15 @@ body {
   margin: auto;
   font-size: 1.5em;
 }
-
 @media (min-width: 700px) {
   .success-message {
     margin: 30px auto;
-    
   }
-
-
   .contact-text {
-    font-size: 1.6em;
+    font-size: 1.4em;
     max-width: 700px;
     margin: 15px auto 70px auto;
   }
-
-
-
   .submit-button {
     padding: 15px 55px;
     font-size: 1.7em;
@@ -69,10 +58,4 @@ body {
   .submit-button:hover {
     padding: 15px 75px;
   }
-}
-@media (min-width: 1000px) {
-  
-
-
-
 }

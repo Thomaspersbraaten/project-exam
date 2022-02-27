@@ -66,22 +66,7 @@ async function getPosts(url) {
     };
     pageContainerArray.forEach(setPagePositioning);
 
-    // updates the container width on resize, so the pages dont overlap when resizing.
-    // window.addEventListener("resize", function() {
-    //   const acitePageResize = document.querySelector(".active-post-page");
-      
-  
-    //     const containerWidthResized = acitePageResize.getBoundingClientRect().width;
-    //     const setPagePositioningResized = (page, index) => {
-    //       page.style.left = containerWidthResized * index + "px";
-    //     }  
-    //     pageContainerArray.forEach(setPagePositioningResized);
-   
-    
-    //  });
-
-
-     // Move to pages function.
+    // Move to pages function.
     const moveToPage = (postContainer, currentPage, targetPage) => {
       postContainer.style.transform =
         "translateX(-" + targetPage.style.left + ")";
@@ -109,7 +94,7 @@ async function getPosts(url) {
     }
 
     // previousPageButton.addEventListener("click", previousPageFunction);
-    previousPageButton.addEventListener("click", function() {
+    previousPageButton.addEventListener("click", function () {
       previousPageFunction();
     });
 
@@ -139,8 +124,6 @@ async function getPosts(url) {
     postContainer.innerHTML = showErrorMessage(error);
   }
 }
-
-
 
 getPosts(postUrl);
 

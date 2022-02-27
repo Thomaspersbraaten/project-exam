@@ -7,97 +7,115 @@ main {
 }
 .tips-section {
   margin: 40px 10px;
-  background-color: #d9d7d736;
-  border: 1px solid black;
-  border-radius: 20px;
+}
+.tips-intro p {
+  text-align: left;
 }
 
-.tips__content {
-  display: flex;
-  gap: 15px;
-  margin: 10px 15px;
-}
 .tips__heading {
-  margin-bottom: 0px;
+  margin: 15px 15px 0px 15px;
+  font-size: 1em;
   font-weight: bold;
   font-style: italic;
 }
-
-.tips__bullet {
-  display: flex;
-  align-items: center;
-  font-size: 3em;
-  margin: 5px;
+.tips__heading, .tips__content, .tips__author-info {
+  text-align: left;
 }
+
 .tips__main-content {
   display: flex;
-  align-items: center;
+  margin: 0px 15px;
+  text-align: left;
 }
 
 .divider {
   border: 1px solid black;
-  width: 80%;
+  width: 90%;
   color: black;
   margin: 25px auto 60px auto;
 }
 
 .tips__author-info {
-  margin: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .tips__author-info > * {
-  margin: 5px 20px;
+  margin: 5px 15px;
 }
 
 .tips__ending {
   margin: 30px auto 40px auto;
 }
 
-.last-container {
+.more-tips-info {
+  display: none;
+  margin: 50px auto auto auto;
+  font-size: 1.3em;
+}
+.show-more-btn {
+  background-color: white;
+  color: black;
+  font-size: 1.3em;
+  /* font-weight: bold; */
   margin: 50px auto;
+  border: 2px solid black;
+  padding: 15px 30px;
+  border-radius: 25px;
+  box-shadow: 5px 5px #8080802b;
+  transition: all 0.5s;
 }
 
 @media (min-width: 700px) {
+  .tips-section {
+    margin: 75px auto auto auto;
+    max-width: 650px;
+  }
   main {
     margin-bottom: 100px;
   }
+ 
   .tips-intro {
-    margin: 40px;
+    max-width: 650px;
+    margin: 40px auto;
     font-size: 1.6em;
   }
-  .tips__bullet {
-    font-size: 5em;
+  .tips__heading {
+    font-size: 1.3em;
+    max-width: 650px;
+    margin: auto;
+
   }
-  .tips__content {
-    margin: 15px 25px;
-    font-size: 1.6em;
+  .tips__main-content {
+    margin: 10px auto;
+    max-width: 650px;
+    font-size: 1.2em;
   }
   .tips__author-info {
-    font-size: 1.5em;
-    margin: 10px 25px;
+    font-size: 1.2em;
+    margin: 5px auto;
+    max-width: 650px;
   }
-  .last-container {
+  .divider {
+    max-width: 650px;
+    width: 100%;
+  }
+  .more-tips-info {
     font-size: 1.6em;
+  }
+  .show-more-btn {
+    padding: 25px 45px;
+  }
+  .show-more-btn:hover {
+    cursor: pointer;
+    background-color: #d7ecd7;
+    padding: 25px 65px;
+  
   }
 }
 @media (min-width: 1000px) {
-  .tips-section {
-    max-width: 1050px;
-    margin: 40px auto;
-  }
-  .tips {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-  }
-  .tips__author-info {
-    max-width: 800px;
-    margin: 20px auto;
-  }
   .tips-intro {
-    max-width: 700px;
     margin: 50px auto 90px auto;
   }
 }

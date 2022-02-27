@@ -24,17 +24,12 @@ var messageValid = false;
 // Form Validation function
 
 function validateForm(event) {
-  // validateName();
-  // validateEmail();
-  // validateSubject();
-  // validateMessage();
   event.preventDefault();
   if (nameValid && emailValid && subjectValid && messageValid) {
+    // If all fields are valid sends contact for then resets form and shows succes message.
     sendContactForm();
     contactForm.reset();
     successMessage.style.display = "flex";
-    successMessage.innerHTML = `<p>Thank you for contacting us!</p>`;
-    // submitButton.disabled = true;
   } else {
     validateName();
     validateEmail();
@@ -45,7 +40,7 @@ function validateForm(event) {
 
 contactForm.addEventListener("submit", validateForm);
 
-// Send contact form to wordpress -> redirected to my personal email and stored in "flamingo" plugin on wordpress.
+// Send contact form to wordpress -> redirected to my personal email and information stored in "flamingo" plugin in wordpress.
 
 function sendContactForm(e) {
   var formData = new FormData();
@@ -61,6 +56,9 @@ function sendContactForm(e) {
     }
   );
 }
+
+// Validation Functions
+// On form submission the error message and red border will show. When user inputs valid values, the error message is removed and border reset to black.
 
 // Name validation
 
@@ -86,7 +84,7 @@ function validateNameKeyup() {
   }
 }
 
-fullName.addEventListener("keyup", validateNameKeyup);
+fullName.addEventListener("input", validateNameKeyup);
 
 // Email validation
 
@@ -111,6 +109,7 @@ function validateEmailKeyup() {
     emailValid = false;
   }
 }
+
 email.addEventListener("input", validateEmailKeyup);
 
 // Subject validation
@@ -124,7 +123,6 @@ function validateSubject() {
     subjectValid = false;
     subjectError.style.display = "flex";
     subject.classList.add("input-error-border-red");
-
   }
 }
 
@@ -137,7 +135,8 @@ function validateSubjectKeyup() {
     subjectValid = false;
   }
 }
-subject.addEventListener("keyup", validateSubjectKeyup);
+
+subject.addEventListener("input", validateSubjectKeyup);
 
 // Message Validation
 
@@ -160,47 +159,7 @@ function validateMessageKeyup() {
     message.classList.remove("input-error-border-red");
   } else {
     messageValid = false;
-    
   }
 }
 
-message.addEventListener("keyup", validateMessageKeyup);
-
-// Checks
-
-// function checkLength(value, length) {
-//   if (value.trim().length > length) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
-// function checkEmail(email) {
-//   const regEx = /\S+@\S+\.\S+/;
-//   const patterMatches = regEx.test(email);
-//   return patterMatches;
-// }
-// window.addEventListener("resize", function() {
-//   console.log(contactForm.getBoundingClientRect().width);
-
-//   if (contactForm.getBoundingClientRect().width > 620) {
-//     contactForm.style.margin = "20px auto 80px auto";
-//     console.log("greater");
-//   }
-
-
-// });
-
-
-// window.addEventListener("resize", function() {
-  
-//   if (contactForm.getBoundingClientRect().width < 620) {
-//     contactForm.style.margin = "20px 20px 80px 20px";
-//     console.log("less");
-//   }
-
-
-// });
-
-
+message.addEventListener("input", validateMessageKeyup);

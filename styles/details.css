@@ -4,12 +4,9 @@ main {
 section {
   text-align: center;
 }
-
 .post-img {
   width: 94%;
   margin: 0px 3% 10px 3%;
-  /* max-width: 300px; */
-  /* height: 200px; */
   transition: 0.3s;
 }
 .post-img:hover {
@@ -21,41 +18,27 @@ section {
   max-width: 1010px;
   margin: auto;
 }
-
 .details-container {
   text-align: left;
 }
-
 .details-container p {
   font-style: normal;
 }
 .details-container h4 {
   display: none;
 }
-/* 
-.details-header {
-  font-family: agenda, alegreya, Verdana, Geneva, Tahoma, sans-serif;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 1.7em;
-  text-align: center;
-} */
-
 section {
   max-width: 750px;
   margin: auto;
 }
-
 main h2,
 main p {
   text-align: left;
-
 }
 main h2 {
   font-size: 1.3em;
   margin: 25px 3%;
 }
-
 main p {
   font-size: 1em;
   margin: 20px 3%;
@@ -70,10 +53,7 @@ Author info
   width: 30px;
   height: 30px;
   border-radius: 50%;
-
-  /* margin: 10px; */
 }
-
 .author-info {
   display: flex;
   justify-content: space-between;
@@ -91,21 +71,18 @@ Author info
 next and previous post
 */
 
-.hover-style:hover {
-  background-color: #d9d3cb;
+.next-post:hover, .previous-post:hover {
+  background-color: #cecece;
 }
-
 .next-previous {
   height: 70px;
   margin: 15px;
   display: flex;
   justify-content: space-between;
 }
-
 .next-post,
 .previous-post {
   display: flex;
-
   color: black;
   font-size: 1em;
   height: 100%;
@@ -114,7 +91,6 @@ next and previous post
   border-radius: 20px;
   border: 1px solid black;
 }
-
 .next-container,
 .previous-container {
   display: flex;
@@ -126,18 +102,11 @@ next and previous post
   height: 100%;
   width: 100%;
 }
-
-/* .next-post:hover,
-.previous-post:hover {
-  background-color: #d6d6d5;
-} */
-
 .next-header {
   margin: 3px auto;
   font-size: 0.7em;
   height: 25%;
 }
-
 .next-title {
   margin: 2px 0px;
   width: 70px;
@@ -151,11 +120,9 @@ next and previous post
   justify-content: space-between;
   align-items: center;
 }
-
 .divider {
   margin: 30px 5%;
 }
-
 .next-previous p {
   font-size: 0.7em;
 }
@@ -166,7 +133,6 @@ next and previous post
   font-size: 0.5em;
   margin: auto;
 }
-
 .fa-arrow-circle-right,
 .fa-arrow-circle-left {
   margin: 2px 5;
@@ -175,11 +141,8 @@ next and previous post
 /*
 Comment Section 
 */
-/* .comment-amount {
-  margin: 30px 20px;
-} */
-.comment-loader {
 
+.comment-loader {
     margin: 30px auto 30px auto;
     border: 10px solid #d6d3d3;
     border-top: 10px solid rgb(0, 0, 0);
@@ -203,28 +166,9 @@ Comment Section
   margin: 20px auto;
   text-decoration: none;
 }
-
 .be-the-first-to-comment {
   margin: 30px 20px;
 }
-
-/* .comment-form {
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 20px 20px 80px 20px;
-  padding: 10px;
-  text-align: left;
-  background-color: #a9a9a927;
-  border: 1px solid #707070;
-} */
-
-/* .comment-form > * {
-  margin: 5px;
-} */
-
-
 .submit-button {
   background-color: white;
   color: black;
@@ -236,11 +180,9 @@ Comment Section
   box-shadow: 5px 5px #8080802b;
   transition: all 0.5s;
 }
-
 .comment-section {
   max-width: 750px;
 }
-
 .reader-comments {
   margin-bottom: 60px;
 }
@@ -262,7 +204,6 @@ Comment Section
   justify-content: space-between;
   align-items: center;
 }
-
 .comment-content {
   margin: 20px;
 }
@@ -270,8 +211,6 @@ Comment Section
   cursor: pointer;
   background-color: #d7ecd7;
 }
-
-
 .post-comment-error-message {
   display: none;
   background-color: red;
@@ -279,7 +218,6 @@ Comment Section
   border: 1px solid black;
   padding: 5px 25px;
   border-radius: 30px;
-
 }
 .success-message {
   display: none;
@@ -318,7 +256,6 @@ Comment Section
   left: 0%;
   top: 25%;
   width: 90%;
-  /* height: 250px; */
   margin: 0px 5%;
 }
 @media (min-width:500px) {
@@ -330,7 +267,7 @@ Comment Section
     margin-bottom: 100px;
   }
   .post-img, .details-container h2 {
-    max-width: 750px;
+    max-width: 650px;
   }
   .author-info, .details-container p, .next-previous, .comment-section {
     max-width: 650px;
@@ -355,7 +292,7 @@ Comment Section
     margin: 10px auto 30px auto;
   }
   .comment-amount {
-    font-size: 2em;
+    font-size: 1.7em;
   }
   .details-container {
     margin: 10px 30px 30px 30px;
@@ -380,6 +317,7 @@ Comment Section
   }
   .next-previous {
     height: 136px;
+    margin: 15px auto;
   }
   .next-post,
   .previous-post {
@@ -414,18 +352,9 @@ Comment Section
     margin: 45px 10%;
     max-width: 650px;
   }
-
   /* 
   Comments
   */
-  /* .comment-container label {
-    font-size: 1.3em;
-  } */
-  /* #comment,
-  #name,
-  #email {
-    padding: 7px;
-  } */
   .submit-button {
     padding: 25px 45px;
   }
@@ -465,9 +394,6 @@ Comment Section
 }
 
 @media (min-width: 1000px) {
-  /* .comment-name {
-    text-decoration: none;
-  } */
   .post-img {
     margin: 0px;
     height: auto;
@@ -503,18 +429,6 @@ Comment Section
     max-width: 1200px;
     margin: auto 20px;
   }
-  /* .details-container p {
-    max-width: 750px;
-  } */
-  /* .modal-img {
-    position: relative;
-    margin: 200px auto;
-    width: 100%;
-    /* top: 15%;
-    left: 5%;
-    max-width: 1100px;
-    max-height: 1100px; */
-
   .modal-img {
     width: 100%;
     position: static;

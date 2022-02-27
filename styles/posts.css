@@ -8,19 +8,16 @@ main {
   justify-content: center;
   align-content: center;
   align-items: center;
-  /* width: 92%;
-  margin: 5px 4% 75px 4%; */
-  /* margin-bottom: 100px; */
 }
-
+.error {
+  margin: auto;
+}
 .search-container {
-  /* width: 150px; */
   display: flex;
   flex-direction: column;
   margin: 45px auto;
   justify-content: center;
 }
-
 label {
   margin: 5px 5px 10px 0px;
   font-family: Merriweather, sans-serif, Arial, Helvetica;
@@ -52,7 +49,6 @@ input:focus {
   justify-content: center;
   font-size: 1.2em;
   width: 40px;
-  /* height: 36px; */
   border-radius: 0px 20px 20px 0px;
   padding: 0px 12px 0px 10px;
   background-color: #f9f8f8;
@@ -66,12 +62,10 @@ input:focus {
   cursor: pointer;
   background-color: #cecece;
 }
-
 .show-more-btn {
   background-color: white;
   color: black;
   font-size: 1.3em;
-  /* font-weight: bold; */
   margin: 50px auto;
   border: 2px solid black;
   padding: 15px 30px;
@@ -79,7 +73,6 @@ input:focus {
   box-shadow: 5px 5px #8080802b;
   transition: all 0.5s;
 }
-
 .post {
   border: 2px solid black;
   border-radius: 20px;
@@ -87,7 +80,6 @@ input:focus {
   background-color: #f9f8f8;
   transition: 0.4s;
 }
-
 .post__posts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -103,7 +95,6 @@ input:focus {
   cursor: pointer;
   background-color: #d7ecd7;
 }
-
 .inactive-button {
   background-color: grey;
   color: #0006;
@@ -120,28 +111,17 @@ input:focus {
   padding: 20px;
   color: red;
 }
-
 .search-container input[type="search"] {
   font-size: 0.8em;
   /* font-family: "Times New Roman", Times, serif; */
   font-family: Merriweather, sans-serif, Arial, Helvetica;
   box-sizing: border-box;
 }
-
 .more-posts-info p {
   font-size: 0.9em;
   margin: 20px 5px;
   font-family: source sans pro, sans-serif, Arial, Helvetica;
 }
-/* .side-position {
-  position: absolute;
-  right: 0px;
-  transition: 1s ease;
-}
-.regular-position {
-  position: static;
-} */
-
 @media (min-width: 700px) {
   main {
     margin-bottom: 100px;
@@ -167,7 +147,6 @@ input:focus {
   }
   .show-more-btn:hover {
     padding: 25px 65px;
-  
   }
 }
 @media (min-width: 1000px) {
