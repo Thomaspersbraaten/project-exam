@@ -16,11 +16,32 @@ const postUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?c
 var currentPostCount = 0;
 var morePostsCount = 9;
 
+// async function getPosts(url) {
+//   try {
+//     const response = await fetch(url);
+//     const results = await response.json();
+//     console.log(results);
+//     createHtml(results);
+//     showMore.addEventListener("click", function () {
+//       showMorePosts(results);
+//     });
+//   }
+//   catch (error) {
+//     loaderContainer.style.display = "none";
+//     postsContainer.innerHTML = showErrorMessage(error);
+//     postsContainer.style.display = "flex";
+//     showMore.style.display = "none";
+//   }
+// }
+
+
 async function getPosts(url) {
   try {
     const response = await fetch(url);
     const results = await response.json();
-    console.log(results);
+    // console.log(results);
+    // const postsboi = Array.from(results)
+    // return postsboi;
     createHtml(results);
     showMore.addEventListener("click", function () {
       showMorePosts(results);
@@ -33,6 +54,12 @@ async function getPosts(url) {
     showMore.style.display = "none";
   }
 }
+
+// console.log(getPosts(postUrl)); 
+// const posts = getPosts(postUrl);
+// console.log(posts);
+// // console.log(postsboi);
+// createHtml(posts)
 
 getPosts(postUrl);
 

@@ -58,21 +58,15 @@ async function getPosts(url) {
     createHtml(calculatedPageNumbers, pageArray, pageContainerArray);
 
     // Gets the width of the page container
-    previousPageButton.addEventListener("click", function () {
-      console.log(pageIndex);
-    });
-    nextPageButton.addEventListener("click", function () {
-      console.log(pageIndex);
-    });
 
     const containerWidth = pageContainerArray[0].getBoundingClientRect().width;
-    // var containerWidth = pageContainerArray[0].getBoundingClientRect().width;
 
     // Sets the positioning of the post containers on page setup
     const setPagePositioning = (page, index) => {
       page.style.left = containerWidth * index + "px";
     };
     pageContainerArray.forEach(setPagePositioning);
+
 
     // Move to pages function.
     const moveToPage = (postContainer, currentPage, targetPage) => {

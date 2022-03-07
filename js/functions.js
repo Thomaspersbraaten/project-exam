@@ -26,18 +26,22 @@ hamburgerMenu.addEventListener("click", function () {
     if (window.innerWidth > 700) {
       toggleNavList(73, false, "none", "block");
     } else {
+   
       toggleNavList(41, false, "none", "block");
     }
   } else {
-    toggleNavList(-200, true, "block", "none");
+
+    toggleNavList(-140, true, "block", "none");
+
+
   }
 });
 
 function toggleNavList(pixelValue, hiddenValue, barsValue, XValue) {
-  navMenu.style.top = pixelValue + "px";
-  navHidden = hiddenValue;
-  hamburgerBars.style.display = barsValue;
-  hamburgerX.style.display = XValue;
+  navMenu.style.top = pixelValue + "px";  
+    navHidden = hiddenValue;
+    hamburgerBars.style.display = barsValue;
+    hamburgerX.style.display = XValue; 
 }
 function setTransition() {
   navMenu.style.transition = "all 0.4s";
