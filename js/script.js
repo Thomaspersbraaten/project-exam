@@ -21,7 +21,7 @@ var arrayIndex = 0;
 async function getPosts(url) {
   try {
     const response = await fetch(url);
-    console.log(response);
+    
     const results = await response.json();
 
     // creates the variable that calculates the number of pages to create
@@ -89,7 +89,7 @@ async function getPosts(url) {
         pageIndex--;
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, previousPage);
-        console.log(pageIndex);
+     
         if (pageIndex === 1) {
           previousPageButton.classList.add("opacity");
         }
@@ -113,7 +113,7 @@ async function getPosts(url) {
         const currentPage = postContainer.querySelector(".active-post-page");
         const nextPage = currentPage.nextElementSibling;
         pageIndex++;
-        console.log(pageIndex);
+      
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, nextPage);
         if (pageIndex === pageContainerArray.length) {

@@ -328,7 +328,7 @@ function validateComment() {
 }
 
 function validateCommentKeyup() {
-  console.log(commentValid);
+ 
   if (checkLength(commentInput.value, 1)) {
     commentValid = true;
     commentError.style.display = "none";

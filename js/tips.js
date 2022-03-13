@@ -13,7 +13,7 @@ async function fetchApi(tipsUrl) {
   try {
     const response = await fetch(tipsUrl);
     const results = await response.json();
-    console.log(results);
+    
     createHtml(results);
 
     showMore.addEventListener("click", function () {

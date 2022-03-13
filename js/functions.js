@@ -21,7 +21,7 @@ var navHidden = true;
 
 // tryy
 hamburgerMenu.addEventListener("click", function () {
-  console.log(navMenu);
+ 
   if (navHidden) {
     if (window.innerWidth > 700) {
       toggleNavList(73, false, "none", "block");

@@ -20,7 +20,7 @@ var morePostsCount = 9;
 //   try {
 //     const response = await fetch(url);
 //     const results = await response.json();
-//     console.log(results);
+//   
 //     createHtml(results);
 //     showMore.addEventListener("click", function () {
 //       showMorePosts(results);
@@ -39,7 +39,7 @@ async function getPosts(url) {
   try {
     const response = await fetch(url);
     const results = await response.json();
-    // console.log(results);
+ 
     // const postsboi = Array.from(results)
     // return postsboi;
     createHtml(results);
@@ -55,11 +55,7 @@ async function getPosts(url) {
   }
 }
 
-// console.log(getPosts(postUrl)); 
-// const posts = getPosts(postUrl);
-// console.log(posts);
-// // console.log(postsboi);
-// createHtml(posts)
+
 
 getPosts(postUrl);
 
