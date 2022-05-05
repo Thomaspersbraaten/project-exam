@@ -42,7 +42,7 @@ main h2 {
 main p {
   font-size: 1em;
   margin: 20px 3%;
-  font-family:  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 /* 
@@ -71,7 +71,8 @@ Author info
 next and previous post
 */
 
-.next-post:hover, .previous-post:hover {
+.next-post:hover,
+.previous-post:hover {
   background-color: #cecece;
 }
 .next-previous {
@@ -143,24 +144,24 @@ Comment Section
 */
 
 .comment-loader {
-    margin: 30px auto 30px auto;
-    border: 10px solid #d6d3d3;
-    border-top: 10px solid rgb(0, 0, 0);
-    border-bottom: 10px solid rgb(0, 0, 0);
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 1.7s linear infinite;
+  margin: 30px auto 30px auto;
+  border: 10px solid #d6d3d3;
+  border-top: 10px solid rgb(0, 0, 0);
+  border-bottom: 10px solid rgb(0, 0, 0);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 1.7s linear infinite;
 }
-  
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 .leave-comment {
   margin: 20px auto;
@@ -231,7 +232,6 @@ Comment Section
 }
 .checkmark {
   font-size: 1em;
-
 }
 /* Modal */
 
@@ -248,7 +248,7 @@ Comment Section
 
 .visible {
   display: flex;
-  z-index: 1;
+  z-index: 2;
 }
 
 .modal-img {
@@ -258,22 +258,24 @@ Comment Section
   width: 90%;
   margin: 0px 5%;
 }
-@media (min-width:500px) {
-
+@media (min-width: 500px) {
 }
 
 @media (min-width: 700px) {
   main {
     margin-bottom: 100px;
   }
-  .post-img, .details-container h2 {
+  .post-img,
+  .details-container h2 {
     max-width: 650px;
   }
-  .author-info, .details-container p, .next-previous, .comment-section {
+  .author-info,
+  .details-container p,
+  .next-previous,
+  .comment-section {
     max-width: 650px;
   }
   .submit-button:hover {
- 
     padding: 25px 65px;
   }
   h3 {
@@ -402,9 +404,9 @@ Comment Section
   .success-message {
     width: 450px;
   }
-.checkmark {
-  font-size: 3em;
-}
+  .checkmark {
+    font-size: 3em;
+  }
 
   .details-container {
     margin: 20px auto 50px auto;
@@ -420,7 +422,6 @@ Comment Section
   }
   .divider {
     margin: 45px auto;
-   
   }
   .comment-section {
     margin: auto;

@@ -12,8 +12,7 @@ const postHeader = document.querySelector(".post-header");
 const carouselContainer = document.querySelector(".carousel-container");
 const welcomeContainer = document.querySelector(".welcome");
 const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
-const postUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
+const postUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
 var pageIndex = 1;
 var arrayIndex = 0;
@@ -21,7 +20,7 @@ var arrayIndex = 0;
 async function getPosts(url) {
   try {
     const response = await fetch(url);
-    
+
     const results = await response.json();
 
     // creates the variable that calculates the number of pages to create
@@ -47,9 +46,7 @@ async function getPosts(url) {
   <div class="post-container__page-container"></div>`;
     }
 
-    const containerForPage = document.querySelectorAll(
-      ".post-container__page-container"
-    );
+    const containerForPage = document.querySelectorAll(".post-container__page-container");
 
     // creates an array for the page containers
     const pageContainerArray = Array.from(containerForPage);
@@ -67,11 +64,9 @@ async function getPosts(url) {
     };
     pageContainerArray.forEach(setPagePositioning);
 
-
     // Move to pages function.
     const moveToPage = (postContainer, currentPage, targetPage) => {
-      postContainer.style.transform =
-        "translateX(-" + targetPage.style.left + ")";
+      postContainer.style.transform = "translateX(-" + targetPage.style.left + ")";
       currentPage.classList.remove("active-post-page");
       targetPage.classList.add("active-post-page");
     };
@@ -89,7 +84,7 @@ async function getPosts(url) {
         pageIndex--;
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, previousPage);
-     
+
         if (pageIndex === 1) {
           previousPageButton.classList.add("opacity");
         }
@@ -113,7 +108,7 @@ async function getPosts(url) {
         const currentPage = postContainer.querySelector(".active-post-page");
         const nextPage = currentPage.nextElementSibling;
         pageIndex++;
-      
+
         currentPageIndex.innerHTML = pageIndex;
         moveToPage(postContainer, currentPage, nextPage);
         if (pageIndex === pageContainerArray.length) {
@@ -176,10 +171,7 @@ toTopButton.addEventListener("click", function () {
 });
 
 document.addEventListener("scroll", function () {
-  if (
-    document.documentElement.scrollTop + window.innerHeight ==
-    document.documentElement.scrollHeight
-  ) {
+  if (document.documentElement.scrollTop + window.innerHeight == document.documentElement.scrollHeight) {
     if (window.innerWidth > 1500) {
       toTopButton.style.right = 25 + "%";
     } else {
