@@ -1,47 +1,39 @@
 const navMenu = document.querySelector(".nav-menu");
-const hamburgerMenu = document.querySelector(".hamburger");
-const hamburgerBars = document.querySelector(".fa-bars");
-const hamburgerX = document.querySelector(".far");
-hamburgerX.style.display = "none";
+const ham = document.querySelector(".ham-container");
 // Shows and hides the navigation menu on smaller screens
 
-var navHidden = true;
+let navHidden = true;
 
-// hamburgerMenu.addEventListener("click", function () {
-//   if (navMenu.style.display === "none") {
-//     hamburgerBars.style.display = "none";
-//     hamburgerX.style.display = "block";
-//     navMenu.style.display = "flex";
-//   } else {
-//     navMenu.style.display = "none";
-//     hamburgerBars.style.display = "block";
-//     hamburgerX.style.display = "none";
-//   }
-// });
-
-// tryy
-hamburgerMenu.addEventListener("click", function () {
- 
+ham.addEventListener("click", function () {
   if (navHidden) {
     if (window.innerWidth > 700) {
-      toggleNavList(73, false, "none", "block");
+      toggleNavList(72, false, "none", "block");
     } else {
-   
-      toggleNavList(41, false, "none", "block");
+      toggleNavList(44, false, "none", "block");
     }
   } else {
-
     toggleNavList(-140, true, "block", "none");
-
-
   }
 });
+const hamburgerContainer = document.querySelector(".ham-container");
+const lineOne = document.querySelector(".ham-line-one");
+const lineTwo = document.querySelector(".ham-line-two");
+const lineThree = document.querySelector(".ham-line-three");
+const lineFour = document.querySelector(".ham-line-four");
 
-function toggleNavList(pixelValue, hiddenValue, barsValue, XValue) {
-  navMenu.style.top = pixelValue + "px";  
-    navHidden = hiddenValue;
-    hamburgerBars.style.display = barsValue;
-    hamburgerX.style.display = XValue; 
+hamburgerContainer.addEventListener("click", toggleMenu);
+
+function toggleMenu() {
+  lineOne.classList.toggle("opacity-two");
+  lineFour.classList.toggle("opacity-two");
+  //
+  lineTwo.classList.toggle("rotate-two");
+  lineThree.classList.toggle("rotate-three");
+}
+
+function toggleNavList(pixelValue, hiddenValue) {
+  navMenu.style.top = pixelValue + "px";
+  navHidden = hiddenValue;
 }
 function setTransition() {
   navMenu.style.transition = "all 0.4s";
@@ -50,12 +42,12 @@ window.addEventListener("resize", function () {
   const windowWidth = window.innerWidth;
   if (windowWidth >= 700 && windowWidth < 1000 && navHidden === false) {
     navMenu.style.transition = "none";
-    navMenu.style.top = 73 + "px";
+    navMenu.style.top = 72 + "px";
     setTimeout(setTransition, 400);
   }
   if (windowWidth < 700 && navHidden === false) {
     navMenu.style.transition = "none";
-    navMenu.style.top = 41 + "px";
+    navMenu.style.top = 44 + "px";
     setTimeout(setTransition, 400);
   }
 
@@ -64,14 +56,26 @@ window.addEventListener("resize", function () {
     navMenu.style.transition = "none";
     toggleNavList(0, true);
     setTimeout(setTransition, 400);
+    ham.style.display = "none";
+
+    if (lineTwo.className === "ham-line-two ham-line rotate-two" && lineThree.className === "ham-line-three ham-line rotate-three") {
+      // lineTwo.classList.toggle("rotate-two");
+
+      // lineThree.classList.toggle("rotate-three");
+      toggleMenu();
+      // console.log("yes");
+    }
   }
   if (navHidden === false) {
     return;
   }
   if (windowWidth < 1000) {
+    ham.style.display = "flex";
     navMenu.style.transition = "none";
     setTimeout(setTransition, 400);
     toggleNavList(-200, true, "block", "none");
+
+    //
   }
   //   if (windowWidth < 400) {
   //     toTheTopText.innerHTML = "";
@@ -80,32 +84,9 @@ window.addEventListener("resize", function () {
   //     toTheTopText.style.width = 75 + "px";
   //   }
 });
-
-// Shows error message
-
-function showErrorMessage(error) {
-  const errorHtml = `<div class="error"> 
-  <p>There was an error while loading this page.</p>
-  <p>
-  Error type: ${error}.
-  </p>
-  </div>
-  `;
-  return errorHtml;
-}
-
-// Global form checks
-
-function checkLength(value, length) {
-  if (value.trim().length > length) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
-function checkEmail(email) {
-  const regEx = /\S+@\S+\.\S+/;
-  const patterMatches = regEx.test(email);
-  return patterMatches;
+const windowWidth = window.innerWidth;
+if (windowWidth >= 1000) {
+  ham.style.display = "none";
+} else {
+  ham.style.display = "flex";
 }

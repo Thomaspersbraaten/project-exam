@@ -1,10 +1,11 @@
+import showErrorMessage from "../components/feedback/showErrorMessage.js";
+import { scrollToTop, showScrollToTop } from "../components/ui/toTheTop.js";
 const tipsSection = document.querySelector(".tips-section");
 const loaderContainer = document.querySelector(".loader-container");
 const showMore = document.querySelector(".show-more-btn");
 const moreTipsInfoContainer = document.querySelector(".more-tips-info");
-const tipsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=20&per_page=100&_embed";
-const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
+const tipsUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=20&per_page=100&_embed";
+const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 var currentPostCount = 0;
 var morePostsCount = 9;
@@ -13,7 +14,7 @@ async function fetchApi(tipsUrl) {
   try {
     const response = await fetch(tipsUrl);
     const results = await response.json();
-    
+
     createHtml(results);
 
     showMore.addEventListener("click", function () {
@@ -43,9 +44,7 @@ function createHtml(array) {
 
         tipsSection.innerHTML += `
         <div class="tips">
-          <h2 class="tips__heading"> Tip ${i + 1}: ${
-          array[i].title.rendered
-        }.</h2>         
+          <h2 class="tips__heading"> Tip ${i + 1}: ${array[i].title.rendered}.</h2>         
           <div class="tips__main-content">${array[i].excerpt.rendered}</div>
         </div>
         <div class="tips__author-info ">
@@ -86,9 +85,7 @@ function showMoreTips(results) {
       } else {
         tipsSection.innerHTML += `
           <div class="tips">
-            <h2 class="tips__heading"> Tip ${i + 1}: ${
-          data.title.rendered
-        }.</h2>         
+            <h2 class="tips__heading"> Tip ${i + 1}: ${data.title.rendered}.</h2>         
             <div class="tips__main-content">${data.excerpt.rendered}</div>
           </div>
           <div class="tips__author-info ">
@@ -105,21 +102,5 @@ function showMoreTips(results) {
 }
 
 const toTopButton = document.querySelector(".to-the-top");
-toTopButton.addEventListener("click", function () {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-document.addEventListener("scroll", function () {
-  if (
-    document.documentElement.scrollTop + window.innerHeight ==
-    document.documentElement.scrollHeight
-  ) {
-    if (window.innerWidth > 1500) {
-      toTopButton.style.right = 25 + "%";
-    } else {
-      toTopButton.style.right = 5 + "%";
-    }
-  } else {
-    toTopButton.style.right = -140 + "px";
-  }
-});
+toTopButton.addEventListener("click", scrollToTop);
+document.addEventListener("scroll", showScrollToTop);

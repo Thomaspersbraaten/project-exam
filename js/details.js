@@ -1,3 +1,5 @@
+import showErrorMessage from "../components/feedback/showErrorMessage.js";
+import { scrollToTop, showScrollToTop } from "../components/ui/toTheTop.js";
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -27,24 +29,16 @@ const postIdInForm = document.querySelector("#postId");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
 const commentInput = document.querySelector("#comment");
-const commentErrorMessage = document.querySelector(
-  ".post-comment-error-message"
-);
+const commentErrorMessage = document.querySelector(".post-comment-error-message");
 const commentLoader = document.querySelector(".comment-loader");
 
-const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
+const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 // API URLS
-const detailsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&include[]=" +
-  id;
-const authorUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
-const commentUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?&per_page=100&post=" +
-  id;
-const postsUrl =
-  "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
+const detailsUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed&include[]=" + id;
+const authorUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/users/";
+const commentUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/comments?&per_page=100&post=" + id;
+const postsUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
 async function fetchDetailsAndAuthor(urlForDetails, urlForAthor) {
   try {
@@ -328,7 +322,6 @@ function validateComment() {
 }
 
 function validateCommentKeyup() {
- 
   if (checkLength(commentInput.value, 1)) {
     commentValid = true;
     commentError.style.display = "none";
@@ -343,21 +336,5 @@ commentInput.addEventListener("input", validateCommentKeyup);
 // To the top button
 
 const toTopButton = document.querySelector(".to-the-top");
-toTopButton.addEventListener("click", function () {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
-
-document.addEventListener("scroll", function () {
-  if (
-    document.documentElement.scrollTop + window.innerHeight ==
-    document.documentElement.scrollHeight
-  ) {
-    if (window.innerWidth > 1500) {
-      toTopButton.style.right = 25 + "%";
-    } else {
-      toTopButton.style.right = 5 + "%";
-    }
-  } else {
-    toTopButton.style.right = -140 + "px";
-  }
-});
+toTopButton.addEventListener("click", scrollToTop);
+document.addEventListener("scroll", showScrollToTop);

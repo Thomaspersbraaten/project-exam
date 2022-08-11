@@ -28,6 +28,7 @@ label {
 input:focus {
   border: 2px solid white;
 }
+
 .search-input-container {
   display: flex;
   flex-direction: row;
@@ -87,6 +88,7 @@ input:focus {
   100% {opacity: 100%};
   
 } */
+
 .post__posts-container {
   display: grid;
   grid-template-columns: 1fr 1fr;

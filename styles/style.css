@@ -832,3 +832,55 @@ p {
     margin: auto;
   }
 }
+
+/* */
+.ham-container {
+  width: 70px;
+  height: 60px;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 50%;
+  /* background-color: black; */
+  /* padding: 25px; */
+  margin: auto 10px;
+}
+.ham-container:hover {
+  cursor: pointer;
+}
+
+.ham-line {
+  opacity: 1;
+  transition: all 0.3s;
+  height: 6px;
+  width: 45px;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.ham-line-one {
+  position: absolute;
+  top: 20%;
+}
+.ham-line-two,
+.ham-line-three {
+  position: absolute;
+  top: 46%;
+}
+.ham-line-four {
+  position: absolute;
+  top: 72%;
+}
+
+.rotate-two {
+  transform: rotate(-45deg);
+}
+.rotate-three {
+  transform: rotate(45deg);
+}
+.opacity-two {
+  opacity: 0;
+}

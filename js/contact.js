@@ -1,3 +1,4 @@
+import { checkEmail, checkLength } from "../components/checks/index.js";
 // Contact Consts
 
 const fullName = document.querySelector("#name");
@@ -48,13 +49,10 @@ function sendContactForm(e) {
   formData.append("your-email", email.value);
   formData.append("your-subject", subject.value);
   formData.append("your-message", message.value);
-  fetch(
-    "https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback",
-    {
-      method: "post",
-      body: formData,
-    }
-  );
+  fetch("https://tpbro.online/The-Environmentalist/wp-json/contact-form-7/v1/contact-forms/147/feedback", {
+    method: "post",
+    body: formData,
+  });
 }
 
 // Validation Functions

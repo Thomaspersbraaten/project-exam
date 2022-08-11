@@ -1,3 +1,5 @@
+import showErrorMessage from "../components/feedback/showErrorMessage.js";
+import { scrollToTop, showScrollToTop } from "../components/ui/toTheTop.js";
 const postContainer = document.querySelector(".posts-container");
 const navigationPages = document.querySelector(".navigation-pages");
 const totalPages = document.querySelector(".total-pages");
@@ -11,11 +13,12 @@ const postNavigation = document.querySelector(".post-navigation");
 const postHeader = document.querySelector(".post-header");
 const carouselContainer = document.querySelector(".carousel-container");
 const welcomeContainer = document.querySelector(".welcome");
-const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
+// const month = [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12];
+const month = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 const postUrl = "https://tpbro.online/The-Environmentalist/wp-json/wp/v2/posts?categories=19&per_page=100&_embed";
 
-var pageIndex = 1;
-var arrayIndex = 0;
+let pageIndex = 1;
+let arrayIndex = 0;
 
 async function getPosts(url) {
   try {
@@ -165,19 +168,22 @@ function createHtml(pageNumbers, pageArray, pageContainerArray) {
   totalPages.innerHTML = `${pageNumbers}`;
 }
 
-const toTopButton = document.querySelector(".to-the-top");
-toTopButton.addEventListener("click", function () {
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+// const toTopButton = document.querySelector(".to-the-top");
+// toTopButton.addEventListener("click", function () {
+//   window.scrollTo({ top: 0, behavior: "smooth" });
+// });
 
-document.addEventListener("scroll", function () {
-  if (document.documentElement.scrollTop + window.innerHeight == document.documentElement.scrollHeight) {
-    if (window.innerWidth > 1500) {
-      toTopButton.style.right = 25 + "%";
-    } else {
-      toTopButton.style.right = 5 + "%";
-    }
-  } else {
-    toTopButton.style.right = -140 + "px";
-  }
-});
+// document.addEventListener("scroll", function () {
+//   if (document.documentElement.scrollTop + window.innerHeight == document.documentElement.scrollHeight) {
+//     if (window.innerWidth > 1500) {
+//       toTopButton.style.right = 25 + "%";
+//     } else {
+//       toTopButton.style.right = 5 + "%";
+//     }
+//   } else {
+//     toTopButton.style.right = -140 + "px";
+//   }
+// });
+const toTopButton = document.querySelector(".to-the-top");
+toTopButton.addEventListener("click", scrollToTop);
+document.addEventListener("scroll", showScrollToTop);
