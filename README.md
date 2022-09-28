@@ -21,3 +21,4 @@ All functionality implemented with some extra functions:
 * Scroll to top button
 * Can click next and previous post within a post. (Checks previous and next index in the array)
 * Plugin in Wordpress used to redirect the "contact form" to personal email.
+ 
