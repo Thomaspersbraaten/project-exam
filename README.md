@@ -2,7 +2,7 @@
 
 Design and create a blog site of your choice.
 
-* Create a blogs on Wordpress and display them on the website using Wordpress Rest API.
+* Create blog posts on Wordpress and display them on the website using Wordpress Rest API.
 * Host Wordpress on your own public server
 * Home page - to have a Hero banner and a carousel listing the blog posts. 
 * Posts page - should list 10 posts. User should be able to click a button to show more posts. Search field to search for posts
